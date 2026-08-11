@@ -8,8 +8,9 @@ import { sampleReceipt, validateReceipt } from './lib/validate.mjs'
 
 const packageRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const bundledSkill = join(packageRoot, 'skill', 'bug-receipt')
+const { version } = JSON.parse(await readFile(join(packageRoot, 'package.json'), 'utf8'))
 
-const help = `Bug Receipt 1.0.0
+const help = `Bug Receipt ${version}
 
 Usage:
   bug-receipt check <receipt.json> [--json]

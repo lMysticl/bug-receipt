@@ -49,3 +49,13 @@ test('requires blocked status to name its external condition', () => {
   assert.equal(result.valid, false)
   assert.ok(result.issues.some((issue) => issue.message.includes('blocking condition')))
 })
+
+test('rejects unknown fields exactly like the JSON Schema', () => {
+  const receipt = clone(sampleReceipt)
+  receipt.confidence = 1
+  receipt.baseline.duration = '12ms'
+  const result = validateReceipt(receipt)
+  assert.equal(result.valid, false)
+  assert.ok(result.issues.some((issue) => issue.path === 'confidence' && issue.message === 'Unknown field.'))
+  assert.ok(result.issues.some((issue) => issue.path === 'baseline.duration' && issue.message === 'Unknown field.'))
+})

@@ -29,8 +29,15 @@ export const sampleReceipt = {
 export function validateReceipt(receipt) {
   const issues = []
   const add = (path, message) => issues.push({ path, message })
+  const rejectUnknown = (value, allowed, path) => {
+    if (!isObject(value)) return
+    for (const key of Object.keys(value)) {
+      if (!allowed.has(key)) add(path ? `${path}.${key}` : key, 'Unknown field.')
+    }
+  }
 
   if (!isObject(receipt)) return { valid: false, issues: [{ path: '$', message: 'Receipt must be a JSON object.' }] }
+  rejectUnknown(receipt, new Set(['version', 'status', 'problem', 'baseline', 'rootCause', 'changes', 'verification', 'gaps']), '')
 
   if (receipt.version !== 1) add('version', 'Must equal 1.')
   if (!statuses.has(receipt.status)) add('status', 'Must be verified, partial, or blocked.')
@@ -39,6 +46,7 @@ export function validateReceipt(receipt) {
   if (!isObject(receipt.baseline)) {
     add('baseline', 'Must be an object.')
   } else {
+    rejectUnknown(receipt.baseline, new Set(['command', 'result', 'evidence']), 'baseline')
     if (!nonEmpty(receipt.baseline.command)) add('baseline.command', 'Must be a non-empty string.')
     if (!baselineResults.has(receipt.baseline.result)) add('baseline.result', 'Must be failed, observed, or not-run.')
     if (!nonEmpty(receipt.baseline.evidence)) add('baseline.evidence', 'Must be a non-empty string.')
@@ -47,12 +55,14 @@ export function validateReceipt(receipt) {
   if (!isObject(receipt.rootCause)) {
     add('rootCause', 'Must be an object.')
   } else {
+    rejectUnknown(receipt.rootCause, new Set(['summary', 'evidence']), 'rootCause')
     if (!nonEmpty(receipt.rootCause.summary)) add('rootCause.summary', 'Must be a non-empty string.')
     if (!Array.isArray(receipt.rootCause.evidence)) {
       add('rootCause.evidence', 'Must be an array.')
     } else {
       receipt.rootCause.evidence.forEach((entry, index) => {
         if (!isObject(entry)) return add(`rootCause.evidence[${index}]`, 'Must be an object.')
+        rejectUnknown(entry, new Set(['location', 'observation']), `rootCause.evidence[${index}]`)
         if (!nonEmpty(entry.location)) add(`rootCause.evidence[${index}].location`, 'Must be a non-empty string.')
         if (!nonEmpty(entry.observation)) add(`rootCause.evidence[${index}].observation`, 'Must be a non-empty string.')
       })
@@ -64,6 +74,7 @@ export function validateReceipt(receipt) {
   } else {
     receipt.changes.forEach((entry, index) => {
       if (!isObject(entry)) return add(`changes[${index}]`, 'Must be an object.')
+      rejectUnknown(entry, new Set(['file', 'summary']), `changes[${index}]`)
       if (!nonEmpty(entry.file)) add(`changes[${index}].file`, 'Must be a non-empty string.')
       if (!nonEmpty(entry.summary)) add(`changes[${index}].summary`, 'Must be a non-empty string.')
     })
@@ -74,6 +85,7 @@ export function validateReceipt(receipt) {
   } else {
     receipt.verification.forEach((entry, index) => {
       if (!isObject(entry)) return add(`verification[${index}]`, 'Must be an object.')
+      rejectUnknown(entry, new Set(['command', 'result', 'evidence']), `verification[${index}]`)
       if (!nonEmpty(entry.command)) add(`verification[${index}].command`, 'Must be a non-empty string.')
       if (!verificationResults.has(entry.result)) add(`verification[${index}].result`, 'Must be passed, failed, or not-run.')
       if (!nonEmpty(entry.evidence)) add(`verification[${index}].evidence`, 'Must be a non-empty string.')
