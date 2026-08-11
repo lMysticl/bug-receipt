@@ -37,4 +37,4 @@ For `blocked`:
 - Require at least one gap naming the external blocking condition.
 - Leave unperformed work empty or mark it `not-run`; do not speculate about the result.
 
-Validate against `docs/receipt.schema.json` or run `bug-receipt check <file>` from the repository package.
+Validate against [receipt.schema.json](receipt.schema.json), run `node scripts/validate-receipt.mjs <file>` from the skill directory, pipe JSON to `node scripts/validate-receipt.mjs - --json`, or use `bug-receipt check <file>` when the package CLI is installed.

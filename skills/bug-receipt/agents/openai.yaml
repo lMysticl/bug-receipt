@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bug Receipt"
+  short_description: "Prove bug fixes with an auditable receipt"
+  default_prompt: "Use $bug-receipt to reproduce this defect, fix the responsible cause, run decisive verification, and return an evidence-backed status."
+
+policy:
+  allow_implicit_invocation: true

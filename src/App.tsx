@@ -142,12 +142,12 @@ function App() {
         <section className="hero wrap">
           <div className="hero__glow" aria-hidden="true" />
           <div className="hero__copy">
-            <div className="pill"><span /> Portable Agent Skill <b>v1.0</b></div>
+            <div className="pill"><span /> Discoverable Agent Skill <b>v1.1</b></div>
             <h1>No <em>“fixed”</em><br />without receipts.</h1>
             <p className="hero__lead">A strict evidence gate for coding agents. Reproduce the failure, trace the cause, run the proof—and only then declare victory.</p>
             <div className="hero__actions">
               <a className="button button--primary" href="#install">Install the skill <ArrowIcon /></a>
-              <a className="button button--ghost" href="https://github.com/lMysticl/bug-receipt/blob/main/skill/bug-receipt/SKILL.md">Read SKILL.md</a>
+              <a className="button button--ghost" href="https://github.com/lMysticl/bug-receipt/blob/main/skills/bug-receipt/SKILL.md">Read SKILL.md</a>
             </div>
             <div className="hero__meta">
               <span><CheckIcon /> No API key</span>

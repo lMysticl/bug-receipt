@@ -15,6 +15,11 @@ test('installs a complete skill into an explicit destination', async () => {
   assert.match(stdout, /Installed Bug Receipt/)
   assert.match(await readFile(join(destination, 'SKILL.md'), 'utf8'), /name: bug-receipt/)
   assert.match(await readFile(join(destination, 'references', 'receipt-contract.md'), 'utf8'), /Status invariants/)
+  const { stdout: validation } = await execFileAsync(process.execPath, [
+    join(destination, 'scripts', 'validate-receipt.mjs'),
+    join(destination, 'assets', 'receipt.template.json'),
+  ])
+  assert.match(validation, /valid PARTIAL bug receipt/)
 })
 
 test('refuses to overwrite an existing installation by default', async () => {

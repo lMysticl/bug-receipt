@@ -1,7 +1,7 @@
 {
   "name": "bug-receipt",
-  "version": "1.0.1",
-  "description": "No 'fixed' without receipts — a portable evidence gate for coding agents.",
+  "version": "1.1.0",
+  "description": "Portable Agent Skill for evidence-backed bug fixes, root-cause analysis, and verifiable coding-agent results.",
   "type": "module",
   "bin": {
     "bug-receipt": "./cli/bug-receipt.mjs"
@@ -10,7 +10,7 @@
     "cli",
     "docs/receipt.schema.json",
     "examples/verified-receipt.json",
-    "skill"
+    "skills"
   ],
   "scripts": {
     "dev": "vite",
@@ -18,7 +18,8 @@
     "lint": "oxlint src cli test scripts",
     "test": "node --test",
     "skill:validate": "python scripts/validate-skill.py",
-    "check": "npm run lint && npm run test && npm run skill:validate && npm run build",
+    "dist:validate": "node scripts/verify-dist.mjs",
+    "check": "npm run lint && npm run test && npm run skill:validate && npm run build && npm run dist:validate",
     "preview": "vite preview",
     "prepublishOnly": "npm run check"
   },
@@ -32,11 +33,16 @@
   },
   "keywords": [
     "agent-skills",
+    "agent-skill",
     "ai-agents",
+    "github-copilot",
+    "cursor",
     "coding-agents",
     "codex",
     "claude-code",
     "debugging",
+    "root-cause-analysis",
+    "bug-fix",
     "verification"
   ],
   "author": "Pavel Putrenkov",

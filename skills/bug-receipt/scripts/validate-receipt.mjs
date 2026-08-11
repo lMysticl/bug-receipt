@@ -1,3 +1,7 @@
+import { readFile } from 'node:fs/promises'
+import { resolve } from 'node:path'
+import { pathToFileURL } from 'node:url'
+
 const statuses = new Set(['verified', 'partial', 'blocked'])
 const baselineResults = new Set(['failed', 'observed', 'not-run'])
 const verificationResults = new Set(['passed', 'failed', 'not-run'])
@@ -107,4 +111,38 @@ export function validateReceipt(receipt) {
   if (receipt.status === 'blocked' && Array.isArray(receipt.gaps) && receipt.gaps.length === 0) add('gaps', 'Blocked status must name the external blocking condition.')
 
   return { valid: issues.length === 0, issues }
+}
+
+async function main() {
+  const path = process.argv[2]
+  if (!path) throw new Error('Usage: node scripts/validate-receipt.mjs <receipt.json> [--json]')
+
+  let input = ''
+  if (path === '-') {
+    process.stdin.setEncoding('utf8')
+    for await (const chunk of process.stdin) input += chunk
+  } else {
+    input = await readFile(resolve(path), 'utf8')
+  }
+  const receipt = JSON.parse(input)
+  const result = validateReceipt(receipt)
+
+  if (process.argv.includes('--json')) {
+    process.stdout.write(`${JSON.stringify(result)}\n`)
+  } else if (result.valid) {
+    process.stdout.write(`✓ ${path} is a valid ${receipt.status.toUpperCase()} bug receipt.\n`)
+  } else {
+    process.stderr.write(`✗ ${path} is not a valid bug receipt:\n`)
+    for (const issue of result.issues) process.stderr.write(`  ${issue.path}: ${issue.message}\n`)
+  }
+
+  process.exitCode = result.valid ? 0 : 1
+}
+
+const invokedUrl = process.argv[1] ? pathToFileURL(resolve(process.argv[1])).href : ''
+if (import.meta.url === invokedUrl) {
+  main().catch((error) => {
+    process.stderr.write(`bug-receipt: ${error.message}\n`)
+    process.exitCode = 2
+  })
 }

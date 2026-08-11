@@ -4,10 +4,10 @@ import { constants } from 'node:fs'
 import { homedir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { sampleReceipt, validateReceipt } from './lib/validate.mjs'
+import { sampleReceipt, validateReceipt } from '../skills/bug-receipt/scripts/validate-receipt.mjs'
 
 const packageRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const bundledSkill = join(packageRoot, 'skill', 'bug-receipt')
+const bundledSkill = join(packageRoot, 'skills', 'bug-receipt')
 const { version } = JSON.parse(await readFile(join(packageRoot, 'package.json'), 'utf8'))
 
 const help = `Bug Receipt ${version}
@@ -15,7 +15,7 @@ const help = `Bug Receipt ${version}
 Usage:
   bug-receipt check <receipt.json> [--json]
   bug-receipt sample
-  bug-receipt install [--target agents|codex|claude|project|copilot]
+  bug-receipt install [--target agents|codex|claude|cursor|project|copilot]
                       [--destination <path>] [--force]
 
 Exit codes: 0 valid/success, 1 invalid receipt, 2 usage or environment error.`
@@ -39,6 +39,7 @@ function targetRoot(target) {
     agents: join(homedir(), '.agents', 'skills'),
     codex: join(homedir(), '.codex', 'skills'),
     claude: join(homedir(), '.claude', 'skills'),
+    cursor: join(homedir(), '.cursor', 'skills'),
     project: join(process.cwd(), '.agents', 'skills'),
     copilot: join(process.cwd(), '.github', 'skills'),
   }

@@ -11,9 +11,11 @@
   ·
   <a href="#install">Install</a>
   ·
-  <a href="./skill/bug-receipt/SKILL.md">Read the skill</a>
+  <a href="./skills/bug-receipt/SKILL.md">Read the skill</a>
   ·
-  <a href="./docs/receipt.schema.json">JSON Schema</a>
+  <a href="https://lmysticl.github.io/bug-receipt/llms.txt">AI index</a>
+  ·
+  <a href="https://lmysticl.github.io/bug-receipt/receipt.schema.json">JSON Schema</a>
 </p>
 
 <p align="center">
@@ -39,7 +41,23 @@ No test result, command, file location, or observation may be invented. A missin
 
 ## Install
 
-Install from GitHub into the portable global Agent Skills directory:
+Discover, inspect, and install it with the official GitHub CLI skill workflow:
+
+```bash
+gh skill search "bug fix evidence"
+gh skill preview lMysticl/bug-receipt bug-receipt
+gh skill install lMysticl/bug-receipt bug-receipt --agent codex --scope user
+```
+
+Change the host without changing the skill:
+
+```bash
+gh skill install lMysticl/bug-receipt bug-receipt --agent claude-code --scope user
+gh skill install lMysticl/bug-receipt bug-receipt --agent cursor --scope user
+gh skill install lMysticl/bug-receipt bug-receipt --agent github-copilot --scope user
+```
+
+Or use the bundled zero-API Node installer for the portable global Agent Skills directory:
 
 ```bash
 npx --yes github:lMysticl/bug-receipt install
@@ -50,6 +68,7 @@ Choose a specific agent or a project-local destination:
 ```bash
 npx --yes github:lMysticl/bug-receipt install --target codex
 npx --yes github:lMysticl/bug-receipt install --target claude
+npx --yes github:lMysticl/bug-receipt install --target cursor
 npx --yes github:lMysticl/bug-receipt install --target project
 npx --yes github:lMysticl/bug-receipt install --target copilot
 ```
@@ -63,6 +82,8 @@ Invoke it explicitly:
 ```text
 Use $bug-receipt to fix the checkout regression and prove the result.
 ```
+
+Clients with slash-command skill pickers can expose it as `/bug-receipt`. Natural invocation also works because the discovery description includes concrete bug, regression, failing-test, runtime, UI, API, persistence, root-cause, and proof triggers.
 
 Or ask naturally:
 
@@ -84,7 +105,7 @@ Proof      focused test: PASS · full suite: PASS · build: PASS
 Gaps       none
 ```
 
-For automation, agents can emit a JSON receipt conforming to [`docs/receipt.schema.json`](./docs/receipt.schema.json):
+For automation, agents can emit a JSON receipt conforming to the bundled [`receipt.schema.json`](./skills/bug-receipt/references/receipt.schema.json):
 
 ```bash
 bug-receipt check examples/verified-receipt.json
@@ -113,8 +134,11 @@ The skill uses the portable `SKILL.md` format. The installer supports:
 | Portable default | `~/.agents/skills/bug-receipt` |
 | OpenAI Codex | `~/.codex/skills/bug-receipt` |
 | Claude Code | `~/.claude/skills/bug-receipt` |
+| Cursor | `~/.cursor/skills/bug-receipt` |
 | Project-local | `./.agents/skills/bug-receipt` |
 | GitHub Copilot | `./.github/skills/bug-receipt` |
+
+The standard `skills/bug-receipt/SKILL.md` repository layout is discoverable by `gh skill search`, publishable with `gh skill publish`, and installable across the Agent Skills hosts supported by GitHub CLI. The skill also ships its validator, schema, and receipt template, so those resources remain available after installation.
 
 ## Validation
 
@@ -123,7 +147,7 @@ The repository includes:
 - structural skill validation with the system `quick_validate.py`;
 - deterministic validator and installer tests;
 - positive, indirect, negative, and unsupported activation cases;
-- verified, partial, and blocked task-contract fixtures;
+- verified, partial, and blocked task-contract fixtures across logic, UI, API, persistence, concurrency, and environment surfaces;
 - TypeScript, lint, production-build, and live-browser checks.
 
 Run everything locally:

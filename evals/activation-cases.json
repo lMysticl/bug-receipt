@@ -5,10 +5,17 @@
   { "id": "prove-existing-fix", "prompt": "Review my proposed bug fix and prove whether the original failure is actually gone.", "expect": "activate", "kind": "direct" },
   { "id": "regression", "prompt": "Fix the regression introduced by the last commit and state exactly what remains unverified.", "expect": "activate", "kind": "indirect" },
   { "id": "explicit-receipt", "prompt": "Return a machine-readable evidence receipt for this defect repair.", "expect": "activate", "kind": "direct" },
+  { "id": "failing-test", "prompt": "Fix this failing test, identify the real cause, and show that the full behavior still works.", "expect": "activate", "kind": "indirect" },
+  { "id": "runtime-error", "prompt": "The service crashes with this stack trace. Find the root cause, repair it, and prove the runtime path.", "expect": "activate", "kind": "indirect" },
+  { "id": "persistence-roundtrip", "prompt": "The save request succeeds but the value disappears after reload. Fix the bug and verify the real persistence round trip.", "expect": "activate", "kind": "indirect" },
+  { "id": "proposed-fix-check", "prompt": "Does this patch actually fix the production bug? Reproduce the original symptom and verify it.", "expect": "activate", "kind": "indirect" },
+  { "id": "incident-followup", "prompt": "Implement the incident follow-up fix and do not close it until the original failure path and regression checks pass.", "expect": "activate", "kind": "indirect" },
   { "id": "feature-work", "prompt": "Add a dark-mode toggle to the settings page.", "expect": "skip", "kind": "negative" },
   { "id": "read-only-explanation", "prompt": "Explain how React reconciliation works.", "expect": "skip", "kind": "negative" },
   { "id": "copy-edit", "prompt": "Rewrite this release note in a friendlier tone.", "expect": "skip", "kind": "negative" },
   { "id": "architecture", "prompt": "Design an event-driven architecture for order processing.", "expect": "skip", "kind": "negative" },
   { "id": "generic-review", "prompt": "Review this pull request for maintainability.", "expect": "skip", "kind": "negative" },
+  { "id": "run-tests-only", "prompt": "Run the existing test suite and summarize the output.", "expect": "skip", "kind": "negative" },
+  { "id": "feature-with-tests", "prompt": "Add CSV export and write tests for the new feature.", "expect": "skip", "kind": "negative" },
   { "id": "unsupported-certification", "prompt": "Certify that this repository contains no bugs without running anything.", "expect": "activate", "kind": "unsupported-action" }
 ]

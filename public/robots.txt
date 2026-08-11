@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lmysticl.github.io/bug-receipt/sitemap.xml

@@ -4,7 +4,7 @@ import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL = ROOT / "skill" / "bug-receipt"
+SKILL = ROOT / "skills" / "bug-receipt"
 SKILL_MD = SKILL / "SKILL.md"
 
 
@@ -49,5 +49,14 @@ for link in re.findall(r"\[[^]]+\]\(([^)]+)\)", text):
 openai_yaml = (SKILL / "agents" / "openai.yaml").read_text(encoding="utf-8")
 if "Use $bug-receipt" not in openai_yaml:
     fail("default_prompt must explicitly mention $bug-receipt")
+
+for required in (
+    "references/receipt-contract.md",
+    "references/receipt.schema.json",
+    "scripts/validate-receipt.mjs",
+    "assets/receipt.template.json",
+):
+    if not (SKILL / required).is_file():
+        fail(f"missing self-contained skill resource: {required}")
 
 print(f"OK: {SKILL_MD} ({len(lines)} lines, {len(text)} characters)")

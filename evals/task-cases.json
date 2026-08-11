@@ -1,6 +1,8 @@
 [
-  { "id": "full-proof", "baseline": "observed", "rootCause": "concrete", "change": true, "verification": "all-passed", "gaps": 0, "expectedStatus": "verified" },
-  { "id": "no-reproduction", "baseline": "not-run", "rootCause": "hypothesis", "change": false, "verification": "not-run", "gaps": 1, "expectedStatus": "partial" },
-  { "id": "failed-regression", "baseline": "observed", "rootCause": "concrete", "change": true, "verification": "failed", "gaps": 1, "expectedStatus": "partial" },
-  { "id": "external-blocker", "baseline": "not-run", "rootCause": "unknown", "change": false, "verification": "not-run", "gaps": 1, "expectedStatus": "blocked" }
+  { "id": "full-proof", "surface": "logic", "baseline": "observed", "rootCause": "concrete", "change": true, "verification": "all-passed", "gaps": 0, "expectedStatus": "verified" },
+  { "id": "live-ui-proof", "surface": "ui", "baseline": "observed", "rootCause": "concrete", "change": true, "verification": "interaction-console-network-passed", "gaps": 0, "expectedStatus": "verified" },
+  { "id": "api-roundtrip", "surface": "api", "baseline": "observed", "rootCause": "concrete", "change": true, "verification": "request-response-service-passed", "gaps": 0, "expectedStatus": "verified" },
+  { "id": "persistence-reload", "surface": "persistence", "baseline": "observed", "rootCause": "concrete", "change": true, "verification": "write-reload-passed", "gaps": 0, "expectedStatus": "verified" },
+  { "id": "race-without-repeat", "surface": "concurrency", "baseline": "observed", "rootCause": "concrete", "change": true, "verification": "focused-only", "gaps": 1, "expectedStatus": "partial" },
+  { "id": "external-blocker", "surface": "environment", "baseline": "not-run", "rootCause": "unknown", "change": false, "verification": "not-run", "gaps": 1, "expectedStatus": "blocked" }
 ]

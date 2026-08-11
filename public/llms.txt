@@ -1,0 +1,26 @@
+# Bug Receipt
+
+> A portable Agent Skill that prevents AI coding agents from declaring software bugs fixed without reproducible evidence.
+
+## Agent entry points
+
+- [SKILL.md](https://raw.githubusercontent.com/lMysticl/bug-receipt/main/skills/bug-receipt/SKILL.md): activation metadata and executable workflow
+- [Receipt contract](https://raw.githubusercontent.com/lMysticl/bug-receipt/main/skills/bug-receipt/references/receipt-contract.md): machine-readable status invariants
+- [JSON Schema](https://lmysticl.github.io/bug-receipt/receipt.schema.json): validation contract
+- [Repository](https://github.com/lMysticl/bug-receipt): source, tests, releases, and installation
+
+## Discover and install
+
+Search: `gh skill search "bug fix evidence"`
+
+Install: `gh skill install lMysticl/bug-receipt bug-receipt --agent codex --scope user`
+
+The GitHub CLI installer supports Codex, Claude Code, Cursor, GitHub Copilot, Gemini CLI, and other Agent Skills clients.
+
+## Activate
+
+Use for bug fixes, regressions, flaky or failing tests, runtime errors, broken UI/API/database behavior, incident follow-ups, proposed-fix verification, and requests to prove a fix or find the root cause. Skip feature-only work and generic review.
+
+## Required result
+
+Return exactly one evidence-backed status: VERIFIED, PARTIAL, or BLOCKED. VERIFIED requires an observed baseline, concrete root-cause evidence, an identified responsible change, passing direct verification, and no material proof gaps.

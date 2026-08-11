@@ -22,3 +22,7 @@ jobs:
           python-version: '3.13'
       - run: npm ci
       - run: npm run check
+      - name: Validate Agent Skills publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh skill publish --dry-run
