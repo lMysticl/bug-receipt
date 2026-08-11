@@ -1,0 +1,14 @@
+[
+  { "id": "direct-fix-proof", "prompt": "Use bug-receipt to fix this checkout regression and prove it.", "expect": "activate", "kind": "direct" },
+  { "id": "natural-debug", "prompt": "Debug this flaky test. Do not call it fixed until you reproduce it and show the verification.", "expect": "activate", "kind": "indirect" },
+  { "id": "root-cause-demand", "prompt": "The UI says saved but the backend did not persist it. Find the responsible cause, fix it, and give me evidence.", "expect": "activate", "kind": "indirect" },
+  { "id": "prove-existing-fix", "prompt": "Review my proposed bug fix and prove whether the original failure is actually gone.", "expect": "activate", "kind": "direct" },
+  { "id": "regression", "prompt": "Fix the regression introduced by the last commit and state exactly what remains unverified.", "expect": "activate", "kind": "indirect" },
+  { "id": "explicit-receipt", "prompt": "Return a machine-readable evidence receipt for this defect repair.", "expect": "activate", "kind": "direct" },
+  { "id": "feature-work", "prompt": "Add a dark-mode toggle to the settings page.", "expect": "skip", "kind": "negative" },
+  { "id": "read-only-explanation", "prompt": "Explain how React reconciliation works.", "expect": "skip", "kind": "negative" },
+  { "id": "copy-edit", "prompt": "Rewrite this release note in a friendlier tone.", "expect": "skip", "kind": "negative" },
+  { "id": "architecture", "prompt": "Design an event-driven architecture for order processing.", "expect": "skip", "kind": "negative" },
+  { "id": "generic-review", "prompt": "Review this pull request for maintainability.", "expect": "skip", "kind": "negative" },
+  { "id": "unsupported-certification", "prompt": "Certify that this repository contains no bugs without running anything.", "expect": "activate", "kind": "unsupported-action" }
+]

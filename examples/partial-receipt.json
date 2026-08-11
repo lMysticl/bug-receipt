@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "status": "partial",
+  "problem": "The checkout total is reported incorrectly in production but the production dataset is unavailable locally.",
+  "baseline": {
+    "command": "npm test -- checkout.integration.test.ts",
+    "result": "not-run",
+    "evidence": "The test requires a production-only tax fixture that is not available."
+  },
+  "rootCause": {
+    "summary": "The tax-rounding branch is the leading bounded hypothesis, not a confirmed root cause.",
+    "evidence": []
+  },
+  "changes": [],
+  "verification": [],
+  "gaps": ["The failing production fixture is required to reproduce and confirm the cause."]
+}

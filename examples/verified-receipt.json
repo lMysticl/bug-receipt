@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "status": "verified",
+  "problem": "A 10% checkout discount returns 100 instead of 90 after currency rounding.",
+  "baseline": {
+    "command": "npm test -- discount.test.ts",
+    "result": "failed",
+    "evidence": "Expected 90, received 100."
+  },
+  "rootCause": {
+    "summary": "The subtotal was rounded before the percentage discount was applied.",
+    "evidence": [{ "location": "src/pricing.ts:42", "observation": "roundCurrency(subtotal) was passed into applyDiscount()." }]
+  },
+  "changes": [{ "file": "src/pricing.ts", "summary": "Apply the discount to the subtotal before currency rounding." }],
+  "verification": [
+    { "command": "npm test -- discount.test.ts", "result": "passed", "evidence": "1 test passed." },
+    { "command": "npm test", "result": "passed", "evidence": "42 tests passed." }
+  ],
+  "gaps": []
+}

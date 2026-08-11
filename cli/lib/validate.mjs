@@ -1,0 +1,98 @@
+const statuses = new Set(['verified', 'partial', 'blocked'])
+const baselineResults = new Set(['failed', 'observed', 'not-run'])
+const verificationResults = new Set(['passed', 'failed', 'not-run'])
+
+const isObject = (value) => value !== null && typeof value === 'object' && !Array.isArray(value)
+const nonEmpty = (value) => typeof value === 'string' && value.trim().length > 0
+
+export const sampleReceipt = {
+  version: 1,
+  status: 'verified',
+  problem: 'A 10% checkout discount returns 100 instead of 90 after currency rounding.',
+  baseline: {
+    command: 'npm test -- discount.test.ts',
+    result: 'failed',
+    evidence: 'Expected 90, received 100.',
+  },
+  rootCause: {
+    summary: 'The subtotal was rounded before the percentage discount was applied.',
+    evidence: [{ location: 'src/pricing.ts:42', observation: 'roundCurrency(subtotal) was passed into applyDiscount().' }],
+  },
+  changes: [{ file: 'src/pricing.ts', summary: 'Apply the discount to the subtotal before currency rounding.' }],
+  verification: [
+    { command: 'npm test -- discount.test.ts', result: 'passed', evidence: '1 test passed.' },
+    { command: 'npm test', result: 'passed', evidence: '42 tests passed.' },
+  ],
+  gaps: [],
+}
+
+export function validateReceipt(receipt) {
+  const issues = []
+  const add = (path, message) => issues.push({ path, message })
+
+  if (!isObject(receipt)) return { valid: false, issues: [{ path: '$', message: 'Receipt must be a JSON object.' }] }
+
+  if (receipt.version !== 1) add('version', 'Must equal 1.')
+  if (!statuses.has(receipt.status)) add('status', 'Must be verified, partial, or blocked.')
+  if (!nonEmpty(receipt.problem)) add('problem', 'Must be a non-empty string.')
+
+  if (!isObject(receipt.baseline)) {
+    add('baseline', 'Must be an object.')
+  } else {
+    if (!nonEmpty(receipt.baseline.command)) add('baseline.command', 'Must be a non-empty string.')
+    if (!baselineResults.has(receipt.baseline.result)) add('baseline.result', 'Must be failed, observed, or not-run.')
+    if (!nonEmpty(receipt.baseline.evidence)) add('baseline.evidence', 'Must be a non-empty string.')
+  }
+
+  if (!isObject(receipt.rootCause)) {
+    add('rootCause', 'Must be an object.')
+  } else {
+    if (!nonEmpty(receipt.rootCause.summary)) add('rootCause.summary', 'Must be a non-empty string.')
+    if (!Array.isArray(receipt.rootCause.evidence)) {
+      add('rootCause.evidence', 'Must be an array.')
+    } else {
+      receipt.rootCause.evidence.forEach((entry, index) => {
+        if (!isObject(entry)) return add(`rootCause.evidence[${index}]`, 'Must be an object.')
+        if (!nonEmpty(entry.location)) add(`rootCause.evidence[${index}].location`, 'Must be a non-empty string.')
+        if (!nonEmpty(entry.observation)) add(`rootCause.evidence[${index}].observation`, 'Must be a non-empty string.')
+      })
+    }
+  }
+
+  if (!Array.isArray(receipt.changes)) {
+    add('changes', 'Must be an array.')
+  } else {
+    receipt.changes.forEach((entry, index) => {
+      if (!isObject(entry)) return add(`changes[${index}]`, 'Must be an object.')
+      if (!nonEmpty(entry.file)) add(`changes[${index}].file`, 'Must be a non-empty string.')
+      if (!nonEmpty(entry.summary)) add(`changes[${index}].summary`, 'Must be a non-empty string.')
+    })
+  }
+
+  if (!Array.isArray(receipt.verification)) {
+    add('verification', 'Must be an array.')
+  } else {
+    receipt.verification.forEach((entry, index) => {
+      if (!isObject(entry)) return add(`verification[${index}]`, 'Must be an object.')
+      if (!nonEmpty(entry.command)) add(`verification[${index}].command`, 'Must be a non-empty string.')
+      if (!verificationResults.has(entry.result)) add(`verification[${index}].result`, 'Must be passed, failed, or not-run.')
+      if (!nonEmpty(entry.evidence)) add(`verification[${index}].evidence`, 'Must be a non-empty string.')
+    })
+  }
+
+  if (!Array.isArray(receipt.gaps) || receipt.gaps.some((gap) => !nonEmpty(gap))) add('gaps', 'Must be an array of non-empty strings.')
+
+  if (receipt.status === 'verified') {
+    if (receipt.baseline?.result === 'not-run') add('baseline.result', 'Verified requires an observed baseline.')
+    if (!Array.isArray(receipt.rootCause?.evidence) || receipt.rootCause.evidence.length === 0) add('rootCause.evidence', 'Verified requires concrete root-cause evidence.')
+    if (!Array.isArray(receipt.changes) || receipt.changes.length === 0) add('changes', 'Verified requires at least one changed file or artifact.')
+    if (!Array.isArray(receipt.verification) || receipt.verification.length === 0) add('verification', 'Verified requires at least one verification check.')
+    if (receipt.verification?.some((entry) => entry?.result !== 'passed')) add('verification', 'Every verification check must pass for verified status.')
+    if (Array.isArray(receipt.gaps) && receipt.gaps.length > 0) add('gaps', 'Verified status cannot contain proof gaps.')
+  }
+
+  if (receipt.status === 'partial' && Array.isArray(receipt.gaps) && receipt.gaps.length === 0) add('gaps', 'Partial status must name at least one missing proof layer.')
+  if (receipt.status === 'blocked' && Array.isArray(receipt.gaps) && receipt.gaps.length === 0) add('gaps', 'Blocked status must name the external blocking condition.')
+
+  return { valid: issues.length === 0, issues }
+}

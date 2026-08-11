@@ -1,0 +1,63 @@
+{
+  "name": "bug-receipt",
+  "version": "1.0.0",
+  "description": "No 'fixed' without receipts — a portable evidence gate for coding agents.",
+  "type": "module",
+  "bin": {
+    "bug-receipt": "./cli/bug-receipt.mjs"
+  },
+  "files": [
+    "cli",
+    "docs/receipt.schema.json",
+    "examples/verified-receipt.json",
+    "skill"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint src cli test scripts",
+    "test": "node --test",
+    "skill:validate": "python scripts/validate-skill.py",
+    "check": "npm run lint && npm run test && npm run skill:validate && npm run build",
+    "preview": "vite preview",
+    "prepublishOnly": "npm run check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lMysticl/bug-receipt.git"
+  },
+  "homepage": "https://lmysticl.github.io/bug-receipt/",
+  "bugs": {
+    "url": "https://github.com/lMysticl/bug-receipt/issues"
+  },
+  "keywords": [
+    "agent-skills",
+    "ai-agents",
+    "coding-agents",
+    "codex",
+    "claude-code",
+    "debugging",
+    "verification"
+  ],
+  "author": "Pavel Putrenkov",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "@fontsource-variable/manrope": "^5.2.8",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "ajv": "^8.20.0",
+    "oxlint": "^1.75.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.2.0"
+  }
+}

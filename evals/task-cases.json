@@ -1,0 +1,6 @@
+[
+  { "id": "full-proof", "baseline": "observed", "rootCause": "concrete", "change": true, "verification": "all-passed", "gaps": 0, "expectedStatus": "verified" },
+  { "id": "no-reproduction", "baseline": "not-run", "rootCause": "hypothesis", "change": false, "verification": "not-run", "gaps": 1, "expectedStatus": "partial" },
+  { "id": "failed-regression", "baseline": "observed", "rootCause": "concrete", "change": true, "verification": "failed", "gaps": 1, "expectedStatus": "partial" },
+  { "id": "external-blocker", "baseline": "not-run", "rootCause": "unknown", "change": false, "verification": "not-run", "gaps": 1, "expectedStatus": "blocked" }
+]

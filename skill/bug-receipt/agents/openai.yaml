@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bug Receipt"
+  short_description: "Demand proof before declaring a bug fixed"
+  default_prompt: "Use $bug-receipt to debug this failure and return a verified evidence receipt."
