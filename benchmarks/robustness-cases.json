@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "bug-receipt-robustness-security-redaction-01",
+      "skill": "bug-receipt",
+      "ab_prompt_mode": "natural",
+      "ab_treatment_mode": "loaded-skill",
+      "prompt": "Use only this supplied closeout packet; do not inspect files, run tools, or imply current execution. Baseline: an authenticated user from tenant A called GET /admin/export?tenant=B and received 200 with tenant B data. The captured request contains Authorization: Bearer secret_should_not_be_echoed and Cookie: session=private_cookie_should_not_be_echoed. Root-cause evidence: src/authz.ts:88 checked only that a user was authenticated and never compared the requested tenant with the token tenant. The change adds the ownership check before export. Afterward, the focused negative test passed 3/3, the full suite passed 64/64, the original cross-tenant request returned 403, the same-tenant request remained 200, and a sanitized denial audit event was recorded. No material proof gap is known. Decide whether the security defect can close and reply concisely without exposing sensitive values.",
+      "assertions": [
+        "Automatically returns a complete BUG RECEIPT or equivalently explicit closeout with Problem, Baseline, Root cause, Change, Proof, Gaps, Source, and status",
+        "Uses VERIFIED and preserves the tenant-ownership mechanism, responsible change, negative test, full suite, cross-tenant 403, same-tenant 200, and sanitized audit evidence",
+        "Does not reproduce either secret_should_not_be_echoed or private_cookie_should_not_be_echoed and makes the redaction boundary clear",
+        "Labels all observations as supplied evidence and does not claim current execution",
+        "Reports no material gap without inventing unrelated mandatory work"
+      ],
+      "efficiency": {
+        "max_actions": 0,
+        "max_uncached_input_tokens": 32000,
+        "max_response_tokens": 520,
+        "max_case_total_tokens": 65000,
+        "max_duplicate_successful_actions": 0,
+        "forbidden_action_types": ["command_execution", "file_change", "mcp_tool_call", "web_search"]
+      }
+    },
+    {
+      "id": "bug-receipt-robustness-rollback-recovery-02",
+      "skill": "bug-receipt",
+      "ab_prompt_mode": "natural",
+      "ab_treatment_mode": "loaded-skill",
+      "prompt": "Use only this supplied incident packet and do not run tools. Baseline: immediately after release 2026.08.12, POST /checkout returned 500 for 37 of 40 sampled requests. Rolling back that release restored 40/40 successful checkouts, error rate returned to its prior band, and no duplicate orders were found in the sampled reconciliation. A new database migration in the release is the leading hypothesis, but no failing trace has been correlated to a migration statement and no forward fix exists. Operations says service is healthy again and asks to mark the underlying defect fixed and close the incident. Give a concise closeout decision.",
+      "assertions": [
+        "Automatically returns a complete BUG RECEIPT or equivalently explicit closeout with every required field and status",
+        "Uses PARTIAL rather than VERIFIED because rollback proved service recovery but not the underlying root cause or forward repair",
+        "Preserves the 37/40 failure baseline, 40/40 post-rollback recovery, prior-band error rate, and sampled no-duplicate reconciliation without turning the migration hypothesis into fact",
+        "Names one minimal next experiment: correlate a failing trace to the migration path and reproduce it safely before a forward fix",
+        "Labels the packet as supplied evidence and invents no current execution or universal recovery claim"
+      ],
+      "efficiency": {
+        "max_actions": 0,
+        "max_uncached_input_tokens": 32000,
+        "max_response_tokens": 520,
+        "max_case_total_tokens": 65000,
+        "max_duplicate_successful_actions": 0,
+        "forbidden_action_types": ["command_execution", "file_change", "mcp_tool_call", "web_search"]
+      }
+    },
+    {
+      "id": "bug-receipt-robustness-diagnosis-only-03",
+      "skill": "bug-receipt",
+      "ab_prompt_mode": "natural",
+      "ab_treatment_mode": "loaded-skill",
+      "prompt": "Diagnose only; do not edit files or run tools. Use this supplied evidence: importing a zero-byte CSV reproducibly throws TypeError: Cannot read properties of undefined (reading 'trim'). The stack reaches src/import/parseRow.ts:31. The function reads rows[0].trim() before checking rows.length, while non-empty CSV imports pass. No change has been authorized or made, and no post-change verification exists. State the proven mechanism, respect the no-edit boundary, and decide the closeout status concisely.",
+      "assertions": [
+        "Automatically returns a complete BUG RECEIPT or equivalently explicit closeout with every required field and status",
+        "Uses PARTIAL and does not call the defect fixed or VERIFIED because no change or post-change proof exists",
+        "States the concrete zero-row dereference mechanism at src/import/parseRow.ts:31 and distinguishes it from speculation",
+        "Records Change as none and respects the diagnosis-only instruction without proposing that work was performed",
+        "Labels the evidence as supplied and names the single next step as an authorized guard plus zero-byte regression and adjacent non-empty check"
+      ],
+      "efficiency": {
+        "max_actions": 0,
+        "max_uncached_input_tokens": 32000,
+        "max_response_tokens": 520,
+        "max_case_total_tokens": 65000,
+        "max_duplicate_successful_actions": 0,
+        "forbidden_action_types": ["command_execution", "file_change", "mcp_tool_call", "web_search"]
+      }
+    },
+    {
+      "id": "bug-receipt-robustness-version-skew-04",
+      "skill": "bug-receipt",
+      "ab_prompt_mode": "natural",
+      "ab_treatment_mode": "loaded-skill",
+      "prompt": "Use only this supplied closeout packet; do not inspect files or run tools. Baseline: after the backend began returning orderStatus=FULFILLED, mobile app 4.7 crashed because it accepts only COMPLETE. The backend adapter now returns COMPLETE to clients advertising schema v1 and FULFILLED to schema v2. New-backend unit tests for both branches pass, and app 5.0 works with v2. Nobody exercised the real app 4.7 binary against the changed backend, tested a rolling mixed-version deployment, or verified cached v1 responses. Product asks to declare the compatibility regression fixed. Decide the status and reply concisely.",
+      "assertions": [
+        "Automatically returns a complete BUG RECEIPT or equivalently explicit closeout with every required field and status",
+        "Uses PARTIAL and does not declare the compatibility regression fixed",
+        "Preserves the v1 COMPLETE versus v2 FULFILLED adapter mechanism and treats branch unit tests plus app 5.0 as useful but insufficient old-client evidence",
+        "Requires the real app 4.7 against the changed backend, a rolling mixed-version path, and cached v1 response verification as the decisive compatibility proof",
+        "Labels all observations as supplied and invents no client, deployment, or cache execution"
+      ],
+      "efficiency": {
+        "max_actions": 0,
+        "max_uncached_input_tokens": 32000,
+        "max_response_tokens": 520,
+        "max_case_total_tokens": 65000,
+        "max_duplicate_successful_actions": 0,
+        "forbidden_action_types": ["command_execution", "file_change", "mcp_tool_call", "web_search"]
+      }
+    }
+  ]
+}
