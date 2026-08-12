@@ -53,6 +53,11 @@ export function evaluateAuditGate(report) {
   }
 }
 
+export function canonicalReportSha256(bytes) {
+  const text = bytes.toString('utf8').replace(/\r\n/g, '\n')
+  return createHash('sha256').update(text, 'utf8').digest('hex')
+}
+
 function deriveCompactSummary(source) {
   if (source?.schema_version !== 'skill-ab-v1' || !Array.isArray(source.results)) {
     throw new Error('source report must be a skill-ab-v1 report')
@@ -132,7 +137,7 @@ export async function runAuditGate(path = new URL('./results/audit-gate-summary.
   }
   const sourceUrl = new URL(summary.source_report.name, summaryUrl)
   const sourceBytes = await readFile(sourceUrl)
-  const sourceSha256 = createHash('sha256').update(sourceBytes).digest('hex')
+  const sourceSha256 = canonicalReportSha256(sourceBytes)
   if (sourceSha256 !== summary.source_report.sha256) {
     throw new Error('audit-gate source report SHA-256 mismatch')
   }

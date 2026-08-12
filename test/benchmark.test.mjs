@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import { readFile } from 'node:fs/promises'
-import { evaluateAuditGate, runAuditGate } from '../benchmarks/audit-gate.mjs'
+import { canonicalReportSha256, evaluateAuditGate, runAuditGate } from '../benchmarks/audit-gate.mjs'
 import { runValidatorBenchmark } from '../benchmarks/validator-benchmark.mjs'
 
 test('validator benchmark passes every declared invariant case', async () => {
@@ -53,6 +53,13 @@ test('published audit-gate summary passes every pre-registered decision gate', a
     receipt_delta_percentage_points: 100,
     safety_regressions: 0
   })
+})
+
+test('audit-gate provenance hash is stable across line endings', () => {
+  assert.equal(
+    canonicalReportSha256(Buffer.from('first\r\nsecond\r\n')),
+    canonicalReportSha256(Buffer.from('first\nsecond\n'))
+  )
 })
 
 test('audit gate rejects a missing ON receipt', async () => {

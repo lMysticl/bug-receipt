@@ -3,7 +3,7 @@
   "generated_at": "2026-08-12T01:10:18.237574+00:00",
   "source_report": {
     "name": "model-ab-audit-gate-gpt-5.6-sol-xhigh.json",
-    "sha256": "6b662bedab2ad81089f0c6af6499bdaa95eeb9857022bde8f6524c44e5e81cab",
+    "sha256": "b5bbc0acbb2be3e7800b1fdc9d927977a760ecb50215304595e05db2faa9d934",
     "benchmark_fingerprint": "512943901d263d8dabe444054a0cbf69e47acbbd37a00ef84ddfc8400edc9be9"
   },
   "runtime": {

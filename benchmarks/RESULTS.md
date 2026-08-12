@@ -37,7 +37,7 @@ A separate corroborating run on the same frozen cohort scored 19/20 ON versus 7/
 - Zero candidate tool actions in both arms.
 - Skill, cases, runtime/config, harness, routing contracts, and treatment surfaces are SHA-256 fingerprinted.
 
-The machine-checkable [compact result](./results/audit-gate-summary.json) is checked against the [raw report](./results/model-ab-audit-gate-gpt-5.6-sol-xhigh.json): `npm run benchmark:audit-gate` verifies its SHA-256, derives the compact fields from raw responses and blind judgements, then applies the pre-registered decision gate.
+The machine-checkable [compact result](./results/audit-gate-summary.json) is checked against the [raw report](./results/model-ab-audit-gate-gpt-5.6-sol-xhigh.json): `npm run benchmark:audit-gate` verifies its canonical-LF SHA-256 (stable across Git line-ending conversion), derives the compact fields from raw responses and blind judgements, then applies the pre-registered decision gate.
 
 ## Historical baseline
 
