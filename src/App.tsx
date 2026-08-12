@@ -35,7 +35,7 @@ function ReceiptPreview({ compact = false }: { compact?: boolean }) {
     <article className={compact ? 'receipt receipt--compact' : 'receipt'} aria-label="Verified bug receipt example">
       <div className="receipt__top">
         <div>
-          <p className="eyebrow">Bug receipt · BR-042</p>
+          <p className="eyebrow">Problem · BR-042</p>
           <h2>Checkout discount regression</h2>
         </div>
         <span className="status"><span /> Verified</span>
@@ -60,7 +60,7 @@ function ReceiptPreview({ compact = false }: { compact?: boolean }) {
         </div>
       </dl>
       <div className="receipt__footer">
-        <span>Gaps</span><strong>None</strong><span className="receipt__hash">9A7E · 1.0</span>
+        <span>Source</span><strong>Executed now</strong><span className="receipt__hash">Gaps · none</span>
       </div>
     </article>
   )
@@ -143,7 +143,7 @@ function App() {
         <section className="hero wrap">
           <div className="hero__glow" aria-hidden="true" />
           <div className="hero__copy">
-            <div className="pill"><span /> Discoverable Agent Skill <b>v1.3</b></div>
+            <div className="pill"><span /> Discoverable Agent Skill <b>v1.4</b></div>
             <h1>No <em>“fixed”</em><br />without receipts.</h1>
             <p className="hero__lead">A strict evidence gate for coding agents. Reproduce the failure, trace the cause, run the proof—and only then declare victory.</p>
             <div className="hero__actions">
@@ -216,7 +216,7 @@ function App() {
               <div className="terminal-card__top"><span>Terminal</span><i>safe install · no overwrite</i></div>
               <div className="terminal-command"><span aria-hidden="true">$</span><code>{installCommand}</code><button onClick={copyInstall} aria-label="Copy install command">{copyState === 'copied' ? 'Copied' : copyState === 'failed' ? 'Select' : 'Copy'}</button></div>
               <div className="terminal-output">
-                <p><span>✓</span> Validated portable SKILL.md</p>
+                <p><span>✓</span> Validated bundled skill package</p>
                 <p><span>✓</span> Installed to ~/.agents/skills/bug-receipt</p>
                 <p className="terminal-output__ready">Ready. Ask your agent to use <b>$bug-receipt</b>.</p>
               </div>

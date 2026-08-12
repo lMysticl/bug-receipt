@@ -25,6 +25,10 @@ export const invariantCases = [
     receipt.verification = []
     receipt.gaps = ['Identity-provider credentials unavailable.']
   }),
+  valid('legacy-version-one-without-provenance', (receipt) => {
+    receipt.version = 1
+    delete receipt.evidenceSource
+  }),
   invalid('verified-without-baseline', 'baseline.result', (receipt) => { receipt.baseline.result = 'not-run' }),
   invalid('verified-without-root-evidence', 'rootCause.evidence', (receipt) => { receipt.rootCause.evidence = [] }),
   invalid('verified-without-change', 'changes', (receipt) => { receipt.changes = [] }),
@@ -35,7 +39,8 @@ export const invariantCases = [
   invalid('blocked-without-condition', 'gaps', (receipt) => { receipt.status = 'blocked' }),
   invalid('unknown-top-level-field', 'confidence', (receipt) => { receipt.confidence = 1 }),
   invalid('unknown-nested-field', 'baseline.duration', (receipt) => { receipt.baseline.duration = '12ms' }),
-  invalid('unsupported-version', 'version', (receipt) => { receipt.version = 2 }),
+  invalid('version-two-without-provenance', 'evidenceSource', (receipt) => { delete receipt.evidenceSource }),
+  invalid('unsupported-version', 'version', (receipt) => { receipt.version = 3 }),
   invalid('unsupported-status', 'status', (receipt) => { receipt.status = 'done' }),
   invalid('baseline-wrong-type', 'baseline', (receipt) => { receipt.baseline = [] }),
   invalid('change-without-file', 'changes[0].file', (receipt) => { receipt.changes[0].file = '' }),

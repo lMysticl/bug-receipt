@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-import { access, cp, mkdir, readFile, rename } from 'node:fs/promises'
+import { access, cp, mkdir, readFile, rename, rm, stat } from 'node:fs/promises'
 import { constants } from 'node:fs'
 import { homedir } from 'node:os'
-import { dirname, join, resolve } from 'node:path'
+import { basename, dirname, join, parse, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { sampleReceipt, validateReceipt } from '../skills/bug-receipt/scripts/validate-receipt.mjs'
 
@@ -20,9 +20,33 @@ Usage:
 
 Exit codes: 0 valid/success, 1 invalid receipt, 2 usage or environment error.`
 
-function option(args, name) {
-  const index = args.indexOf(name)
-  return index >= 0 ? args[index + 1] : undefined
+function parseArguments(args, { flags = [], values = [] }) {
+  const allowedFlags = new Set(flags)
+  const allowedValues = new Set(values)
+  const parsedFlags = new Set()
+  const parsedValues = new Map()
+  const positionals = []
+
+  for (let index = 0; index < args.length; index += 1) {
+    const arg = args[index]
+    if (allowedFlags.has(arg)) {
+      if (parsedFlags.has(arg)) throw new Error(`${arg} may only be provided once.`)
+      parsedFlags.add(arg)
+      continue
+    }
+    if (allowedValues.has(arg)) {
+      if (parsedValues.has(arg)) throw new Error(`${arg} may only be provided once.`)
+      const value = args[index + 1]
+      if (!value || value.startsWith('-')) throw new Error(`${arg} requires a value.`)
+      parsedValues.set(arg, value)
+      index += 1
+      continue
+    }
+    if (arg !== '-' && arg.startsWith('-')) throw new Error(`Unknown option: ${arg}`)
+    positionals.push(arg)
+  }
+
+  return { flags: parsedFlags, values: parsedValues, positionals }
 }
 
 async function exists(path) {
@@ -32,6 +56,33 @@ async function exists(path) {
   } catch {
     return false
   }
+}
+
+async function readStdin() {
+  process.stdin.setEncoding('utf8')
+  let input = ''
+  for await (const chunk of process.stdin) input += chunk
+  return input
+}
+
+async function validateBundledSkill() {
+  const requiredFiles = [
+    'SKILL.md',
+    join('agents', 'openai.yaml'),
+    join('assets', 'receipt.template.json'),
+    join('references', 'receipt-contract.md'),
+    join('references', 'receipt.schema.json'),
+    join('scripts', 'validate-receipt.mjs'),
+  ]
+  await Promise.all(requiredFiles.map((path) => access(join(bundledSkill, path), constants.R_OK)))
+
+  const skill = await readFile(join(bundledSkill, 'SKILL.md'), 'utf8')
+  if (!/^---\r?\nname:\s*bug-receipt\s*$/m.test(skill)) {
+    throw new Error('Bundled SKILL.md does not declare name: bug-receipt.')
+  }
+  const template = JSON.parse(await readFile(join(bundledSkill, 'assets', 'receipt.template.json'), 'utf8'))
+  const result = validateReceipt(template)
+  if (!result.valid) throw new Error('Bundled receipt template does not satisfy the validator.')
 }
 
 function targetRoot(target) {
@@ -47,18 +98,19 @@ function targetRoot(target) {
 }
 
 async function checkCommand(args) {
-  const path = args.find((arg) => !arg.startsWith('--'))
-  if (!path) throw new Error('check requires a JSON file path.')
+  const parsed = parseArguments(args, { flags: ['--json'] })
+  if (parsed.positionals.length !== 1) throw new Error('check requires exactly one JSON file path or - for stdin.')
+  const path = parsed.positionals[0]
 
   let receipt
   try {
-    receipt = JSON.parse(await readFile(resolve(path), 'utf8'))
+    receipt = JSON.parse(path === '-' ? await readStdin() : await readFile(resolve(path), 'utf8'))
   } catch (error) {
     throw new Error(`Cannot read valid JSON from ${path}: ${error.message}`)
   }
 
   const result = validateReceipt(receipt)
-  if (args.includes('--json')) {
+  if (parsed.flags.has('--json')) {
     process.stdout.write(`${JSON.stringify(result)}\n`)
   } else if (result.valid) {
     process.stdout.write(`✓ ${path} is a valid ${receipt.status.toUpperCase()} bug receipt.\n`)
@@ -70,27 +122,65 @@ async function checkCommand(args) {
 }
 
 async function installCommand(args) {
-  const target = option(args, '--target') ?? 'agents'
-  const customDestination = option(args, '--destination')
+  const parsed = parseArguments(args, {
+    flags: ['--force'],
+    values: ['--target', '--destination'],
+  })
+  if (parsed.positionals.length > 0) throw new Error(`Unexpected argument: ${parsed.positionals[0]}`)
+
+  const target = parsed.values.get('--target') ?? 'agents'
+  const customDestination = parsed.values.get('--destination')
   const root = targetRoot(target)
   if (!customDestination && !root) throw new Error(`Unknown target: ${target}`)
-  if (!(await exists(bundledSkill))) throw new Error(`Bundled skill not found at ${bundledSkill}`)
+  await validateBundledSkill()
 
   const destination = resolve(customDestination ?? join(root, 'bug-receipt'))
+  const unsafeDestinations = new Set([parse(destination).root, resolve(homedir()), resolve(process.cwd())])
+  if (unsafeDestinations.has(destination)) throw new Error(`Refusing unsafe installation destination: ${destination}`)
   await mkdir(dirname(destination), { recursive: true })
+
+  if (await exists(destination)) {
+    const destinationStat = await stat(destination)
+    if (!destinationStat.isDirectory()) throw new Error(`${destination} exists and is not a directory.`)
+  }
 
   let backup
   if (await exists(destination)) {
-    if (!args.includes('--force')) throw new Error(`${destination} already exists. Re-run with --force to preserve it as a backup and install.`)
-    backup = `${destination}.backup-${new Date().toISOString().replace(/[:.]/g, '-')}`
-    await rename(destination, backup)
+    if (!parsed.flags.has('--force')) throw new Error(`${destination} already exists. Re-run with --force to preserve it as a backup and install.`)
   }
 
-  const staging = `${destination}.installing-${process.pid}`
+  const timestamp = new Date().toISOString().replace(/[:.]/g, '-')
+  const staging = join(dirname(destination), `.${basename(destination)}.installing-${process.pid}-${Date.now()}`)
   await cp(bundledSkill, staging, { recursive: true, errorOnExist: true })
-  await rename(staging, destination)
 
-  process.stdout.write('✓ Validated bundled SKILL.md\n')
+  try {
+    if (await exists(destination)) {
+      const backupRoot = customDestination
+        ? join(dirname(destination), '.bug-receipt-backups')
+        : join(dirname(root), 'skill-backups', 'bug-receipt')
+      await mkdir(backupRoot, { recursive: true })
+      backup = join(backupRoot, `${timestamp}-${process.pid}`)
+      await rename(destination, backup)
+    }
+
+    try {
+      await rename(staging, destination)
+    } catch (error) {
+      if (backup && !(await exists(destination))) {
+        try {
+          await rename(backup, destination)
+          backup = undefined
+        } catch (rollbackError) {
+          throw new Error(`Installation failed: ${error.message}. Rollback also failed: ${rollbackError.message}.`)
+        }
+      }
+      throw error
+    }
+  } finally {
+    if (await exists(staging)) await rm(staging, { recursive: true, force: true })
+  }
+
+  process.stdout.write('✓ Validated bundled skill package\n')
   process.stdout.write(`✓ Installed Bug Receipt to ${destination}\n`)
   if (backup) process.stdout.write(`✓ Preserved previous installation at ${backup}\n`)
 }

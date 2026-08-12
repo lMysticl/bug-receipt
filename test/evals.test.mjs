@@ -19,8 +19,10 @@ test('task corpus covers all three receipt statuses', async () => {
   assert.deepEqual(new Set(cases.map((entry) => entry.expectedStatus)), new Set(['verified', 'partial', 'blocked']))
   assert.deepEqual(
     new Set(cases.map((entry) => entry.surface)),
-    new Set(['logic', 'ui', 'api', 'persistence', 'concurrency', 'environment']),
+    new Set(['logic', 'ui', 'api', 'persistence', 'concurrency', 'environment', 'security', 'recovery']),
   )
   assert.ok(cases.filter((entry) => entry.expectedStatus === 'verified').every((entry) => entry.gaps === 0))
   assert.ok(cases.filter((entry) => entry.expectedStatus !== 'verified').every((entry) => entry.gaps > 0))
+  assert.ok(cases.filter((entry) => entry.redactionRequired).every((entry) => entry.evidenceSource === 'mixed'))
+  assert.ok(cases.filter((entry) => entry.evidenceSource).every((entry) => ['executed-now', 'supplied', 'mixed'].includes(entry.evidenceSource)))
 })

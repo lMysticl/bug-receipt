@@ -1,6 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
   "status": "verified",
+  "evidenceSource": "executed-now",
   "problem": "A 10% checkout discount returns 100 instead of 90 after currency rounding.",
   "baseline": {
     "command": "npm test -- discount.test.ts",

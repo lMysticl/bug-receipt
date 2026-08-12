@@ -24,7 +24,7 @@ Use for bug fixes, regressions, flaky or failing tests, runtime errors, broken U
 
 ## Required result
 
-Return exactly one evidence-backed status: VERIFIED, PARTIAL, or BLOCKED. VERIFIED requires an observed baseline, concrete root-cause evidence, an identified responsible change, passing direct verification, and no material proof gaps.
+Return exactly one evidence-backed status: VERIFIED, PARTIAL, or BLOCKED. Include Problem, Baseline, Root cause, Change, Proof, Gaps, and Source. VERIFIED requires an observed baseline, concrete root-cause evidence, an identified responsible change, passing direct verification, and no material proof gaps. Redact secrets and sensitive payloads.
 
 ## Measured evidence
 

@@ -73,7 +73,7 @@ npx --yes github:lMysticl/bug-receipt install --target project
 npx --yes github:lMysticl/bug-receipt install --target copilot
 ```
 
-The installer never silently overwrites an existing skill. `--force` keeps the old installation as a timestamped backup.
+The installer never silently overwrites an existing skill. `--force` keeps the old installation in a timestamped backup outside the active discovery directory, and restores it if replacement fails.
 
 ## Use
 
@@ -97,15 +97,17 @@ The final answer ends with a compact receipt:
 ```text
 BUG RECEIPT · VERIFIED
 
+Problem    Checkout discount returns 100 instead of 90
 Baseline   npm test -- discount.test.ts
            FAIL — expected 90, received 100
 Root cause src/pricing.ts:42 applied the discount after rounding
 Change     src/pricing.ts — calculate the discounted subtotal first
 Proof      focused test: PASS · full suite: PASS · build: PASS
 Gaps       none
+Source     executed now
 ```
 
-For automation, agents can emit a JSON receipt conforming to the bundled [`receipt.schema.json`](./skills/bug-receipt/references/receipt.schema.json):
+For automation, agents can emit a JSON receipt conforming to the bundled [`receipt.schema.json`](./skills/bug-receipt/references/receipt.schema.json). New version-2 receipts include `evidenceSource`; legacy version-1 receipts remain valid:
 
 ```bash
 bug-receipt check examples/verified-receipt.json
@@ -146,6 +148,7 @@ The repository includes:
 
 - structural skill validation with the system `quick_validate.py`;
 - deterministic validator and installer tests;
+- packed-artifact installation and execution smoke tests;
 - positive, indirect, negative, and unsupported activation cases;
 - verified, partial, and blocked task-contract fixtures across logic, UI, API, persistence, concurrency, and environment surfaces;
 - a reproducible [benchmark report](./benchmarks/RESULTS.md) with raw ON/OFF telemetry and quarantined failures;
@@ -158,7 +161,7 @@ npm install
 npm run check
 ```
 
-The activation corpus is a maintained test surface, not a claim that every model or harness was behaviorally exercised in CI.
+The activation corpus is a maintained test surface, not a claim that every model or harness was behaviorally exercised in CI. CI runs the portable package checks on Windows and Linux.
 
 Measured result: the deterministic validator passed 20/20 invariant cases, natural routing selected Bug Receipt in 4/4 probes, and the pre-registered loaded-skill arm passed 18/20 judged assertions versus 7/20 without the skill (+55 percentage points, exact McNemar `p = 0.003418`). The automatic receipt appeared in 4/4 ON cases with zero evidence-safety regressions and zero candidate actions. A corroborating run scored 19/20 versus 7/20. Raw total tokens increased 6.9% in the primary run, while total tokens per passed assertion fell 58.4%. See the [methodology, raw reports, machine-checked gate, and limitations](./benchmarks/RESULTS.md).
 
