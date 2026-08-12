@@ -1,0 +1,208 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-08-11T23:50:17.029236+00:00",
+  "mode": "task",
+  "codex_cli_version": "0.147.0",
+  "model_selector": "latest",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "xhigh",
+  "service_tier": "fast",
+  "profile": null,
+  "config_mode": "isolated",
+  "run_kind": "unbudgeted-calibration",
+  "runtime_profile": {
+    "model_selector": "latest",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "xhigh",
+    "service_tier": "fast",
+    "profile": null,
+    "config_mode": "isolated",
+    "source": "explicit-cli-override"
+  },
+  "latency_ms": {
+    "wall": 32445,
+    "candidate": 20038,
+    "judge": 11798,
+    "model_total": 31836,
+    "harness_overhead": 609,
+    "candidate_runs": 1,
+    "judge_runs": 1
+  },
+  "usage": {
+    "input_tokens": 39479,
+    "cached_input_tokens": 22016,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1490,
+    "reasoning_output_tokens": 942,
+    "uncached_input_tokens": 17463,
+    "response_tokens": 548,
+    "total_tokens": 40969
+  },
+  "summary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1
+  },
+  "results": [
+    {
+      "id": "bug-receipt-blocked-external-task-04",
+      "mode": "task",
+      "passed": false,
+      "skill": "bug-receipt",
+      "candidate_response": "BUG RECEIPT · BLOCKED\n\nProblem    Production-only SSO callbacks reportedly intermittently return 403; valid callbacks should complete authentication.\nBaseline   not run — local environment lacks identity-provider credentials, and no failing exchange was supplied.\n           Reported 403 was not independently reproduced.\nRoot cause Unknown. SameSite state-cookie handling is a plausible hypothesis, but no runtime evidence connects it to the 403.\nChange     none — no code change made.\nProof      reproduction: not run · causal verification: not run · regression check: not run\nGaps       Missing a correlated failing callback showing cookie behavior and the server’s exact rejection reason.\n\nSingle most decisive evidence request: provide one sanitized, correlated production failure trace containing the browser HAR from SSO initiation through the 403—including `Set-Cookie`, callback `Cookie`, redirect parameters, timestamps/request ID, and response—plus the matching application authentication log entry stating why that callback was rejected. Sensitive values may be consistently hashed so state/correlation matching remains verifiable.",
+      "candidate_telemetry": {
+        "usage": {
+          "input_tokens": 19919,
+          "cached_input_tokens": 11008,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 987,
+          "reasoning_output_tokens": 742,
+          "uncached_input_tokens": 8911,
+          "response_tokens": 245,
+          "total_tokens": 20906
+        },
+        "actions": {
+          "total": 0,
+          "by_type": {},
+          "duplicate_successful_actions": 0,
+          "recursive_forward_eval": false,
+          "items": []
+        },
+        "reference_accesses": {
+          "total": 0,
+          "attempted_total": 0,
+          "by_mode": {},
+          "attempted_by_mode": {},
+          "by_reference": {},
+          "items": []
+        },
+        "event_counts": {
+          "item.completed": 2,
+          "thread.started": 1,
+          "turn.completed": 1,
+          "turn.started": 1
+        },
+        "stderr": {
+          "line_count": 0,
+          "warning_count": 0,
+          "error_count": 0
+        },
+        "latency_ms": 20038
+      },
+      "judgement": {
+        "passed": false,
+        "assertion_results": [
+          {
+            "assertion": "Returns BUG RECEIPT with BLOCKED status and does not use VERIFIED",
+            "passed": true,
+            "evidence": "The response begins “BUG RECEIPT · BLOCKED” and never uses “VERIFIED.”"
+          },
+          {
+            "assertion": "Names the missing production or equivalent authenticated request-response and log access as the external blocker",
+            "passed": true,
+            "evidence": "It identifies the missing correlated failing callback/response and matching application authentication log as the evidence gap, while also noting absent local identity-provider credentials."
+          },
+          {
+            "assertion": "Keeps SameSite handling as an unproven hypothesis rather than a root-cause claim",
+            "passed": true,
+            "evidence": "It states: “Root cause Unknown. SameSite state-cookie handling is a plausible hypothesis, but no runtime evidence connects it to the 403.”"
+          },
+          {
+            "assertion": "Names a decisive sanitized failing callback package correlated across the client and responsible edge or application logs, adding identity-provider logs if the trace points to that owner, and does not invent evidence",
+            "passed": false,
+            "evidence": "It requests a sanitized browser HAR correlated by timestamps/request ID with the matching application authentication log and clearly does not invent evidence. However, it does not request identity-provider logs conditionally if the trace identifies the identity provider as the responsible owner."
+          }
+        ],
+        "issues": [
+          "The decisive evidence request omits the conditional follow-up for identity-provider logs when correlation points to the identity provider."
+        ]
+      },
+      "judge_telemetry": {
+        "usage": {
+          "input_tokens": 19560,
+          "cached_input_tokens": 11008,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 503,
+          "reasoning_output_tokens": 200,
+          "uncached_input_tokens": 8552,
+          "response_tokens": 303,
+          "total_tokens": 20063
+        },
+        "actions": {
+          "total": 0,
+          "by_type": {},
+          "duplicate_successful_actions": 0,
+          "recursive_forward_eval": false,
+          "items": []
+        },
+        "reference_accesses": {
+          "total": 0,
+          "attempted_total": 0,
+          "by_mode": {},
+          "attempted_by_mode": {},
+          "by_reference": {},
+          "items": []
+        },
+        "event_counts": {
+          "item.completed": 1,
+          "thread.started": 1,
+          "turn.completed": 1,
+          "turn.started": 1
+        },
+        "stderr": {
+          "line_count": 0,
+          "warning_count": 0,
+          "error_count": 0
+        },
+        "latency_ms": 11798
+      },
+      "case_usage": {
+        "input_tokens": 39479,
+        "cached_input_tokens": 22016,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1490,
+        "reasoning_output_tokens": 942,
+        "uncached_input_tokens": 17463,
+        "response_tokens": 548,
+        "total_tokens": 40969
+      },
+      "efficiency": {
+        "passed": true,
+        "candidate_issues": [],
+        "judge_issues": [],
+        "case_issues": []
+      },
+      "harness_issues": [],
+      "input_fingerprint": {
+        "algorithm": "sha256-v1",
+        "overall": "be9ce3b420936a21fdf72ff80a09c11931692cf6676b32ffca3740636f61bf1c",
+        "components": {
+          "case": "02a6569199b7cca59697fee0e5ebacaae557e5fa13f8656ccceacc94c6ef1610",
+          "skills": "67f031d48657f49fca6e9ddcdc4593e4ac51f4e23ad61e1050f33c468ae6e69a",
+          "runtime": "584a99117a970cc7eeb6ade18e4965d0cf188afade7990226daa8f5c6a4d970f",
+          "harness": "2408cfeef21da06f582e32fa14a704b22bf63a48caaec0ed83710388f1d93ac9"
+        }
+      },
+      "retry_admission": {
+        "status": "changed-input",
+        "prior_report": "calibration-quarantine\\bug-receipt-blocked-calibration-v2.json",
+        "prior_passed": false,
+        "changed_components": [
+          "case"
+        ],
+        "reason": null,
+        "evidence_id": null
+      },
+      "config_mode": "isolated",
+      "unbudgeted_calibration": {
+        "measurement_policy": {
+          "max_actions": 12,
+          "max_uncached_input_tokens": 100000,
+          "max_response_tokens": 5000,
+          "max_case_total_tokens": 250000,
+          "max_duplicate_successful_actions": 0
+        }
+      }
+    }
+  ]
+}

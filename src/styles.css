@@ -114,6 +114,15 @@ svg { display: block; }
 .principles h3 { margin: 55px 0 13px; font-size: 19px; letter-spacing: -.025em; }
 .principles p { margin: 0; color: #898c84; font-size: 13px; line-height: 1.7; }
 
+.benchmark-section { padding-block: 125px 135px; border-top: 1px solid var(--line); background: #121512; }
+.benchmark-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.benchmark-grid article { min-height: 235px; display: flex; flex-direction: column; padding: 28px; border: 1px solid var(--line); border-radius: 13px; background: linear-gradient(145deg, rgba(185,244,74,.045), rgba(255,255,255,.012)); }
+.benchmark-grid strong { color: var(--paper); font-size: 46px; line-height: 1; letter-spacing: -.055em; }
+.benchmark-grid span { margin-top: 13px; color: var(--acid); text-transform: uppercase; font-family: 'JetBrains Mono Variable', monospace; font-size: 8px; font-weight: 750; letter-spacing: .09em; }
+.benchmark-grid p { margin: auto 0 0; color: #898c84; font-size: 12px; line-height: 1.65; }
+.benchmark-link { width: fit-content; display: flex; align-items: center; gap: 8px; margin-top: 28px; color: #cfd2c9; font-size: 11px; font-weight: 700; }
+.benchmark-link svg { width: 13px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+
 .install-section { padding-block: 135px; color: #171916; background: var(--paper); }
 .install-grid { display: grid; grid-template-columns: .87fr 1.13fr; gap: 85px; align-items: center; }
 .install-section .kicker { color: #5d8c13; }
@@ -166,6 +175,7 @@ svg { display: block; }
   .hero__image { inset-inline: -30vw; }
   .section-heading, .install-grid { grid-template-columns: 1fr; gap: 34px; }
   .principles { grid-template-columns: 1fr; }
+  .benchmark-grid { grid-template-columns: repeat(2, 1fr); }
   .principles h3 { margin-top: 25px; }
   .trust-strip__inner { align-items: flex-start; flex-direction: column; padding-block: 25px; }
   .trust-strip__inner > div { flex-wrap: wrap; gap: 18px 28px; }
@@ -185,6 +195,9 @@ svg { display: block; }
   .receipt__rows dd { align-items: flex-start; flex-direction: column; }
   .section { padding-block: 100px 65px; }
   .section-heading h2, .install-section h2, .final-cta h2 { font-size: 40px; }
+  .benchmark-section { padding-block: 95px; }
+  .benchmark-grid { grid-template-columns: 1fr; }
+  .benchmark-grid article { min-height: 190px; }
   .demo-shell__bar { grid-template-columns: 1fr auto; }
   .demo-shell__label { display: none; }
   .demo-shell__body { min-height: 420px; padding: 32px 14px; }

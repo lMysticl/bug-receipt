@@ -148,6 +148,7 @@ The repository includes:
 - deterministic validator and installer tests;
 - positive, indirect, negative, and unsupported activation cases;
 - verified, partial, and blocked task-contract fixtures across logic, UI, API, persistence, concurrency, and environment surfaces;
+- a reproducible [benchmark report](./benchmarks/RESULTS.md) with raw ON/OFF telemetry and quarantined failures;
 - TypeScript, lint, production-build, and live-browser checks.
 
 Run everything locally:
@@ -158,6 +159,8 @@ npm run check
 ```
 
 The activation corpus is a maintained test surface, not a claim that every model or harness was behaviorally exercised in CI.
+
+Measured result: the deterministic validator passed 20/20 invariant cases, and fresh routing selected Bug Receipt in 3/3 model tasks. Both skills-ON and skills-OFF arms passed 12/12 judged assertions, so the current bounded benchmark proves correct behavior on its sample but does not prove a quality lift over the no-skill arm. See the [full methodology, raw reports, and limitations](./benchmarks/RESULTS.md).
 
 ## Contributing
 

@@ -7,6 +7,7 @@
 - [SKILL.md](https://raw.githubusercontent.com/lMysticl/bug-receipt/main/skills/bug-receipt/SKILL.md): activation metadata and executable workflow
 - [Receipt contract](https://raw.githubusercontent.com/lMysticl/bug-receipt/main/skills/bug-receipt/references/receipt-contract.md): machine-readable status invariants
 - [JSON Schema](https://lmysticl.github.io/bug-receipt/receipt.schema.json): validation contract
+- [Benchmarks](https://github.com/lMysticl/bug-receipt/blob/main/benchmarks/RESULTS.md): exact model methodology, raw telemetry, deterministic invariants, failed holdout, and limits
 - [Repository](https://github.com/lMysticl/bug-receipt): source, tests, releases, and installation
 
 ## Discover and install
@@ -24,3 +25,10 @@ Use for bug fixes, regressions, flaky or failing tests, runtime errors, broken U
 ## Required result
 
 Return exactly one evidence-backed status: VERIFIED, PARTIAL, or BLOCKED. VERIFIED requires an observed baseline, concrete root-cause evidence, an identified responsible change, passing direct verification, and no material proof gaps.
+
+## Measured evidence
+
+- Deterministic validator: 20/20 invariant cases passed.
+- Fresh routing: Bug Receipt selected for 3/3 bounded model tasks.
+- Skills ON: 12/12 blind-judged assertions passed.
+- Skills OFF: 12/12 assertions also passed; the current sample does not prove a quality lift.

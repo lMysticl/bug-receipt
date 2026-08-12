@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "runtime": {
+    "node": "v22.23.2"
+  },
+  "validatorSha256": "7a789a7dee3e89dc381f3b53215d3d8606e8a346f50a636597ce88f125b1bd8b",
+  "summary": {
+    "total": 20,
+    "passed": 20,
+    "failed": 0
+  },
+  "results": [
+    {
+      "id": "complete-verified",
+      "expectedValid": true,
+      "actualValid": true,
+      "expectedIssuePath": null,
+      "issuePaths": [],
+      "passed": true
+    },
+    {
+      "id": "partial-with-explicit-gap",
+      "expectedValid": true,
+      "actualValid": true,
+      "expectedIssuePath": null,
+      "issuePaths": [],
+      "passed": true
+    },
+    {
+      "id": "blocked-with-external-condition",
+      "expectedValid": true,
+      "actualValid": true,
+      "expectedIssuePath": null,
+      "issuePaths": [],
+      "passed": true
+    },
+    {
+      "id": "verified-without-baseline",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "baseline.result",
+      "issuePaths": [
+        "baseline.result"
+      ],
+      "passed": true
+    },
+    {
+      "id": "verified-without-root-evidence",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "rootCause.evidence",
+      "issuePaths": [
+        "rootCause.evidence"
+      ],
+      "passed": true
+    },
+    {
+      "id": "verified-without-change",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "changes",
+      "issuePaths": [
+        "changes"
+      ],
+      "passed": true
+    },
+    {
+      "id": "verified-without-verification",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "verification",
+      "issuePaths": [
+        "verification"
+      ],
+      "passed": true
+    },
+    {
+      "id": "verified-with-failed-check",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "verification",
+      "issuePaths": [
+        "verification"
+      ],
+      "passed": true
+    },
+    {
+      "id": "verified-with-gap",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "gaps",
+      "issuePaths": [
+        "gaps"
+      ],
+      "passed": true
+    },
+    {
+      "id": "partial-without-gap",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "gaps",
+      "issuePaths": [
+        "gaps"
+      ],
+      "passed": true
+    },
+    {
+      "id": "blocked-without-condition",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "gaps",
+      "issuePaths": [
+        "gaps"
+      ],
+      "passed": true
+    },
+    {
+      "id": "unknown-top-level-field",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "confidence",
+      "issuePaths": [
+        "confidence"
+      ],
+      "passed": true
+    },
+    {
+      "id": "unknown-nested-field",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "baseline.duration",
+      "issuePaths": [
+        "baseline.duration"
+      ],
+      "passed": true
+    },
+    {
+      "id": "unsupported-version",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "version",
+      "issuePaths": [
+        "version"
+      ],
+      "passed": true
+    },
+    {
+      "id": "unsupported-status",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "status",
+      "issuePaths": [
+        "status"
+      ],
+      "passed": true
+    },
+    {
+      "id": "baseline-wrong-type",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "baseline",
+      "issuePaths": [
+        "baseline"
+      ],
+      "passed": true
+    },
+    {
+      "id": "change-without-file",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "changes[0].file",
+      "issuePaths": [
+        "changes[0].file"
+      ],
+      "passed": true
+    },
+    {
+      "id": "unknown-verification-result",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "verification[0].result",
+      "issuePaths": [
+        "verification[0].result",
+        "verification"
+      ],
+      "passed": true
+    },
+    {
+      "id": "blank-gap",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "gaps",
+      "issuePaths": [
+        "gaps"
+      ],
+      "passed": true
+    },
+    {
+      "id": "root-evidence-without-observation",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "rootCause.evidence[0].observation",
+      "issuePaths": [
+        "rootCause.evidence[0].observation"
+      ],
+      "passed": true
+    }
+  ]
+}

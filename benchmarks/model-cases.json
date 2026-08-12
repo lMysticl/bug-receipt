@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "id": "ui-missing-proof",
+      "prompt": "Use only the supplied artifact packet; do not inspect files, run commands, or invent execution. Defect: clicking Save shows a success toast, but after refresh the old profile value returns. Proposed change: src/ProfileForm.tsx now awaits updateProfile() before showing the toast. Supplied evidence: TypeScript build passed and the changed source was reviewed. No browser interaction, request/response capture, backend persistence check, console observation, or refresh test was run. Decide whether the defect is fixed and return the compact bug receipt.",
+      "assertions": [
+        "Returns BUG RECEIPT with PARTIAL status and does not use VERIFIED",
+        "Separates the passing build and source review from direct UI, network, and persistence proof",
+        "Names the missing same-state browser save-refresh interaction, request/response, and persisted reload evidence",
+        "Uses not run or an equally explicit boundary and does not invent a command, test, or observation"
+      ]
+    },
+    {
+      "id": "api-complete-proof",
+      "prompt": "Use only this supplied evidence; do not inspect files or run commands. Defect: POST /discount returned total 100 instead of 90 for subtotal 100 and discountPercent 10. Baseline command: npm test -- discount.api.test.ts; observed result before editing: expected 90, received 100. Root-cause evidence: src/pricing.ts:42 passed roundCurrency(subtotal) to applyDiscount, so the discount was applied after the wrong rounding stage. Change: src/pricing.ts now applies the percentage discount before roundCurrency. Verification after the change: npm test -- discount.api.test.ts -> 1 passed; npm test -> 42 passed; curl -s -X POST localhost:3000/discount with the original payload -> JSON total 90. No other gap is reported. Decide the status and return the compact bug receipt without claiming you executed the supplied checks.",
+      "assertions": [
+        "Returns BUG RECEIPT with VERIFIED status",
+        "Records the exact failing baseline, the src/pricing.ts:42 mechanism, and the responsible change",
+        "Records all three supplied passing verification results and reports no remaining gap",
+        "Treats the checks as supplied evidence and does not falsely claim current execution"
+      ]
+    },
+    {
+      "id": "race-insufficient-proof",
+      "prompt": "Use only the supplied packet and do not run tools. Defect: two concurrent workers can both reserve the final inventory item. Baseline: one production trace showed stock 1 followed by two successful reservations. Proposed change: replace read-then-write with UPDATE inventory SET stock = stock - 1 WHERE sku = ? AND stock > 0 and reject a zero-row update. Evidence: a single sequential unit test passed after the change. No concurrent repeated test, transaction-boundary trace, affected-row assertion under contention, or invariant check was run. Return the bug receipt and decide whether this may be called verified.",
+      "assertions": [
+        "Returns BUG RECEIPT with PARTIAL status and does not use VERIFIED",
+        "Preserves the observed production baseline while treating the proposed SQL mechanism as plausible but not fully proven under contention",
+        "Explains that one sequential pass is insufficient for a race or lifecycle claim",
+        "Requires a repeated concurrent triggering sequence, zero-or-one success assertion, transaction evidence, and final stock invariant"
+      ]
+    }
+  ]
+}

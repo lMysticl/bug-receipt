@@ -1,0 +1,208 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-08-11T23:49:14.109591+00:00",
+  "mode": "task",
+  "codex_cli_version": "0.147.0",
+  "model_selector": "latest",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "xhigh",
+  "service_tier": "fast",
+  "profile": null,
+  "config_mode": "isolated",
+  "run_kind": "unbudgeted-calibration",
+  "runtime_profile": {
+    "model_selector": "latest",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "xhigh",
+    "service_tier": "fast",
+    "profile": null,
+    "config_mode": "isolated",
+    "source": "explicit-cli-override"
+  },
+  "latency_ms": {
+    "wall": 45012,
+    "candidate": 29833,
+    "judge": 13821,
+    "model_total": 43654,
+    "harness_overhead": 1358,
+    "candidate_runs": 1,
+    "judge_runs": 1
+  },
+  "usage": {
+    "input_tokens": 39466,
+    "cached_input_tokens": 18944,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1430,
+    "reasoning_output_tokens": 912,
+    "uncached_input_tokens": 20522,
+    "response_tokens": 518,
+    "total_tokens": 40896
+  },
+  "summary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1
+  },
+  "results": [
+    {
+      "id": "bug-receipt-blocked-external-task-04",
+      "mode": "task",
+      "passed": false,
+      "skill": "bug-receipt",
+      "candidate_response": "```text\nBUG RECEIPT · BLOCKED\n\nProblem    Production SSO callbacks intermittently return 403; valid callbacks should complete successfully.\nBaseline   not run\n           No IdP credentials, failing traffic capture, or production-log access.\nRoot cause Not established. SameSite handling of the state cookie is a plausible source-based hypothesis, but no runtime evidence connects it to the 403.\nChange     None — the responsible behavior has not been proven.\nProof      Reproduction: not run · causal verification: not run · repair verification: not run\nGaps       Missing correlated evidence showing cookie handling and the server-side reason for one actual 403.\n```\n\nSingle most decisive next evidence request: one redacted, timestamp-correlated capture of an actual failed production SSO flow—browser HAR from SSO initiation through the 403, including state-cookie attributes and the callback’s cookie presence, together with matching edge/application authentication logs showing the rejection reason. Preserve correlation identifiers and state comparisons while redacting tokens and secret values.",
+      "candidate_telemetry": {
+        "usage": {
+          "input_tokens": 19919,
+          "cached_input_tokens": 2816,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1025,
+          "reasoning_output_tokens": 773,
+          "uncached_input_tokens": 17103,
+          "response_tokens": 252,
+          "total_tokens": 20944
+        },
+        "actions": {
+          "total": 0,
+          "by_type": {},
+          "duplicate_successful_actions": 0,
+          "recursive_forward_eval": false,
+          "items": []
+        },
+        "reference_accesses": {
+          "total": 0,
+          "attempted_total": 0,
+          "by_mode": {},
+          "attempted_by_mode": {},
+          "by_reference": {},
+          "items": []
+        },
+        "event_counts": {
+          "item.completed": 2,
+          "thread.started": 1,
+          "turn.completed": 1,
+          "turn.started": 1
+        },
+        "stderr": {
+          "line_count": 0,
+          "warning_count": 0,
+          "error_count": 0
+        },
+        "latency_ms": 29833
+      },
+      "judgement": {
+        "passed": false,
+        "assertion_results": [
+          {
+            "assertion": "Returns BUG RECEIPT with BLOCKED status and does not use VERIFIED",
+            "passed": true,
+            "evidence": "The response is headed “BUG RECEIPT · BLOCKED” and never uses “VERIFIED.”"
+          },
+          {
+            "assertion": "Names the missing production or equivalent authenticated request-response and log access as the external blocker",
+            "passed": true,
+            "evidence": "It reports no failing traffic capture or production-log access and requests an actual failed production-flow HAR with matching edge/application authentication logs."
+          },
+          {
+            "assertion": "Keeps SameSite handling as an unproven hypothesis rather than a root-cause claim",
+            "passed": true,
+            "evidence": "It explicitly says the root cause is not established and calls SameSite handling a plausible source-based hypothesis unsupported by runtime evidence."
+          },
+          {
+            "assertion": "Names a decisive sanitized failing callback trace with correlation to identity-provider and application logs and does not invent evidence",
+            "passed": false,
+            "evidence": "It requests a redacted failing-flow HAR correlated with edge/application logs, but does not request correlation with identity-provider logs. It invents no evidence, yet the required IdP-and-application log correlation is incomplete."
+          }
+        ],
+        "issues": [
+          "The next evidence request omits matching identity-provider logs."
+        ]
+      },
+      "judge_telemetry": {
+        "usage": {
+          "input_tokens": 19547,
+          "cached_input_tokens": 16128,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 405,
+          "reasoning_output_tokens": 139,
+          "uncached_input_tokens": 3419,
+          "response_tokens": 266,
+          "total_tokens": 19952
+        },
+        "actions": {
+          "total": 0,
+          "by_type": {},
+          "duplicate_successful_actions": 0,
+          "recursive_forward_eval": false,
+          "items": []
+        },
+        "reference_accesses": {
+          "total": 0,
+          "attempted_total": 0,
+          "by_mode": {},
+          "attempted_by_mode": {},
+          "by_reference": {},
+          "items": []
+        },
+        "event_counts": {
+          "item.completed": 1,
+          "thread.started": 1,
+          "turn.completed": 1,
+          "turn.started": 1
+        },
+        "stderr": {
+          "line_count": 0,
+          "warning_count": 0,
+          "error_count": 0
+        },
+        "latency_ms": 13821
+      },
+      "case_usage": {
+        "input_tokens": 39466,
+        "cached_input_tokens": 18944,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1430,
+        "reasoning_output_tokens": 912,
+        "uncached_input_tokens": 20522,
+        "response_tokens": 518,
+        "total_tokens": 40896
+      },
+      "efficiency": {
+        "passed": true,
+        "candidate_issues": [],
+        "judge_issues": [],
+        "case_issues": []
+      },
+      "harness_issues": [],
+      "input_fingerprint": {
+        "algorithm": "sha256-v1",
+        "overall": "959498ebfc289918d5c6c2f4ca6ef007f3b6f8430a31f28ab57711972fc925e1",
+        "components": {
+          "case": "d0127762d4ec318e752c828714b1db2da4778585a3c043da63fbb01873702a0e",
+          "skills": "67f031d48657f49fca6e9ddcdc4593e4ac51f4e23ad61e1050f33c468ae6e69a",
+          "runtime": "584a99117a970cc7eeb6ade18e4965d0cf188afade7990226daa8f5c6a4d970f",
+          "harness": "2408cfeef21da06f582e32fa14a704b22bf63a48caaec0ed83710388f1d93ac9"
+        }
+      },
+      "retry_admission": {
+        "status": "changed-input",
+        "prior_report": "calibration-quarantine\\bug-receipt-calibration.json",
+        "prior_passed": false,
+        "changed_components": [
+          "skills"
+        ],
+        "reason": null,
+        "evidence_id": null
+      },
+      "config_mode": "isolated",
+      "unbudgeted_calibration": {
+        "measurement_policy": {
+          "max_actions": 12,
+          "max_uncached_input_tokens": 100000,
+          "max_response_tokens": 5000,
+          "max_case_total_tokens": 250000,
+          "max_duplicate_successful_actions": 0
+        }
+      }
+    }
+  ]
+}

@@ -133,6 +133,7 @@ function App() {
         <a className="brand" href="#top" aria-label="Bug Receipt home"><Mark compact /><span>Bug Receipt</span></a>
         <nav aria-label="Primary navigation">
           <a href="#proof">How it works</a>
+          <a href="#benchmark">Benchmark</a>
           <a href="#install">Install</a>
           <a className="nav__github" href="https://github.com/lMysticl/bug-receipt">GitHub <ArrowIcon /></a>
         </nav>
@@ -142,7 +143,7 @@ function App() {
         <section className="hero wrap">
           <div className="hero__glow" aria-hidden="true" />
           <div className="hero__copy">
-            <div className="pill"><span /> Discoverable Agent Skill <b>v1.1</b></div>
+            <div className="pill"><span /> Discoverable Agent Skill <b>v1.2</b></div>
             <h1>No <em>“fixed”</em><br />without receipts.</h1>
             <p className="hero__lead">A strict evidence gate for coding agents. Reproduce the failure, trace the cause, run the proof—and only then declare victory.</p>
             <div className="hero__actions">
@@ -180,6 +181,22 @@ function App() {
           <article><span>01</span><h3>Observe the failure</h3><p>Capture the exact command, symptom, and failing evidence before the patch whenever the environment allows it.</p></article>
           <article><span>02</span><h3>Own the cause</h3><p>Trace the responsible path and cite the concrete source or runtime evidence. Nearest symptom is not enough.</p></article>
           <article><span>03</span><h3>Close the loop</h3><p>Run the direct check, relevant regression coverage, and build. Missing proof downgrades the status automatically.</p></article>
+        </section>
+
+        <section className="benchmark-section" id="benchmark">
+          <div className="wrap">
+            <div className="section-heading">
+              <div><p className="kicker">Measured, with limits</p><h2>Evidence for the skill.<br />No invented uplift.</h2></div>
+              <p>A bounded, counterbalanced ON/OFF run proves routing and receipt quality on three tasks. The no-skill arm matched the quality score, so we publish that result too.</p>
+            </div>
+            <div className="benchmark-grid">
+              <article><strong>20/20</strong><span>validator invariants</span><p>Valid states accepted; tested invalid states rejected at the expected field.</p></article>
+              <article><strong>3/3</strong><span>fresh routing probes</span><p>Codex selected Bug Receipt for every task in the bounded cohort.</p></article>
+              <article><strong>12/12</strong><span>skills-ON assertions</span><p>Verified, partial, UI-proof, and concurrency boundaries all passed.</p></article>
+              <article><strong>0 pp</strong><span>measured quality lift</span><p>Skills OFF also scored 12/12. This sample does not prove an uplift.</p></article>
+            </div>
+            <a className="benchmark-link" href="https://github.com/lMysticl/bug-receipt/blob/main/benchmarks/RESULTS.md">Read the method, raw telemetry, and failed holdout <ArrowIcon /></a>
+          </div>
         </section>
 
         <section className="install-section" id="install">

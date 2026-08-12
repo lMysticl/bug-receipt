@@ -1,0 +1,674 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-08-11T23:47:30.607304+00:00",
+  "mode": "task",
+  "codex_cli_version": "0.147.0",
+  "model_selector": "latest",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "xhigh",
+  "service_tier": "fast",
+  "profile": null,
+  "config_mode": "isolated",
+  "run_kind": "unbudgeted-calibration",
+  "runtime_profile": {
+    "model_selector": "latest",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "xhigh",
+    "service_tier": "fast",
+    "profile": null,
+    "config_mode": "isolated",
+    "source": "explicit-cli-override"
+  },
+  "latency_ms": {
+    "wall": 131845,
+    "candidate": 75613,
+    "judge": 55439,
+    "model_total": 131052,
+    "harness_overhead": 793,
+    "candidate_runs": 4,
+    "judge_runs": 4
+  },
+  "usage": {
+    "input_tokens": 161300,
+    "cached_input_tokens": 24832,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 4686,
+    "reasoning_output_tokens": 2696,
+    "uncached_input_tokens": 136468,
+    "response_tokens": 1990,
+    "total_tokens": 165986
+  },
+  "summary": {
+    "total": 4,
+    "passed": 3,
+    "failed": 1
+  },
+  "results": [
+    {
+      "id": "bug-receipt-ui-missing-proof-task-01",
+      "mode": "task",
+      "passed": true,
+      "skill": "bug-receipt",
+      "candidate_response": "BUG RECEIPT · PARTIAL\n\nProblem    Save reports success, but refresh restores the old profile value; the saved value should persist.\nBaseline   not run\n           Supplied defect report only; no refresh reproduction observed.\nRoot cause Unconfirmed. Toast timing may be premature, but persistence failure was not traced.\nChange     src/ProfileForm.tsx — awaits updateProfile() before showing success.\nProof      TypeScript build: passed · changed source: reviewed\nGaps       No browser save/refresh test, network request/response evidence, backend write/read confirmation, or console observation.\n\nDecision   The defect is not proven fixed. The change improves success-toast sequencing but does not demonstrate persistence.",
+      "candidate_telemetry": {
+        "usage": {
+          "input_tokens": 20747,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 361,
+          "reasoning_output_tokens": 187,
+          "uncached_input_tokens": 20747,
+          "response_tokens": 174,
+          "total_tokens": 21108
+        },
+        "actions": {
+          "total": 0,
+          "by_type": {},
+          "duplicate_successful_actions": 0,
+          "recursive_forward_eval": false,
+          "items": []
+        },
+        "reference_accesses": {
+          "total": 0,
+          "attempted_total": 0,
+          "by_mode": {},
+          "attempted_by_mode": {},
+          "by_reference": {},
+          "items": []
+        },
+        "event_counts": {
+          "item.completed": 2,
+          "thread.started": 1,
+          "turn.completed": 1,
+          "turn.started": 1
+        },
+        "stderr": {
+          "line_count": 0,
+          "warning_count": 0,
+          "error_count": 0
+        },
+        "latency_ms": 9887
+      },
+      "judgement": {
+        "passed": true,
+        "assertion_results": [
+          {
+            "assertion": "Returns BUG RECEIPT with PARTIAL status and does not use VERIFIED",
+            "passed": true,
+            "evidence": "The response begins “BUG RECEIPT · PARTIAL” and never uses “VERIFIED.”"
+          },
+          {
+            "assertion": "Separates the passing build and source review from direct UI, network, and persistence proof",
+            "passed": true,
+            "evidence": "The Proof line reports “TypeScript build: passed” and “changed source: reviewed,” while the Gaps line separately identifies absent browser, network, and backend evidence."
+          },
+          {
+            "assertion": "Names the missing same-state browser save-refresh interaction, request/response, and persisted reload evidence",
+            "passed": true,
+            "evidence": "It explicitly names “No browser save/refresh test, network request/response evidence, backend write/read confirmation,” covering the required interaction, transport, and persisted reload proof."
+          },
+          {
+            "assertion": "Uses not run or an equally explicit boundary and does not invent a command, test, or observation",
+            "passed": true,
+            "evidence": "It states “Baseline not run” and “no refresh reproduction observed,” and reports only the supplied build and source-review evidence. Telemetry confirms zero actions and reference accesses."
+          }
+        ],
+        "issues": []
+      },
+      "judge_telemetry": {
+        "usage": {
+          "input_tokens": 19486,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 358,
+          "reasoning_output_tokens": 95,
+          "uncached_input_tokens": 19486,
+          "response_tokens": 263,
+          "total_tokens": 19844
+        },
+        "actions": {
+          "total": 0,
+          "by_type": {},
+          "duplicate_successful_actions": 0,
+          "recursive_forward_eval": false,
+          "items": []
+        },
+        "reference_accesses": {
+          "total": 0,
+          "attempted_total": 0,
+          "by_mode": {},
+          "attempted_by_mode": {},
+          "by_reference": {},
+          "items": []
+        },
+        "event_counts": {
+          "item.completed": 1,
+          "thread.started": 1,
+          "turn.completed": 1,
+          "turn.started": 1
+        },
+        "stderr": {
+          "line_count": 0,
+          "warning_count": 0,
+          "error_count": 0
+        },
+        "latency_ms": 11143
+      },
+      "case_usage": {
+        "input_tokens": 40233,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 719,
+        "reasoning_output_tokens": 282,
+        "uncached_input_tokens": 40233,
+        "response_tokens": 437,
+        "total_tokens": 40952
+      },
+      "efficiency": {
+        "passed": true,
+        "candidate_issues": [],
+        "judge_issues": [],
+        "case_issues": []
+      },
+      "harness_issues": [],
+      "input_fingerprint": {
+        "algorithm": "sha256-v1",
+        "overall": "9219a073105816e85ab6f35210be89ec23bb629a671e35a309849e50a42da3a6",
+        "components": {
+          "case": "d2be5ae58141fde5ec07aaacc74c9674dbba54591a27e2caf099b3543a3c05a5",
+          "skills": "0dcda03d1c50eea543983605b820ae900154548851c58dd520cf91773c941d7d",
+          "runtime": "584a99117a970cc7eeb6ade18e4965d0cf188afade7990226daa8f5c6a4d970f",
+          "harness": "2408cfeef21da06f582e32fa14a704b22bf63a48caaec0ed83710388f1d93ac9"
+        }
+      },
+      "retry_admission": {
+        "status": "first-observed",
+        "prior_report": null,
+        "prior_passed": null,
+        "changed_components": [],
+        "reason": null,
+        "evidence_id": null
+      },
+      "config_mode": "isolated",
+      "unbudgeted_calibration": {
+        "measurement_policy": {
+          "max_actions": 12,
+          "max_uncached_input_tokens": 100000,
+          "max_response_tokens": 5000,
+          "max_case_total_tokens": 250000,
+          "max_duplicate_successful_actions": 0
+        }
+      }
+    },
+    {
+      "id": "bug-receipt-api-complete-proof-task-02",
+      "mode": "task",
+      "passed": true,
+      "skill": "bug-receipt",
+      "candidate_response": "BUG RECEIPT · VERIFIED\n\nProblem    `POST /discount` returned 100 instead of the intended 90.\nBaseline   `npm test -- discount.api.test.ts`\n           Expected 90, received 100.\nRoot cause `src/pricing.ts:42` rounded the subtotal before applying the discount, using the wrong operation order.\nChange     `src/pricing.ts` — apply percentage discount before `roundCurrency`.\nProof      Focused test: 1 passed · Full suite: 42 passed · Original API request: JSON total 90\nGaps       None reported.\n\nEvidence and checks were supplied by the user; I did not execute them.",
+      "candidate_telemetry": {
+        "usage": {
+          "input_tokens": 20820,
+          "cached_input_tokens": 11008,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 403,
+          "reasoning_output_tokens": 239,
+          "uncached_input_tokens": 9812,
+          "response_tokens": 164,
+          "total_tokens": 21223
+        },
+        "actions": {
+          "total": 0,
+          "by_type": {},
+          "duplicate_successful_actions": 0,
+          "recursive_forward_eval": false,
+          "items": []
+        },
+        "reference_accesses": {
+          "total": 0,
+          "attempted_total": 0,
+          "by_mode": {},
+          "attempted_by_mode": {},
+          "by_reference": {},
+          "items": []
+        },
+        "event_counts": {
+          "item.completed": 2,
+          "thread.started": 1,
+          "turn.completed": 1,
+          "turn.started": 1
+        },
+        "stderr": {
+          "line_count": 0,
+          "warning_count": 0,
+          "error_count": 0
+        },
+        "latency_ms": 13733
+      },
+      "judgement": {
+        "passed": true,
+        "assertion_results": [
+          {
+            "assertion": "Returns BUG RECEIPT with VERIFIED status",
+            "passed": true,
+            "evidence": "The response begins with “BUG RECEIPT · VERIFIED”."
+          },
+          {
+            "assertion": "Records the exact failing baseline, the src/pricing.ts:42 mechanism, and the responsible change",
+            "passed": true,
+            "evidence": "It records `npm test -- discount.api.test.ts`, “Expected 90, received 100,” identifies `src/pricing.ts:42` as rounding the subtotal before applying the discount, and states that the percentage discount is now applied before `roundCurrency`."
+          },
+          {
+            "assertion": "Records all three supplied passing verification results and reports no remaining gap",
+            "passed": true,
+            "evidence": "It reports the focused test as 1 passed, the full suite as 42 passed, the original API request as JSON total 90, and says “Gaps None reported.”"
+          },
+          {
+            "assertion": "Treats the checks as supplied evidence and does not falsely claim current execution",
+            "passed": true,
+            "evidence": "It explicitly states: “Evidence and checks were supplied by the user; I did not execute them.”"
+          }
+        ],
+        "issues": []
+      },
+      "judge_telemetry": {
+        "usage": {
+          "input_tokens": 20398,
+          "cached_input_tokens": 11008,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 394,
+          "reasoning_output_tokens": 145,
+          "uncached_input_tokens": 9390,
+          "response_tokens": 249,
+          "total_tokens": 20792
+        },
+        "actions": {
+          "total": 0,
+          "by_type": {},
+          "duplicate_successful_actions": 0,
+          "recursive_forward_eval": false,
+          "items": []
+        },
+        "reference_accesses": {
+          "total": 0,
+          "attempted_total": 0,
+          "by_mode": {},
+          "attempted_by_mode": {},
+          "by_reference": {},
+          "items": []
+        },
+        "event_counts": {
+          "item.completed": 1,
+          "thread.started": 1,
+          "turn.completed": 1,
+          "turn.started": 1
+        },
+        "stderr": {
+          "line_count": 0,
+          "warning_count": 0,
+          "error_count": 0
+        },
+        "latency_ms": 13683
+      },
+      "case_usage": {
+        "input_tokens": 41218,
+        "cached_input_tokens": 22016,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 797,
+        "reasoning_output_tokens": 384,
+        "uncached_input_tokens": 19202,
+        "response_tokens": 413,
+        "total_tokens": 42015
+      },
+      "efficiency": {
+        "passed": true,
+        "candidate_issues": [],
+        "judge_issues": [],
+        "case_issues": []
+      },
+      "harness_issues": [],
+      "input_fingerprint": {
+        "algorithm": "sha256-v1",
+        "overall": "50e14db48b6ce706b1091def241c33d1366b148273cc2e34d0e1e7831ffd8742",
+        "components": {
+          "case": "28bb53b627c7c85ad3b0c51fa954a4e4d418153dca5be46cc96a7be77eb6f593",
+          "skills": "0dcda03d1c50eea543983605b820ae900154548851c58dd520cf91773c941d7d",
+          "runtime": "584a99117a970cc7eeb6ade18e4965d0cf188afade7990226daa8f5c6a4d970f",
+          "harness": "2408cfeef21da06f582e32fa14a704b22bf63a48caaec0ed83710388f1d93ac9"
+        }
+      },
+      "retry_admission": {
+        "status": "first-observed",
+        "prior_report": null,
+        "prior_passed": null,
+        "changed_components": [],
+        "reason": null,
+        "evidence_id": null
+      },
+      "config_mode": "isolated",
+      "unbudgeted_calibration": {
+        "measurement_policy": {
+          "max_actions": 12,
+          "max_uncached_input_tokens": 100000,
+          "max_response_tokens": 5000,
+          "max_case_total_tokens": 250000,
+          "max_duplicate_successful_actions": 0
+        }
+      }
+    },
+    {
+      "id": "bug-receipt-race-insufficient-task-03",
+      "mode": "task",
+      "passed": true,
+      "skill": "bug-receipt",
+      "candidate_response": "```text\nBUG RECEIPT · PARTIAL\n\nProblem    With stock 1, two concurrent workers reportedly both reserved the\n           final item; intended behavior is exactly one successful reservation.\n\nBaseline   Exact command/interaction unavailable; reproduction not run.\n           Supplied production trace: stock 1 followed by two successful reservations.\n\nRoot cause Read-then-write permits both workers to observe stock 1 before either\n           writes. This is a bounded inference, not concretely confirmed by a\n           transaction-boundary trace.\n\nChange     Artifact/location not supplied — reported replacement with:\n           UPDATE inventory\n           SET stock = stock - 1\n           WHERE sku = ? AND stock > 0\n           plus rejection when zero rows are affected.\n\nProof      Sequential unit test: passed.\n           Repeated concurrent contention test: not run.\n           Transaction-boundary trace: not run.\n           Affected-row assertion under contention: not run.\n           Inventory invariant check: not run.\n\nGaps       Direct race proof is missing. Required acceptance evidence should show,\n           repeatedly from stock 1, exactly one successful update, one zero-row\n           rejection, final stock 0, and no negative stock.\n```\n\nThis may **not** be called verified. The appropriate status is **PARTIAL**: the change is plausibly correct, but a sequential test cannot falsify or prove a concurrency fix.",
+      "candidate_telemetry": {
+        "usage": {
+          "input_tokens": 20763,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 838,
+          "reasoning_output_tokens": 525,
+          "uncached_input_tokens": 20763,
+          "response_tokens": 313,
+          "total_tokens": 21601
+        },
+        "actions": {
+          "total": 0,
+          "by_type": {},
+          "duplicate_successful_actions": 0,
+          "recursive_forward_eval": false,
+          "items": []
+        },
+        "reference_accesses": {
+          "total": 0,
+          "attempted_total": 0,
+          "by_mode": {},
+          "attempted_by_mode": {},
+          "by_reference": {},
+          "items": []
+        },
+        "event_counts": {
+          "item.completed": 2,
+          "thread.started": 1,
+          "turn.completed": 1,
+          "turn.started": 1
+        },
+        "stderr": {
+          "line_count": 0,
+          "warning_count": 0,
+          "error_count": 0
+        },
+        "latency_ms": 28547
+      },
+      "judgement": {
+        "passed": true,
+        "assertion_results": [
+          {
+            "assertion": "Returns BUG RECEIPT with PARTIAL status and does not use VERIFIED",
+            "passed": true,
+            "evidence": "The response is headed “BUG RECEIPT · PARTIAL” and explicitly says it may not be called verified."
+          },
+          {
+            "assertion": "Preserves the observed production baseline while treating the proposed SQL mechanism as plausible but not fully proven under contention",
+            "passed": true,
+            "evidence": "It records the supplied trace—stock 1 followed by two successful reservations—and describes the change as “plausibly correct” while noting that contention proof is missing."
+          },
+          {
+            "assertion": "Explains that one sequential pass is insufficient for a race or lifecycle claim",
+            "passed": true,
+            "evidence": "It reports only the sequential unit-test pass and states that a sequential test cannot falsify or prove a concurrency fix."
+          },
+          {
+            "assertion": "Requires a repeated concurrent triggering sequence, zero-or-one success assertion, transaction evidence, and final stock invariant",
+            "passed": true,
+            "evidence": "It identifies the missing repeated contention test, transaction-boundary trace, and affected-row assertion, then requires repeated runs from stock 1 showing exactly one success, one zero-row rejection, final stock 0, and no negative stock."
+          }
+        ],
+        "issues": []
+      },
+      "judge_telemetry": {
+        "usage": {
+          "input_tokens": 19642,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 796,
+          "reasoning_output_tokens": 529,
+          "uncached_input_tokens": 19642,
+          "response_tokens": 267,
+          "total_tokens": 20438
+        },
+        "actions": {
+          "total": 0,
+          "by_type": {},
+          "duplicate_successful_actions": 0,
+          "recursive_forward_eval": false,
+          "items": []
+        },
+        "reference_accesses": {
+          "total": 0,
+          "attempted_total": 0,
+          "by_mode": {},
+          "attempted_by_mode": {},
+          "by_reference": {},
+          "items": []
+        },
+        "event_counts": {
+          "item.completed": 1,
+          "thread.started": 1,
+          "turn.completed": 1,
+          "turn.started": 1
+        },
+        "stderr": {
+          "line_count": 0,
+          "warning_count": 0,
+          "error_count": 0
+        },
+        "latency_ms": 19610
+      },
+      "case_usage": {
+        "input_tokens": 40405,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1634,
+        "reasoning_output_tokens": 1054,
+        "uncached_input_tokens": 40405,
+        "response_tokens": 580,
+        "total_tokens": 42039
+      },
+      "efficiency": {
+        "passed": true,
+        "candidate_issues": [],
+        "judge_issues": [],
+        "case_issues": []
+      },
+      "harness_issues": [],
+      "input_fingerprint": {
+        "algorithm": "sha256-v1",
+        "overall": "4100c3c76afce5e123c907b0884260e62ba949c05eff222ae97d29210beeda09",
+        "components": {
+          "case": "04adb19c9c9de19eb7b524d3562fc28c6d1fac31720b2ce1af73d8726b334823",
+          "skills": "0dcda03d1c50eea543983605b820ae900154548851c58dd520cf91773c941d7d",
+          "runtime": "584a99117a970cc7eeb6ade18e4965d0cf188afade7990226daa8f5c6a4d970f",
+          "harness": "2408cfeef21da06f582e32fa14a704b22bf63a48caaec0ed83710388f1d93ac9"
+        }
+      },
+      "retry_admission": {
+        "status": "first-observed",
+        "prior_report": null,
+        "prior_passed": null,
+        "changed_components": [],
+        "reason": null,
+        "evidence_id": null
+      },
+      "config_mode": "isolated",
+      "unbudgeted_calibration": {
+        "measurement_policy": {
+          "max_actions": 12,
+          "max_uncached_input_tokens": 100000,
+          "max_response_tokens": 5000,
+          "max_case_total_tokens": 250000,
+          "max_duplicate_successful_actions": 0
+        }
+      }
+    },
+    {
+      "id": "bug-receipt-blocked-external-task-04",
+      "mode": "task",
+      "passed": false,
+      "skill": "bug-receipt",
+      "candidate_response": "BUG RECEIPT · BLOCKED\n\nProblem    Production SSO callbacks intermittently return 403; successful callbacks should complete authentication.\nBaseline   not run — the local environment lacks identity-provider credentials and the failure is production-only.\n           No failing transaction was directly observed; the 403 is reported only in the incident note.\nRoot cause Unknown. SameSite handling of the state cookie is a plausible hypothesis, but no evidence ties it to the 403.\nChange     none — no code change made.\nProof      reproduction: not run · callback request/response inspection: not run · production log correlation: not run\nGaps       No failing callback capture, cookie-delivery evidence, identity-provider credentials, or production logs.\n\nSingle most decisive next evidence request: Provide one redacted browser HAR from a failed production SSO attempt, covering the initial login redirect through the 403 and preserving cookie names/presence, `Set-Cookie` attributes, callback headers, response body, timestamps, and correlation IDs while removing secret values. This would directly show whether the state cookie was created and sent on the failing callback.",
+      "candidate_telemetry": {
+        "usage": {
+          "input_tokens": 19881,
+          "cached_input_tokens": 2816,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1100,
+          "reasoning_output_tokens": 839,
+          "uncached_input_tokens": 17065,
+          "response_tokens": 261,
+          "total_tokens": 20981
+        },
+        "actions": {
+          "total": 0,
+          "by_type": {},
+          "duplicate_successful_actions": 0,
+          "recursive_forward_eval": false,
+          "items": []
+        },
+        "reference_accesses": {
+          "total": 0,
+          "attempted_total": 0,
+          "by_mode": {},
+          "attempted_by_mode": {},
+          "by_reference": {},
+          "items": []
+        },
+        "event_counts": {
+          "item.completed": 2,
+          "thread.started": 1,
+          "turn.completed": 1,
+          "turn.started": 1
+        },
+        "stderr": {
+          "line_count": 0,
+          "warning_count": 0,
+          "error_count": 0
+        },
+        "latency_ms": 23446
+      },
+      "judgement": {
+        "passed": false,
+        "assertion_results": [
+          {
+            "assertion": "Returns BUG RECEIPT with BLOCKED status and does not use VERIFIED",
+            "passed": true,
+            "evidence": "The response begins “BUG RECEIPT · BLOCKED” and never uses “VERIFIED.”"
+          },
+          {
+            "assertion": "Names the missing production or equivalent authenticated request-response and log access as the external blocker",
+            "passed": true,
+            "evidence": "It reports no failing callback capture and no production logs, with callback request/response inspection and production log correlation both not run."
+          },
+          {
+            "assertion": "Keeps SameSite handling as an unproven hypothesis rather than a root-cause claim",
+            "passed": true,
+            "evidence": "It states: “Root cause Unknown. SameSite handling of the state cookie is a plausible hypothesis, but no evidence ties it to the 403.”"
+          },
+          {
+            "assertion": "Names a decisive sanitized failing callback trace with correlation to identity-provider and application logs and does not invent evidence",
+            "passed": false,
+            "evidence": "It requests a redacted failed-attempt HAR with timestamps and correlation IDs, but does not request the corresponding identity-provider and application log records or explicitly require correlation against both. It invents no evidence, but the required correlated evidence request is incomplete."
+          }
+        ],
+        "issues": [
+          "The single next evidence request stops at a browser HAR; it should request a sanitized failing callback trace correlated by timestamp/correlation ID to both identity-provider and application logs."
+        ]
+      },
+      "judge_telemetry": {
+        "usage": {
+          "input_tokens": 19563,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 436,
+          "reasoning_output_tokens": 137,
+          "uncached_input_tokens": 19563,
+          "response_tokens": 299,
+          "total_tokens": 19999
+        },
+        "actions": {
+          "total": 0,
+          "by_type": {},
+          "duplicate_successful_actions": 0,
+          "recursive_forward_eval": false,
+          "items": []
+        },
+        "reference_accesses": {
+          "total": 0,
+          "attempted_total": 0,
+          "by_mode": {},
+          "attempted_by_mode": {},
+          "by_reference": {},
+          "items": []
+        },
+        "event_counts": {
+          "item.completed": 1,
+          "thread.started": 1,
+          "turn.completed": 1,
+          "turn.started": 1
+        },
+        "stderr": {
+          "line_count": 0,
+          "warning_count": 0,
+          "error_count": 0
+        },
+        "latency_ms": 11003
+      },
+      "case_usage": {
+        "input_tokens": 39444,
+        "cached_input_tokens": 2816,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1536,
+        "reasoning_output_tokens": 976,
+        "uncached_input_tokens": 36628,
+        "response_tokens": 560,
+        "total_tokens": 40980
+      },
+      "efficiency": {
+        "passed": true,
+        "candidate_issues": [],
+        "judge_issues": [],
+        "case_issues": []
+      },
+      "harness_issues": [],
+      "input_fingerprint": {
+        "algorithm": "sha256-v1",
+        "overall": "d99dba7e660df0b3a12d112695029891164359f23192395ef34e2afbd8406178",
+        "components": {
+          "case": "d0127762d4ec318e752c828714b1db2da4778585a3c043da63fbb01873702a0e",
+          "skills": "0dcda03d1c50eea543983605b820ae900154548851c58dd520cf91773c941d7d",
+          "runtime": "584a99117a970cc7eeb6ade18e4965d0cf188afade7990226daa8f5c6a4d970f",
+          "harness": "2408cfeef21da06f582e32fa14a704b22bf63a48caaec0ed83710388f1d93ac9"
+        }
+      },
+      "retry_admission": {
+        "status": "first-observed",
+        "prior_report": null,
+        "prior_passed": null,
+        "changed_components": [],
+        "reason": null,
+        "evidence_id": null
+      },
+      "config_mode": "isolated",
+      "unbudgeted_calibration": {
+        "measurement_policy": {
+          "max_actions": 12,
+          "max_uncached_input_tokens": 100000,
+          "max_response_tokens": 5000,
+          "max_case_total_tokens": 250000,
+          "max_duplicate_successful_actions": 0
+        }
+      }
+    }
+  ]
+}
