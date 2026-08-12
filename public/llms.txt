@@ -24,13 +24,13 @@ Use for bug fixes, regressions, flaky or failing tests, runtime errors, broken U
 
 ## Required result
 
-Return exactly one evidence-backed status: VERIFIED, PARTIAL, or BLOCKED. VERIFIED requires an observed baseline, concrete root-cause evidence, an identified responsible change, passing direct verification, and no material proof gaps.
+Return exactly one evidence-backed status: VERIFIED, PARTIAL, or BLOCKED. Include Problem, Baseline, Root cause, Change, Proof, Gaps, and Source. VERIFIED requires an observed baseline, concrete root-cause evidence, an identified responsible change, passing direct verification, and no material proof gaps. Redact secrets and sensitive payloads.
 
 ## Measured evidence
 
-- Deterministic validator: 20/20 invariant cases passed.
-- Fresh natural routing: Bug Receipt selected in 4/4 bounded probes.
-- Pre-registered Skills ON: 18/20 blind-judged assertions passed (90%).
-- Skills OFF: 7/20 assertions passed (35%); measured lift +55 percentage points, exact McNemar p = 0.003418.
-- Automatic receipt: 4/4 ON cases; evidence-safety regressions: 0; candidate actions: 0.
-- Corroborating run: 19/20 ON versus 7/20 OFF. See the raw reports and limitations before generalizing.
+- Deterministic validator: 22/22 invariant cases passed.
+- Fresh v1.4 robustness routing: Bug Receipt selected in 4/4 bounded probes.
+- Pre-registered robustness Skills ON: 18/20 blind-judged assertions passed (90%).
+- Robustness Skills OFF: 5/20 assertions passed (25%); measured lift +65 percentage points, exact McNemar p = 0.000244.
+- Correct status and complete receipt: 4/4 ON cases; leaked supplied secrets: 0; evidence-safety regressions: 0; candidate actions: 0.
+- Earlier audit gate: 18/20 ON versus 7/20 OFF, corroborated at 19/20 versus 7/20. See the raw reports and limitations before generalizing.

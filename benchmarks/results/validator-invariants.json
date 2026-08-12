@@ -3,10 +3,10 @@
   "runtime": {
     "node": "v22.23.2"
   },
-  "validatorSha256": "7a789a7dee3e89dc381f3b53215d3d8606e8a346f50a636597ce88f125b1bd8b",
+  "validatorSha256": "e8f1fa247ee4a448f850ecaa577b9df2c5bc2bad5ac3944edcaae8effb209b66",
   "summary": {
-    "total": 20,
-    "passed": 20,
+    "total": 22,
+    "passed": 22,
     "failed": 0
   },
   "results": [
@@ -28,6 +28,14 @@
     },
     {
       "id": "blocked-with-external-condition",
+      "expectedValid": true,
+      "actualValid": true,
+      "expectedIssuePath": null,
+      "issuePaths": [],
+      "passed": true
+    },
+    {
+      "id": "legacy-version-one-without-provenance",
       "expectedValid": true,
       "actualValid": true,
       "expectedIssuePath": null,
@@ -131,6 +139,16 @@
       "expectedIssuePath": "baseline.duration",
       "issuePaths": [
         "baseline.duration"
+      ],
+      "passed": true
+    },
+    {
+      "id": "version-two-without-provenance",
+      "expectedValid": false,
+      "actualValid": false,
+      "expectedIssuePath": "evidenceSource",
+      "issuePaths": [
+        "evidenceSource"
       ],
       "passed": true
     },

@@ -16,7 +16,7 @@ function Cover() {
           <h1>No <em>“fixed”</em><br />without receipts.</h1>
           <h2>Evidence before confidence.</h2>
         </div>
-        <div className="cover__footer"><span>Reproduce</span><i /><span>Root cause</span><i /><span>Verify</span><b>v1.0</b></div>
+        <div className="cover__footer"><span>Reproduce</span><i /><span>Root cause</span><i /><span>Verify</span><b>v1.4</b></div>
       </div>
     </main>
   )

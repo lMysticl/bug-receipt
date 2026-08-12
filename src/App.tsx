@@ -35,7 +35,7 @@ function ReceiptPreview({ compact = false }: { compact?: boolean }) {
     <article className={compact ? 'receipt receipt--compact' : 'receipt'} aria-label="Verified bug receipt example">
       <div className="receipt__top">
         <div>
-          <p className="eyebrow">Bug receipt · BR-042</p>
+          <p className="eyebrow">Problem · BR-042</p>
           <h2>Checkout discount regression</h2>
         </div>
         <span className="status"><span /> Verified</span>
@@ -60,7 +60,7 @@ function ReceiptPreview({ compact = false }: { compact?: boolean }) {
         </div>
       </dl>
       <div className="receipt__footer">
-        <span>Gaps</span><strong>None</strong><span className="receipt__hash">9A7E · 1.0</span>
+        <span>Source</span><strong>Executed now</strong><span className="receipt__hash">Gaps · none</span>
       </div>
     </article>
   )
@@ -143,7 +143,7 @@ function App() {
         <section className="hero wrap">
           <div className="hero__glow" aria-hidden="true" />
           <div className="hero__copy">
-            <div className="pill"><span /> Discoverable Agent Skill <b>v1.3</b></div>
+            <div className="pill"><span /> Discoverable Agent Skill <b>v1.4</b></div>
             <h1>No <em>“fixed”</em><br />without receipts.</h1>
             <p className="hero__lead">A strict evidence gate for coding agents. Reproduce the failure, trace the cause, run the proof—and only then declare victory.</p>
             <div className="hero__actions">
@@ -187,13 +187,13 @@ function App() {
           <div className="wrap">
             <div className="section-heading">
               <div><p className="kicker">Measured, with limits</p><h2>A real lift.<br />Receipts included.</h2></div>
-              <p>Four frozen closeout cases, identical natural prompts, isolated treatment, and blind judges. The pre-registered gate passed; a separate run corroborated the result at 95% versus 35%.</p>
+              <p>Four frozen v1.4 robustness cases, identical natural prompts, isolated treatment, and blind judges. The pre-registered gate covered security redaction, rollback recovery, diagnosis-only authority, and version skew.</p>
             </div>
             <div className="benchmark-grid">
               <article><strong>90%</strong><span>skills-ON accuracy</span><p>18/20 blind-judged requirements passed; the complete receipt appeared in all four cases.</p></article>
-              <article><strong>35%</strong><span>skills-OFF accuracy</span><p>The same model and prompts without Bug Receipt passed 7/20 requirements.</p></article>
-              <article><strong>+55 pp</strong><span>measured quality lift</span><p>Above the pre-registered +15-point gate, with zero evidence-safety regressions.</p></article>
-              <article><strong>p=.0034</strong><span>paired significance</span><p>Exact McNemar test; routing was 4/4 and candidate actions were zero in both arms.</p></article>
+              <article><strong>25%</strong><span>skills-OFF accuracy</span><p>The same model and prompts without Bug Receipt passed 5/20 requirements.</p></article>
+              <article><strong>+65 pp</strong><span>measured quality lift</span><p>Correct status and a complete receipt appeared in all four ON cases.</p></article>
+              <article><strong>p=.00024</strong><span>paired significance</span><p>Exact McNemar test; routing was 4/4 and candidate actions were zero in both arms.</p></article>
             </div>
             <a className="benchmark-link" href="https://github.com/lMysticl/bug-receipt/blob/main/benchmarks/RESULTS.md">Inspect the protocol, SHA-verified raw reports, and limitations <ArrowIcon /></a>
           </div>
@@ -216,7 +216,7 @@ function App() {
               <div className="terminal-card__top"><span>Terminal</span><i>safe install · no overwrite</i></div>
               <div className="terminal-command"><span aria-hidden="true">$</span><code>{installCommand}</code><button onClick={copyInstall} aria-label="Copy install command">{copyState === 'copied' ? 'Copied' : copyState === 'failed' ? 'Select' : 'Copy'}</button></div>
               <div className="terminal-output">
-                <p><span>✓</span> Validated portable SKILL.md</p>
+                <p><span>✓</span> Validated bundled skill package</p>
                 <p><span>✓</span> Installed to ~/.agents/skills/bug-receipt</p>
                 <p className="terminal-output__ready">Ready. Ask your agent to use <b>$bug-receipt</b>.</p>
               </div>

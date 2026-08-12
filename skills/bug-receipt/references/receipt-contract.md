@@ -4,8 +4,9 @@ Use JSON only when the user, CI, or another tool needs a structured artifact. Ke
 
 ## Required fields
 
-- `version`: integer `1`.
+- `version`: integer `2` for new receipts. Version `1` remains accepted for compatibility.
 - `status`: `verified`, `partial`, or `blocked`.
+- `evidenceSource`: `executed-now`, `supplied`, or `mixed` (required in version `2`).
 - `problem`: concise defect and intended behavior.
 - `baseline`: object with `command`, `result`, and `evidence`.
 - `rootCause`: object with `summary` and at least one evidence item for `verified`.

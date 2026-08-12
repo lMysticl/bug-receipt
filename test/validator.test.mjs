@@ -36,6 +36,27 @@ test('rejects verified status when a declared check failed', () => {
   assert.ok(result.issues.some((issue) => issue.path === 'verification' && issue.message.includes('must pass')))
 })
 
+test('returns issues instead of crashing on a malformed verification container', () => {
+  const receipt = clone(sampleReceipt)
+  receipt.verification = {}
+  const result = validateReceipt(receipt)
+  assert.equal(result.valid, false)
+  assert.ok(result.issues.some((issue) => issue.path === 'verification' && issue.message === 'Must be an array.'))
+})
+
+test('requires provenance for version 2 while retaining version 1 compatibility', () => {
+  const version2 = clone(sampleReceipt)
+  delete version2.evidenceSource
+  const missingSource = validateReceipt(version2)
+  assert.equal(missingSource.valid, false)
+  assert.ok(missingSource.issues.some((issue) => issue.path === 'evidenceSource'))
+
+  const version1 = clone(sampleReceipt)
+  version1.version = 1
+  delete version1.evidenceSource
+  assert.deepEqual(validateReceipt(version1), { valid: true, issues: [] })
+})
+
 test('rejects verified status with a proof gap', () => {
   const receipt = clone(sampleReceipt)
   receipt.gaps.push('Production browser path was not exercised.')

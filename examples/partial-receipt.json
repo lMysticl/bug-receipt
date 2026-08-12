@@ -1,6 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
   "status": "partial",
+  "evidenceSource": "supplied",
   "problem": "The checkout total is reported incorrectly in production but the production dataset is unavailable locally.",
   "baseline": {
     "command": "npm test -- checkout.integration.test.ts",

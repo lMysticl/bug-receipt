@@ -12,4 +12,4 @@ Include the affected version, reproduction steps, impact, and any suggested miti
 
 ## Trust boundary
 
-The validator and website run locally and do not send receipt content to a service. The installer copies the skill bundled in the selected package. Review remote package sources before running any `npx` command.
+The validator and website run locally and do not send receipt content to a service. The installer validates and copies the skill bundled in the selected package, refuses unsafe broad destinations, and stores forced-install backups outside the active discovery directory. Receipts should redact credentials, cookies, tokens, personal data, private URLs, and sensitive payloads. Review remote package sources before running any `npx` command.

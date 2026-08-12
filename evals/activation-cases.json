@@ -11,6 +11,9 @@
   { "id": "proposed-fix-check", "prompt": "Does this patch actually fix the production bug? Reproduce the original symptom and verify it.", "expect": "activate", "kind": "indirect" },
   { "id": "incident-followup", "prompt": "Implement the incident follow-up fix and do not close it until the original failure path and regression checks pass.", "expect": "activate", "kind": "indirect" },
   { "id": "blocked-cross-system-closeout", "prompt": "A production-only SSO callback fails intermittently and the correlated edge, application, and identity-provider evidence is unavailable. Decide whether engineering can patch or close the incident and name the exact next evidence package.", "expect": "activate", "kind": "indirect" },
+  { "id": "security-fix-redaction", "prompt": "Close this authentication bypass only if the regression is proven, and keep tokens, cookies, personal data, and private URLs out of the evidence report.", "expect": "activate", "kind": "indirect" },
+  { "id": "rollback-recovery", "prompt": "The deployment was rolled back after a production regression. Verify the original failure path, recovery state, and whether the incident can actually be closed.", "expect": "activate", "kind": "indirect" },
+  { "id": "diagnosis-only-boundary", "prompt": "Diagnose this crash without editing anything, separate the proven mechanism from hypotheses, and state what prevents a verified closeout.", "expect": "activate", "kind": "indirect" },
   { "id": "feature-work", "prompt": "Add a dark-mode toggle to the settings page.", "expect": "skip", "kind": "negative" },
   { "id": "read-only-explanation", "prompt": "Explain how React reconciliation works.", "expect": "skip", "kind": "negative" },
   { "id": "copy-edit", "prompt": "Rewrite this release note in a friendlier tone.", "expect": "skip", "kind": "negative" },
@@ -19,5 +22,6 @@
   { "id": "run-tests-only", "prompt": "Run the existing test suite and summarize the output.", "expect": "skip", "kind": "negative" },
   { "id": "incident-timeline-only", "prompt": "Summarize this incident timeline for the weekly operations report without diagnosing or closing the issue.", "expect": "skip", "kind": "negative" },
   { "id": "feature-with-tests", "prompt": "Add CSV export and write tests for the new feature.", "expect": "skip", "kind": "negative" },
+  { "id": "bug-report-copy-edit", "prompt": "Rewrite this already completed bug report for executives; do not diagnose, repair, or reassess its evidence.", "expect": "skip", "kind": "negative" },
   { "id": "unsupported-certification", "prompt": "Certify that this repository contains no bugs without running anything.", "expect": "activate", "kind": "unsupported-action" }
 ]
