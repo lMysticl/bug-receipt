@@ -187,13 +187,13 @@ function App() {
           <div className="wrap">
             <div className="section-heading">
               <div><p className="kicker">Measured, with limits</p><h2>A real lift.<br />Receipts included.</h2></div>
-              <p>Four frozen closeout cases, identical natural prompts, isolated treatment, and blind judges. The pre-registered gate passed; a separate run corroborated the result at 95% versus 35%.</p>
+              <p>Four frozen v1.4 robustness cases, identical natural prompts, isolated treatment, and blind judges. The pre-registered gate covered security redaction, rollback recovery, diagnosis-only authority, and version skew.</p>
             </div>
             <div className="benchmark-grid">
               <article><strong>90%</strong><span>skills-ON accuracy</span><p>18/20 blind-judged requirements passed; the complete receipt appeared in all four cases.</p></article>
-              <article><strong>35%</strong><span>skills-OFF accuracy</span><p>The same model and prompts without Bug Receipt passed 7/20 requirements.</p></article>
-              <article><strong>+55 pp</strong><span>measured quality lift</span><p>Above the pre-registered +15-point gate, with zero evidence-safety regressions.</p></article>
-              <article><strong>p=.0034</strong><span>paired significance</span><p>Exact McNemar test; routing was 4/4 and candidate actions were zero in both arms.</p></article>
+              <article><strong>25%</strong><span>skills-OFF accuracy</span><p>The same model and prompts without Bug Receipt passed 5/20 requirements.</p></article>
+              <article><strong>+65 pp</strong><span>measured quality lift</span><p>Correct status and a complete receipt appeared in all four ON cases.</p></article>
+              <article><strong>p=.00024</strong><span>paired significance</span><p>Exact McNemar test; routing was 4/4 and candidate actions were zero in both arms.</p></article>
             </div>
             <a className="benchmark-link" href="https://github.com/lMysticl/bug-receipt/blob/main/benchmarks/RESULTS.md">Inspect the protocol, SHA-verified raw reports, and limitations <ArrowIcon /></a>
           </div>

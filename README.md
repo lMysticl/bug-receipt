@@ -163,7 +163,7 @@ npm run check
 
 The activation corpus is a maintained test surface, not a claim that every model or harness was behaviorally exercised in CI. CI runs the portable package checks on Windows and Linux.
 
-Measured result: the deterministic validator passed 20/20 invariant cases, natural routing selected Bug Receipt in 4/4 probes, and the pre-registered loaded-skill arm passed 18/20 judged assertions versus 7/20 without the skill (+55 percentage points, exact McNemar `p = 0.003418`). The automatic receipt appeared in 4/4 ON cases with zero evidence-safety regressions and zero candidate actions. A corroborating run scored 19/20 versus 7/20. Raw total tokens increased 6.9% in the primary run, while total tokens per passed assertion fell 58.4%. See the [methodology, raw reports, machine-checked gate, and limitations](./benchmarks/RESULTS.md).
+Measured result: the deterministic validator passed 22/22 invariant cases. In a fresh, separately pre-registered v1.4 robustness cohort, natural routing selected Bug Receipt in 4/4 probes and the loaded-skill arm passed 18/20 blind-judged assertions versus 5/20 without the skill (+65 percentage points, exact McNemar `p = 0.000244`). Correct status plus a complete receipt appeared in 4/4 ON cases; supplied secrets were not echoed, evidence sources were explicit, and candidate actions remained zero. The earlier audit-gate cohort scored 18/20 versus 7/20, with a 19/20 versus 7/20 corroborating run. See the [methodology, SHA-verified raw reports, machine-checked gates, and limitations](./benchmarks/RESULTS.md).
 
 ## Contributing
 

@@ -19,6 +19,7 @@
     "test": "node --test",
     "benchmark:validator": "node benchmarks/validator-benchmark.mjs",
     "benchmark:audit-gate": "node benchmarks/audit-gate.mjs",
+    "benchmark:robustness": "node benchmarks/robustness-gate.mjs",
     "skill:validate": "python scripts/validate-skill.py",
     "dist:validate": "node scripts/verify-dist.mjs",
     "package:smoke": "node scripts/package-smoke.mjs",
