@@ -160,7 +160,7 @@ npm run check
 
 The activation corpus is a maintained test surface, not a claim that every model or harness was behaviorally exercised in CI.
 
-Measured result: the deterministic validator passed 20/20 invariant cases, and fresh routing selected Bug Receipt in 3/3 model tasks. Both skills-ON and skills-OFF arms passed 12/12 judged assertions, so the current bounded benchmark proves correct behavior on its sample but does not prove a quality lift over the no-skill arm. See the [full methodology, raw reports, and limitations](./benchmarks/RESULTS.md).
+Measured result: the deterministic validator passed 20/20 invariant cases, natural routing selected Bug Receipt in 4/4 probes, and the pre-registered loaded-skill arm passed 18/20 judged assertions versus 7/20 without the skill (+55 percentage points, exact McNemar `p = 0.003418`). The automatic receipt appeared in 4/4 ON cases with zero evidence-safety regressions and zero candidate actions. A corroborating run scored 19/20 versus 7/20. Raw total tokens increased 6.9% in the primary run, while total tokens per passed assertion fell 58.4%. See the [methodology, raw reports, machine-checked gate, and limitations](./benchmarks/RESULTS.md).
 
 ## Contributing
 

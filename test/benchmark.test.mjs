@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import { readFile } from 'node:fs/promises'
+import { evaluateAuditGate, runAuditGate } from '../benchmarks/audit-gate.mjs'
 import { runValidatorBenchmark } from '../benchmarks/validator-benchmark.mjs'
 
 test('validator benchmark passes every declared invariant case', async () => {
@@ -31,4 +32,34 @@ test('audit-gate cases preserve the loaded-skill non-leaking treatment contract'
       'web_search'
     ])
   }
+})
+
+test('published audit-gate summary passes every pre-registered decision gate', async () => {
+  const result = await runAuditGate()
+  assert.equal(result.passed, true)
+  assert.deepEqual(result.provenance, {
+    source_sha256_verified: true,
+    summary_matches_raw: true
+  })
+  assert.deepEqual(result.metrics, {
+    on_passed: 18,
+    off_passed: 7,
+    assertions: 20,
+    on_accuracy_percent: 90,
+    off_accuracy_percent: 35,
+    quality_delta_percentage_points: 55,
+    on_receipt: 4,
+    off_receipt: 0,
+    receipt_delta_percentage_points: 100,
+    safety_regressions: 0
+  })
+})
+
+test('audit gate rejects a missing ON receipt', async () => {
+  const raw = await readFile(new URL('../benchmarks/results/audit-gate-summary.json', import.meta.url), 'utf8')
+  const report = JSON.parse(raw)
+  report.cases[0].on_receipt = false
+  const result = evaluateAuditGate(report)
+  assert.equal(result.passed, false)
+  assert.equal(result.checks.receipt_contract, false)
 })

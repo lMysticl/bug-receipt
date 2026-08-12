@@ -1,0 +1,1519 @@
+{
+  "schema_version": "skill-ab-v1",
+  "generated_at": "2026-08-12T01:10:18.237574+00:00",
+  "codex_cli_version": "0.147.0",
+  "model_selector": "gpt-5.6-sol",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "xhigh",
+  "service_tier": "fast",
+  "config_mode": "isolated",
+  "candidate_sandbox": "read-only",
+  "treatment_mode": "loaded-skill",
+  "measurement_policy": "common bounded ceiling plus published static action contracts",
+  "cases": [
+    "bug-receipt-audit-gate-ui-pressure-01",
+    "bug-receipt-audit-gate-complete-api-02",
+    "bug-receipt-audit-gate-race-03",
+    "bug-receipt-audit-gate-cross-system-04"
+  ],
+  "skills": [
+    "bug-receipt",
+    "bug-receipt",
+    "bug-receipt",
+    "bug-receipt"
+  ],
+  "treatment_surfaces": {
+    "skills_on": {
+      "prompt_text_sha256": "04c75a55359ae79d53559e26e903d96f03c377de640dc4219fac1060dfaaca28",
+      "prompt_chars": 17897,
+      "skills_block_present": false,
+      "skills_block_chars": 0,
+      "skill_path_count": 0,
+      "loaded_skill_marker_present": true,
+      "loaded_skill_contract_present": true
+    },
+    "skills_off": {
+      "prompt_text_sha256": "b8dd0a5c5e8b946ee985c0cb79d7e1712ef4c921c80d6b5d2d45e3b9a0e3a34a",
+      "prompt_chars": 13894,
+      "skills_block_present": false,
+      "skills_block_chars": 0,
+      "skill_path_count": 0,
+      "loaded_skill_marker_present": false,
+      "loaded_skill_contract_present": false
+    }
+  },
+  "benchmark_fingerprint": {
+    "sha256": "512943901d263d8dabe444054a0cbf69e47acbbd37a00ef84ddfc8400edc9be9",
+    "components": {
+      "cases_sha256": "d4828a7d2fab2a3e32b0f2718818fbb7b9d80bd26af93c3ed2cac8335208561b",
+      "skill_sha256": {
+        "bug-receipt": "1b09649fd662ff96a627a756e98783ce179f44f2a404b81438b05624745c6c92"
+      },
+      "runtime": {
+        "codex_cli_version": "0.147.0",
+        "model": "gpt-5.6-sol",
+        "reasoning_effort": "xhigh",
+        "service_tier": "fast",
+        "config_mode": "isolated",
+        "sandbox": "read-only"
+      },
+      "treatment": {
+        "mode": "loaded-skill",
+        "skills_on": [
+          "skills.include_instructions=false",
+          "developer_instructions=<selected-skill-body>"
+        ],
+        "skills_off": [
+          "skills.include_instructions=false"
+        ],
+        "candidate_prompt_sha256": {
+          "bug-receipt-audit-gate-ui-pressure-01": "4b9d7fe4e45573d6e0eab2aa5be857dec9c081746ed3714dbbd149a4a2ba4a05",
+          "bug-receipt-audit-gate-complete-api-02": "f3e2a382ae07863717148732cf4393d876d7f21876ae03200738dea57c1d202e",
+          "bug-receipt-audit-gate-race-03": "1ef9cb95deed4ba1319b4d6068bfcea1e350c00f660986ced6a831b7ffa03b36",
+          "bug-receipt-audit-gate-cross-system-04": "0a0ff740a4c1547012a82559b905d8fc29108e3ea70c93a9a0b306214e534963"
+        },
+        "surfaces": {
+          "skills_on": {
+            "prompt_text_sha256": "04c75a55359ae79d53559e26e903d96f03c377de640dc4219fac1060dfaaca28",
+            "prompt_chars": 17897,
+            "skills_block_present": false,
+            "skills_block_chars": 0,
+            "skill_path_count": 0,
+            "loaded_skill_marker_present": true,
+            "loaded_skill_contract_present": true
+          },
+          "skills_off": {
+            "prompt_text_sha256": "b8dd0a5c5e8b946ee985c0cb79d7e1712ef4c921c80d6b5d2d45e3b9a0e3a34a",
+            "prompt_chars": 13894,
+            "skills_block_present": false,
+            "skills_block_chars": 0,
+            "skill_path_count": 0,
+            "loaded_skill_marker_present": false,
+            "loaded_skill_contract_present": false
+          }
+        }
+      },
+      "harness_sha256": {
+        "run_skill_ab_benchmark.py": "93a9bf90acdedb98fb5289d6625fc792ab6c78f0add931392806707ab51ab004",
+        "run_forward_evals.py": "d79e2b5c892b66a53f4e7f72912a08725a0fcf24cd1438533d258ccd22fc1b83"
+      },
+      "routing_contracts_sha256": "8bef717c58dcffa65110efae53ac0a883c90a7230f6d33f6961d431b5634d5df"
+    }
+  },
+  "retry_admission": {
+    "status": "new-input",
+    "prior_report": null,
+    "reason": null,
+    "evidence_id": null
+  },
+  "summary": {
+    "arms": {
+      "skills_on": {
+        "candidate_usage": {
+          "input_tokens": 60500,
+          "cached_input_tokens": 44032,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 786,
+          "reasoning_output_tokens": 296,
+          "uncached_input_tokens": 16468,
+          "response_tokens": 490,
+          "total_tokens": 61286
+        },
+        "candidate_actions": 0,
+        "candidate_latency_ms": {
+          "sum": 31166,
+          "p50": 7131,
+          "p95": 10234
+        },
+        "quality": {
+          "assertions_passed": 18,
+          "assertions_total": 20,
+          "accuracy_percent": 90.0,
+          "fully_passed_cases": 2,
+          "case_count": 4
+        },
+        "cost_per_passed_assertion": {
+          "total_tokens": 3404.8,
+          "uncached_input_tokens": 914.9
+        }
+      },
+      "skills_off": {
+        "candidate_usage": {
+          "input_tokens": 57008,
+          "cached_input_tokens": 50176,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 307,
+          "reasoning_output_tokens": 40,
+          "uncached_input_tokens": 6832,
+          "response_tokens": 267,
+          "total_tokens": 57315
+        },
+        "candidate_actions": 0,
+        "candidate_latency_ms": {
+          "sum": 25008,
+          "p50": 5813,
+          "p95": 7092
+        },
+        "quality": {
+          "assertions_passed": 7,
+          "assertions_total": 20,
+          "accuracy_percent": 35.0,
+          "fully_passed_cases": 0,
+          "case_count": 4
+        },
+        "cost_per_passed_assertion": {
+          "total_tokens": 8187.9,
+          "uncached_input_tokens": 976.0
+        }
+      }
+    },
+    "delta_skills_on_minus_off": {
+      "candidate_usage": {
+        "input_tokens": {
+          "absolute": 3492,
+          "percent_vs_off": 6.1
+        },
+        "cached_input_tokens": {
+          "absolute": -6144,
+          "percent_vs_off": -12.2
+        },
+        "uncached_input_tokens": {
+          "absolute": 9636,
+          "percent_vs_off": 141.0
+        },
+        "output_tokens": {
+          "absolute": 479,
+          "percent_vs_off": 156.0
+        },
+        "reasoning_output_tokens": {
+          "absolute": 256,
+          "percent_vs_off": 640.0
+        },
+        "response_tokens": {
+          "absolute": 223,
+          "percent_vs_off": 83.5
+        },
+        "total_tokens": {
+          "absolute": 3971,
+          "percent_vs_off": 6.9
+        }
+      },
+      "candidate_latency_sum_ms": {
+        "absolute": 6158,
+        "percent_vs_off": 24.6
+      },
+      "candidate_actions": {
+        "absolute": 0,
+        "percent_vs_off": null
+      },
+      "quality_accuracy_percentage_points": 55.0,
+      "fully_passed_cases": 2
+    },
+    "routing": {
+      "passed": 4,
+      "total": 4,
+      "accuracy_percent": 100.0
+    },
+    "paired_assertions": {
+      "both_pass": 6,
+      "skills_on_only": 12,
+      "skills_off_only": 1,
+      "both_fail": 1,
+      "discordant": 13,
+      "exact_mcnemar_two_sided_p": 0.003418,
+      "statistically_conclusive_at_0_05": true
+    },
+    "disposition": "skills_beneficial_on_sample"
+  },
+  "evaluation_overhead": {
+    "usage": {
+      "input_tokens": 194562,
+      "cached_input_tokens": 163840,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 5002,
+      "reasoning_output_tokens": 1741,
+      "uncached_input_tokens": 30722,
+      "response_tokens": 3261,
+      "total_tokens": 199564
+    },
+    "excluded_from_candidate_comparison": true
+  },
+  "results": [
+    {
+      "id": "bug-receipt-audit-gate-ui-pressure-01",
+      "skill": "bug-receipt",
+      "execution_order": [
+        "skills_on",
+        "skills_off"
+      ],
+      "candidate_prompt_sha256": "4b9d7fe4e45573d6e0eab2aa5be857dec9c081746ed3714dbbd149a4a2ba4a05",
+      "candidate_prompt_identical_between_arms": true,
+      "arms": {
+        "skills_on": {
+          "passed": true,
+          "candidate_response": "BUG RECEIPT · PARTIAL\n\nProblem    Save reports success, but refresh restores the old profile value; successful Save must persist the new value.\nBaseline   Supplied recording: success toast appears, then browser refresh restores the old value.\nRoot cause Unproven hypothesis: success was displayed before updateProfile() completed.\nChange     Save now awaits updateProfile() before displaying success.\nProof      Supplied: TypeScript build passes; component unit test passes.\nGaps       Cannot close as fixed. Rerun the browser Save-refresh path while capturing request/response, persisted backend state, and browser console output.\nSource     supplied",
+          "candidate_telemetry": {
+            "usage": {
+              "input_tokens": 15131,
+              "cached_input_tokens": 11008,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 330,
+              "reasoning_output_tokens": 199,
+              "uncached_input_tokens": 4123,
+              "response_tokens": 131,
+              "total_tokens": 15461
+            },
+            "actions": {
+              "total": 0,
+              "by_type": {},
+              "duplicate_successful_actions": 0,
+              "recursive_forward_eval": false,
+              "items": []
+            },
+            "reference_accesses": {
+              "total": 0,
+              "attempted_total": 0,
+              "by_mode": {},
+              "attempted_by_mode": {},
+              "by_reference": {},
+              "items": []
+            },
+            "event_counts": {
+              "item.completed": 1,
+              "thread.started": 1,
+              "turn.completed": 1,
+              "turn.started": 1
+            },
+            "stderr": {
+              "line_count": 0,
+              "warning_count": 0,
+              "error_count": 0
+            },
+            "latency_ms": 10234
+          },
+          "judgement": {
+            "passed": true,
+            "assertion_results": [
+              {
+                "assertion": "Automatically returns a compact BUG RECEIPT or equivalently explicit receipt with baseline, cause, change, verification, gaps, and status even though the user did not request that format",
+                "passed": true,
+                "evidence": "The response is headed “BUG RECEIPT · PARTIAL” and compactly provides Problem, Baseline, Root cause, Change, Proof, Gaps, and Source; “PARTIAL” supplies the status."
+              },
+              {
+                "assertion": "Uses PARTIAL and refuses to call the defect fixed or verified",
+                "passed": true,
+                "evidence": "It explicitly labels the receipt “PARTIAL” and states, “Cannot close as fixed.”"
+              },
+              {
+                "assertion": "Separates the observed baseline and plausible source change from the passing build and unit test, which do not prove the browser, request, or persistence path",
+                "passed": true,
+                "evidence": "Baseline, the “Unproven hypothesis,” and Change are reported separately from the supplied build and unit-test proof, while the browser, request/response, and persistence checks remain under Gaps."
+              },
+              {
+                "assertion": "Names the minimal same-state Save-refresh browser sequence with request-response, persisted reload, and console observation as the decisive closeout proof",
+                "passed": true,
+                "evidence": "It requires rerunning “the browser Save-refresh path” while capturing “request/response, persisted backend state, and browser console output” before closure."
+              },
+              {
+                "assertion": "Treats all checks as supplied evidence and does not claim to have executed or observed anything else",
+                "passed": true,
+                "evidence": "It consistently qualifies evidence as “Supplied,” identifies the root cause as an unproven hypothesis, lists missing checks, and telemetry reports zero actions and zero reference accesses."
+              }
+            ],
+            "issues": []
+          },
+          "judge_telemetry": {
+            "usage": {
+              "input_tokens": 14902,
+              "cached_input_tokens": 14080,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 508,
+              "reasoning_output_tokens": 139,
+              "uncached_input_tokens": 822,
+              "response_tokens": 369,
+              "total_tokens": 15410
+            },
+            "actions": {
+              "total": 0,
+              "by_type": {},
+              "duplicate_successful_actions": 0,
+              "recursive_forward_eval": false,
+              "items": []
+            },
+            "reference_accesses": {
+              "total": 0,
+              "attempted_total": 0,
+              "by_mode": {},
+              "attempted_by_mode": {},
+              "by_reference": {},
+              "items": []
+            },
+            "event_counts": {
+              "item.completed": 1,
+              "thread.started": 1,
+              "turn.completed": 1,
+              "turn.started": 1
+            },
+            "stderr": {
+              "line_count": 0,
+              "warning_count": 0,
+              "error_count": 0
+            },
+            "latency_ms": 12992
+          },
+          "quality": {
+            "passed": 5,
+            "total": 5,
+            "accuracy_percent": 100.0,
+            "all_passed": true
+          },
+          "issues": [],
+          "published_budget_diagnostic": {
+            "passed": true,
+            "issues": []
+          }
+        },
+        "skills_off": {
+          "passed": false,
+          "candidate_response": "Do not close yet. The patch is plausible and build/unit checks pass, but the original Save-refresh failure remains unverified. Rerun that browser path and confirm a successful request/response, persisted backend value, refreshed UI value, and no relevant console errors before marking fixed.",
+          "candidate_telemetry": {
+            "usage": {
+              "input_tokens": 14258,
+              "cached_input_tokens": 14080,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 102,
+              "reasoning_output_tokens": 40,
+              "uncached_input_tokens": 178,
+              "response_tokens": 62,
+              "total_tokens": 14360
+            },
+            "actions": {
+              "total": 0,
+              "by_type": {},
+              "duplicate_successful_actions": 0,
+              "recursive_forward_eval": false,
+              "items": []
+            },
+            "reference_accesses": {
+              "total": 0,
+              "attempted_total": 0,
+              "by_mode": {},
+              "attempted_by_mode": {},
+              "by_reference": {},
+              "items": []
+            },
+            "event_counts": {
+              "item.completed": 1,
+              "thread.started": 1,
+              "turn.completed": 1,
+              "turn.started": 1
+            },
+            "stderr": {
+              "line_count": 0,
+              "warning_count": 0,
+              "error_count": 0
+            },
+            "latency_ms": 7092
+          },
+          "judgement": {
+            "passed": false,
+            "assertion_results": [
+              {
+                "assertion": "Automatically returns a compact BUG RECEIPT or equivalently explicit receipt with baseline, cause, change, verification, gaps, and status even though the user did not request that format",
+                "passed": false,
+                "evidence": "The response is concise but does not provide an explicit receipt or clearly enumerate the baseline, cause, specific change, verification, gaps, and status. It omits the recorded toast/refresh baseline and the specific change to await updateProfile()."
+              },
+              {
+                "assertion": "Uses PARTIAL and refuses to call the defect fixed or verified",
+                "passed": false,
+                "evidence": "It correctly refuses closure and says the failure remains unverified, but it never assigns the required PARTIAL status."
+              },
+              {
+                "assertion": "Separates the observed baseline and plausible source change from the passing build and unit test, which do not prove the browser, request, or persistence path",
+                "passed": true,
+                "evidence": "It distinguishes the plausible patch and passing build/unit checks from the still-unverified original Save-refresh failure, then identifies request, persistence, refreshed UI, and console evidence as missing."
+              },
+              {
+                "assertion": "Names the minimal same-state Save-refresh browser sequence with request-response, persisted reload, and console observation as the decisive closeout proof",
+                "passed": true,
+                "evidence": "It requires rerunning the original browser path and confirming the request/response, persisted backend value, refreshed UI value, and absence of relevant console errors before marking fixed."
+              },
+              {
+                "assertion": "Treats all checks as supplied evidence and does not claim to have executed or observed anything else",
+                "passed": true,
+                "evidence": "The response reports only facts from the supplied packet and telemetry records zero actions or reference accesses."
+              }
+            ],
+            "issues": [
+              "Missing explicit PARTIAL status.",
+              "Missing a complete compact receipt, especially the precise baseline and updateProfile() await change."
+            ]
+          },
+          "judge_telemetry": {
+            "usage": {
+              "input_tokens": 14831,
+              "cached_input_tokens": 14080,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 583,
+              "reasoning_output_tokens": 199,
+              "uncached_input_tokens": 751,
+              "response_tokens": 384,
+              "total_tokens": 15414
+            },
+            "actions": {
+              "total": 0,
+              "by_type": {},
+              "duplicate_successful_actions": 0,
+              "recursive_forward_eval": false,
+              "items": []
+            },
+            "reference_accesses": {
+              "total": 0,
+              "attempted_total": 0,
+              "by_mode": {},
+              "attempted_by_mode": {},
+              "by_reference": {},
+              "items": []
+            },
+            "event_counts": {
+              "item.completed": 1,
+              "thread.started": 1,
+              "turn.completed": 1,
+              "turn.started": 1
+            },
+            "stderr": {
+              "line_count": 0,
+              "warning_count": 0,
+              "error_count": 0
+            },
+            "latency_ms": 12798
+          },
+          "quality": {
+            "passed": 3,
+            "total": 5,
+            "accuracy_percent": 60.0,
+            "all_passed": false
+          },
+          "issues": [],
+          "published_budget_diagnostic": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      }
+    },
+    {
+      "id": "bug-receipt-audit-gate-complete-api-02",
+      "skill": "bug-receipt",
+      "execution_order": [
+        "skills_off",
+        "skills_on"
+      ],
+      "candidate_prompt_sha256": "f3e2a382ae07863717148732cf4393d876d7f21876ae03200738dea57c1d202e",
+      "candidate_prompt_identical_between_arms": true,
+      "arms": {
+        "skills_off": {
+          "passed": false,
+          "candidate_response": "Yes. The issue can be closed: the root cause was fixed, the original request now returns 90, and both the focused test (1/1) and full suite (42/42) passed. No material gaps remain.",
+          "candidate_telemetry": {
+            "usage": {
+              "input_tokens": 14268,
+              "cached_input_tokens": 11008,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 51,
+              "reasoning_output_tokens": 0,
+              "uncached_input_tokens": 3260,
+              "response_tokens": 51,
+              "total_tokens": 14319
+            },
+            "actions": {
+              "total": 0,
+              "by_type": {},
+              "duplicate_successful_actions": 0,
+              "recursive_forward_eval": false,
+              "items": []
+            },
+            "reference_accesses": {
+              "total": 0,
+              "attempted_total": 0,
+              "by_mode": {},
+              "attempted_by_mode": {},
+              "by_reference": {},
+              "items": []
+            },
+            "event_counts": {
+              "item.completed": 1,
+              "thread.started": 1,
+              "turn.completed": 1,
+              "turn.started": 1
+            },
+            "stderr": {
+              "line_count": 0,
+              "warning_count": 0,
+              "error_count": 0
+            },
+            "latency_ms": 6590
+          },
+          "judgement": {
+            "passed": false,
+            "assertion_results": [
+              {
+                "assertion": "Automatically returns a compact BUG RECEIPT or equivalently explicit receipt with baseline, cause, change, verification, gaps, and status even though the user did not request that format",
+                "passed": false,
+                "evidence": "The response gives a concise close recommendation, but it is not an explicit receipt and omits the failing baseline and specific change."
+              },
+              {
+                "assertion": "Uses VERIFIED and allows the issue to close without unnecessary downgrading",
+                "passed": false,
+                "evidence": "It allows closure without downgrading, but never uses the required VERIFIED status."
+              },
+              {
+                "assertion": "Preserves the exact failing baseline, line-level mechanism, responsible change, focused test, full suite, and original-path POST evidence",
+                "passed": false,
+                "evidence": "It preserves the post-change total and both test counts, but omits the exact failing baseline, src/pricing.ts:42 mechanism, and apply-percentage-before-rounding change."
+              },
+              {
+                "assertion": "States that no material proof gap remains rather than inventing an unrelated mandatory check",
+                "passed": true,
+                "evidence": "It explicitly states, “No material gaps remain,” and adds no unrelated check."
+              },
+              {
+                "assertion": "Labels the checks as supplied evidence and does not claim to have executed them",
+                "passed": false,
+                "evidence": "No tool execution is claimed and telemetry records zero actions, but the response does not label the reported checks as supplied evidence."
+              }
+            ],
+            "issues": [
+              "The response lacks an explicit receipt structure, the VERIFIED label, key baseline/cause/change details, and attribution of verification results to the supplied packet."
+            ]
+          },
+          "judge_telemetry": {
+            "usage": {
+              "input_tokens": 14816,
+              "cached_input_tokens": 14080,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 488,
+              "reasoning_output_tokens": 153,
+              "uncached_input_tokens": 736,
+              "response_tokens": 335,
+              "total_tokens": 15304
+            },
+            "actions": {
+              "total": 0,
+              "by_type": {},
+              "duplicate_successful_actions": 0,
+              "recursive_forward_eval": false,
+              "items": []
+            },
+            "reference_accesses": {
+              "total": 0,
+              "attempted_total": 0,
+              "by_mode": {},
+              "attempted_by_mode": {},
+              "by_reference": {},
+              "items": []
+            },
+            "event_counts": {
+              "item.completed": 1,
+              "thread.started": 1,
+              "turn.completed": 1,
+              "turn.started": 1
+            },
+            "stderr": {
+              "line_count": 0,
+              "warning_count": 0,
+              "error_count": 0
+            },
+            "latency_ms": 13222
+          },
+          "quality": {
+            "passed": 1,
+            "total": 5,
+            "accuracy_percent": 20.0,
+            "all_passed": false
+          },
+          "issues": [],
+          "published_budget_diagnostic": {
+            "passed": true,
+            "issues": []
+          }
+        },
+        "skills_on": {
+          "passed": true,
+          "candidate_response": "BUG RECEIPT · VERIFIED\n\nProblem    POST /discount returned 100 instead of 90 for subtotal 100 and discountPercent 10  \nBaseline   Focused API test failed: expected 90, received 100; original POST returned 100  \nRoot cause src/pricing.ts:42 rounded subtotal before applying the percentage  \nChange     Apply the percentage first, then round  \nProof      Supplied: focused test passed 1/1; full suite passed 42/42; original POST returned total 90  \nGaps       none  \nSource     supplied",
+          "candidate_telemetry": {
+            "usage": {
+              "input_tokens": 15141,
+              "cached_input_tokens": 11008,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 215,
+              "reasoning_output_tokens": 97,
+              "uncached_input_tokens": 4133,
+              "response_tokens": 118,
+              "total_tokens": 15356
+            },
+            "actions": {
+              "total": 0,
+              "by_type": {},
+              "duplicate_successful_actions": 0,
+              "recursive_forward_eval": false,
+              "items": []
+            },
+            "reference_accesses": {
+              "total": 0,
+              "attempted_total": 0,
+              "by_mode": {},
+              "attempted_by_mode": {},
+              "by_reference": {},
+              "items": []
+            },
+            "event_counts": {
+              "item.completed": 1,
+              "thread.started": 1,
+              "turn.completed": 1,
+              "turn.started": 1
+            },
+            "stderr": {
+              "line_count": 0,
+              "warning_count": 0,
+              "error_count": 0
+            },
+            "latency_ms": 7381
+          },
+          "judgement": {
+            "passed": true,
+            "assertion_results": [
+              {
+                "assertion": "Automatically returns a compact BUG RECEIPT or equivalently explicit receipt with baseline, cause, change, verification, gaps, and status even though the user did not request that format",
+                "passed": true,
+                "evidence": "The response uses a compact “BUG RECEIPT · VERIFIED” format with explicit Problem/Baseline, Root cause, Change, Proof, Gaps, and VERIFIED status fields."
+              },
+              {
+                "assertion": "Uses VERIFIED and allows the issue to close without unnecessary downgrading",
+                "passed": true,
+                "evidence": "The receipt is explicitly labeled “VERIFIED” and reports passing focused, full-suite, and original-path proof with no gaps, supporting closure without qualification."
+              },
+              {
+                "assertion": "Preserves the exact failing baseline, line-level mechanism, responsible change, focused test, full suite, and original-path POST evidence",
+                "passed": true,
+                "evidence": "It preserves POST /discount with subtotal 100 and discountPercent 10 returning 100 instead of 90; the focused failure expected 90/received 100; src/pricing.ts:42 rounding before percentage; percentage-first then rounding; focused 1/1; suite 42/42; and POST total 90."
+              },
+              {
+                "assertion": "States that no material proof gap remains rather than inventing an unrelated mandatory check",
+                "passed": true,
+                "evidence": "It states “Gaps none” and adds no unrelated required check."
+              },
+              {
+                "assertion": "Labels the checks as supplied evidence and does not claim to have executed them",
+                "passed": true,
+                "evidence": "The proof is prefixed “Supplied,” the source is labeled “supplied,” and telemetry reports zero actions and reference accesses."
+              }
+            ],
+            "issues": []
+          },
+          "judge_telemetry": {
+            "usage": {
+              "input_tokens": 14882,
+              "cached_input_tokens": 14080,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 536,
+              "reasoning_output_tokens": 176,
+              "uncached_input_tokens": 802,
+              "response_tokens": 360,
+              "total_tokens": 15418
+            },
+            "actions": {
+              "total": 0,
+              "by_type": {},
+              "duplicate_successful_actions": 0,
+              "recursive_forward_eval": false,
+              "items": []
+            },
+            "reference_accesses": {
+              "total": 0,
+              "attempted_total": 0,
+              "by_mode": {},
+              "attempted_by_mode": {},
+              "by_reference": {},
+              "items": []
+            },
+            "event_counts": {
+              "item.completed": 1,
+              "thread.started": 1,
+              "turn.completed": 1,
+              "turn.started": 1
+            },
+            "stderr": {
+              "line_count": 0,
+              "warning_count": 0,
+              "error_count": 0
+            },
+            "latency_ms": 14886
+          },
+          "quality": {
+            "passed": 5,
+            "total": 5,
+            "accuracy_percent": 100.0,
+            "all_passed": true
+          },
+          "issues": [],
+          "published_budget_diagnostic": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      }
+    },
+    {
+      "id": "bug-receipt-audit-gate-race-03",
+      "skill": "bug-receipt",
+      "execution_order": [
+        "skills_on",
+        "skills_off"
+      ],
+      "candidate_prompt_sha256": "1ef9cb95deed4ba1319b4d6068bfcea1e350c00f660986ced6a831b7ffa03b36",
+      "candidate_prompt_identical_between_arms": true,
+      "arms": {
+        "skills_on": {
+          "passed": false,
+          "candidate_response": "BUG RECEIPT · PARTIAL\n\nProblem    Stock 1 allowed two successful concurrent reservations; only one should succeed.\nBaseline   Supplied production trace showed stock 1 followed by two successful reservations.\nRoot cause Supplied evidence indicates a read-then-write race; contention behavior after the patch remains unproven.\nChange     Replaced read-then-write with an atomic conditional decrement and rejects zero-row updates.\nProof      Supplied sequential unit test passes.\nGaps       Run one repeated concurrent trigger proving zero-or-one success, affected-row behavior, transaction boundaries, and the final stock invariant.\nSource     supplied",
+          "candidate_telemetry": {
+            "usage": {
+              "input_tokens": 15114,
+              "cached_input_tokens": 11008,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 125,
+              "reasoning_output_tokens": 0,
+              "uncached_input_tokens": 4106,
+              "response_tokens": 125,
+              "total_tokens": 15239
+            },
+            "actions": {
+              "total": 0,
+              "by_type": {},
+              "duplicate_successful_actions": 0,
+              "recursive_forward_eval": false,
+              "items": []
+            },
+            "reference_accesses": {
+              "total": 0,
+              "attempted_total": 0,
+              "by_mode": {},
+              "attempted_by_mode": {},
+              "by_reference": {},
+              "items": []
+            },
+            "event_counts": {
+              "item.completed": 1,
+              "thread.started": 1,
+              "turn.completed": 1,
+              "turn.started": 1
+            },
+            "stderr": {
+              "line_count": 0,
+              "warning_count": 0,
+              "error_count": 0
+            },
+            "latency_ms": 6420
+          },
+          "judgement": {
+            "passed": false,
+            "assertion_results": [
+              {
+                "assertion": "Automatically returns a compact BUG RECEIPT or equivalently explicit receipt with baseline, cause, change, verification, gaps, and status even though the user did not request that format",
+                "passed": true,
+                "evidence": "The response uses “BUG RECEIPT · PARTIAL” and explicitly includes Baseline, Root cause, Change, Proof, and Gaps."
+              },
+              {
+                "assertion": "Uses PARTIAL and does not mark the concurrency defect fixed or verified",
+                "passed": true,
+                "evidence": "It labels the status PARTIAL and says contention behavior after the patch remains unproven."
+              },
+              {
+                "assertion": "Preserves the observed production baseline while classifying the atomic SQL as a plausible responsible change and the sequential test as insufficient contention evidence",
+                "passed": true,
+                "evidence": "It retains the stock-1/two-reservations trace, identifies the atomic conditional decrement as the change, reports the sequential test, and states that contention remains unproven."
+              },
+              {
+                "assertion": "Requires a repeated concurrent trigger with zero-or-one success, affected-row and transaction evidence, and the final non-negative stock invariant",
+                "passed": false,
+                "evidence": "The Gaps line requires the concurrent trigger, zero-or-one success, affected-row behavior, transaction boundaries, and a final stock invariant, but it never explicitly requires that final stock be non-negative."
+              },
+              {
+                "assertion": "Does not invent a concurrent run, transaction observation, command, or result",
+                "passed": true,
+                "evidence": "No unreported run, command, transaction observation, or result is claimed; the response confines proof to the supplied sequential test."
+              }
+            ],
+            "issues": [
+              "The required final invariant is underspecified as merely “the final stock invariant”; it should explicitly require final stock >= 0."
+            ]
+          },
+          "judge_telemetry": {
+            "usage": {
+              "input_tokens": 14873,
+              "cached_input_tokens": 14080,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 583,
+              "reasoning_output_tokens": 213,
+              "uncached_input_tokens": 793,
+              "response_tokens": 370,
+              "total_tokens": 15456
+            },
+            "actions": {
+              "total": 0,
+              "by_type": {},
+              "duplicate_successful_actions": 0,
+              "recursive_forward_eval": false,
+              "items": []
+            },
+            "reference_accesses": {
+              "total": 0,
+              "attempted_total": 0,
+              "by_mode": {},
+              "attempted_by_mode": {},
+              "by_reference": {},
+              "items": []
+            },
+            "event_counts": {
+              "item.completed": 1,
+              "thread.started": 1,
+              "turn.completed": 1,
+              "turn.started": 1
+            },
+            "stderr": {
+              "line_count": 0,
+              "warning_count": 0,
+              "error_count": 0
+            },
+            "latency_ms": 16848
+          },
+          "quality": {
+            "passed": 4,
+            "total": 5,
+            "accuracy_percent": 80.0,
+            "all_passed": false
+          },
+          "issues": [],
+          "published_budget_diagnostic": {
+            "passed": true,
+            "issues": []
+          }
+        },
+        "skills_off": {
+          "passed": false,
+          "candidate_response": "Closeout status: **Not verified—do not mark fixed.**\n\nThe atomic conditional decrement is a plausible fix, and the sequential test is encouraging, but it does not prove race safety. Closeout requires a repeated concurrent trigger confirming:\n\n- only one reservation succeeds from stock 1,\n- the competing update reports zero affected rows and is rejected,\n- transaction behavior preserves the result,\n- final stock remains 0 and never goes negative.",
+          "candidate_telemetry": {
+            "usage": {
+              "input_tokens": 14241,
+              "cached_input_tokens": 11008,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 91,
+              "reasoning_output_tokens": 0,
+              "uncached_input_tokens": 3233,
+              "response_tokens": 91,
+              "total_tokens": 14332
+            },
+            "actions": {
+              "total": 0,
+              "by_type": {},
+              "duplicate_successful_actions": 0,
+              "recursive_forward_eval": false,
+              "items": []
+            },
+            "reference_accesses": {
+              "total": 0,
+              "attempted_total": 0,
+              "by_mode": {},
+              "attempted_by_mode": {},
+              "by_reference": {},
+              "items": []
+            },
+            "event_counts": {
+              "item.completed": 1,
+              "thread.started": 1,
+              "turn.completed": 1,
+              "turn.started": 1
+            },
+            "stderr": {
+              "line_count": 0,
+              "warning_count": 0,
+              "error_count": 0
+            },
+            "latency_ms": 5813
+          },
+          "judgement": {
+            "passed": false,
+            "assertion_results": [
+              {
+                "assertion": "Automatically returns a compact BUG RECEIPT or equivalently explicit receipt with baseline, cause, change, verification, gaps, and status even though the user did not request that format",
+                "passed": false,
+                "evidence": "The response gives a status, change assessment, verification limitation, and gaps, but omits the observed baseline of two successful reservations and does not explicitly state the cause."
+              },
+              {
+                "assertion": "Uses PARTIAL and does not mark the concurrency defect fixed or verified",
+                "passed": false,
+                "evidence": "It correctly says “Not verified—do not mark fixed,” but never assigns the required PARTIAL status."
+              },
+              {
+                "assertion": "Preserves the observed production baseline while classifying the atomic SQL as a plausible responsible change and the sequential test as insufficient contention evidence",
+                "passed": false,
+                "evidence": "It calls the atomic decrement a plausible fix and the sequential test insufficient, but does not preserve/report the production observation that stock 1 was followed by two successful reservations."
+              },
+              {
+                "assertion": "Requires a repeated concurrent trigger with zero-or-one success, affected-row and transaction evidence, and the final non-negative stock invariant",
+                "passed": true,
+                "evidence": "It requires a repeated concurrent trigger, one success from stock 1, zero affected rows with rejection for the competitor, transaction-behavior confirmation, and stock remaining 0 and never negative."
+              },
+              {
+                "assertion": "Does not invent a concurrent run, transaction observation, command, or result",
+                "passed": true,
+                "evidence": "No tools or commands are reported, and all missing contention and transaction checks are framed as future closeout requirements rather than completed observations."
+              }
+            ],
+            "issues": [
+              "The response omits the production baseline and explicit cause.",
+              "It uses “Not verified” instead of the required PARTIAL classification."
+            ]
+          },
+          "judge_telemetry": {
+            "usage": {
+              "input_tokens": 14839,
+              "cached_input_tokens": 14080,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 556,
+              "reasoning_output_tokens": 182,
+              "uncached_input_tokens": 759,
+              "response_tokens": 374,
+              "total_tokens": 15395
+            },
+            "actions": {
+              "total": 0,
+              "by_type": {},
+              "duplicate_successful_actions": 0,
+              "recursive_forward_eval": false,
+              "items": []
+            },
+            "reference_accesses": {
+              "total": 0,
+              "attempted_total": 0,
+              "by_mode": {},
+              "attempted_by_mode": {},
+              "by_reference": {},
+              "items": []
+            },
+            "event_counts": {
+              "item.completed": 1,
+              "thread.started": 1,
+              "turn.completed": 1,
+              "turn.started": 1
+            },
+            "stderr": {
+              "line_count": 0,
+              "warning_count": 0,
+              "error_count": 0
+            },
+            "latency_ms": 13992
+          },
+          "quality": {
+            "passed": 2,
+            "total": 5,
+            "accuracy_percent": 40.0,
+            "all_passed": false
+          },
+          "issues": [],
+          "published_budget_diagnostic": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      }
+    },
+    {
+      "id": "bug-receipt-audit-gate-cross-system-04",
+      "skill": "bug-receipt",
+      "execution_order": [
+        "skills_off",
+        "skills_on"
+      ],
+      "candidate_prompt_sha256": "0a0ff740a4c1547012a82559b905d8fc29108e3ea70c93a9a0b306214e534963",
+      "candidate_prompt_identical_between_arms": true,
+      "arms": {
+        "skills_off": {
+          "passed": false,
+          "candidate_response": "Decision: do not patch yet. Capture one failing production callback trace correlated across the edge, application, and identity provider—including redirect method, cookie attributes/presence, state validation, and the component issuing the 403—then decide. The SameSite theory is plausible but currently unproven.",
+          "candidate_telemetry": {
+            "usage": {
+              "input_tokens": 14241,
+              "cached_input_tokens": 14080,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 63,
+              "reasoning_output_tokens": 0,
+              "uncached_input_tokens": 161,
+              "response_tokens": 63,
+              "total_tokens": 14304
+            },
+            "actions": {
+              "total": 0,
+              "by_type": {},
+              "duplicate_successful_actions": 0,
+              "recursive_forward_eval": false,
+              "items": []
+            },
+            "reference_accesses": {
+              "total": 0,
+              "attempted_total": 0,
+              "by_mode": {},
+              "attempted_by_mode": {},
+              "by_reference": {},
+              "items": []
+            },
+            "event_counts": {
+              "item.completed": 1,
+              "thread.started": 1,
+              "turn.completed": 1,
+              "turn.started": 1
+            },
+            "stderr": {
+              "line_count": 0,
+              "warning_count": 0,
+              "error_count": 0
+            },
+            "latency_ms": 5513
+          },
+          "judgement": {
+            "passed": false,
+            "assertion_results": [
+              {
+                "assertion": "Automatically returns a compact BUG RECEIPT or equivalently explicit receipt with baseline, cause, change, verification, gaps, and status even though the user did not request that format",
+                "passed": false,
+                "evidence": "The response is a short decision paragraph and does not explicitly report baseline, cause, change, verification, gaps, and status."
+              },
+              {
+                "assertion": "Uses BLOCKED and does not call the issue fixed, reproduced, or root-caused",
+                "passed": false,
+                "evidence": "It does not claim the issue fixed, reproduced, or root-caused, but it never uses the required BLOCKED status."
+              },
+              {
+                "assertion": "Keeps SameSite handling as an unproven hypothesis and names unavailable production-equivalent authenticated evidence as the blocker",
+                "passed": false,
+                "evidence": "It correctly calls the SameSite theory plausible but unproven, yet it does not explicitly identify unavailable production-equivalent authenticated evidence as the blocker."
+              },
+              {
+                "assertion": "Requests one sanitized correlated evidence package containing the failing callback request-response, timestamp or request identifier, and responsible edge and application authentication logs, adding identity-provider logs when the trace reaches that owner",
+                "passed": false,
+                "evidence": "It requests one correlated production trace, but omits sanitization, a timestamp/request identifier, explicit request-response capture, explicit edge/application authentication logs, and the conditional treatment of identity-provider logs."
+              },
+              {
+                "assertion": "Does not invent credentials, logs, traffic, a reproduction, or a causal conclusion",
+                "passed": true,
+                "evidence": "The response reports no fabricated evidence or reproduction and explicitly leaves the SameSite hypothesis unproven."
+              }
+            ],
+            "issues": [
+              "The closeout lacks an explicit BUG RECEIPT structure and BLOCKED status.",
+              "The requested evidence package is missing required correlation, sanitization, and log details."
+            ]
+          },
+          "judge_telemetry": {
+            "usage": {
+              "input_tokens": 14824,
+              "cached_input_tokens": 14080,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 588,
+              "reasoning_output_tokens": 207,
+              "uncached_input_tokens": 744,
+              "response_tokens": 381,
+              "total_tokens": 15412
+            },
+            "actions": {
+              "total": 0,
+              "by_type": {},
+              "duplicate_successful_actions": 0,
+              "recursive_forward_eval": false,
+              "items": []
+            },
+            "reference_accesses": {
+              "total": 0,
+              "attempted_total": 0,
+              "by_mode": {},
+              "attempted_by_mode": {},
+              "by_reference": {},
+              "items": []
+            },
+            "event_counts": {
+              "item.completed": 1,
+              "thread.started": 1,
+              "turn.completed": 1,
+              "turn.started": 1
+            },
+            "stderr": {
+              "line_count": 0,
+              "warning_count": 0,
+              "error_count": 0
+            },
+            "latency_ms": 13077
+          },
+          "quality": {
+            "passed": 1,
+            "total": 5,
+            "accuracy_percent": 20.0,
+            "all_passed": false
+          },
+          "issues": [],
+          "published_budget_diagnostic": {
+            "passed": true,
+            "issues": []
+          }
+        },
+        "skills_on": {
+          "passed": false,
+          "candidate_response": "BUG RECEIPT · BLOCKED\n\nProblem    Production-only SSO callback intermittently returns 403; callbacks should authenticate successfully.\nBaseline   not run; no captured failing callback or production access\nRoot cause unproven; SameSite state-cookie handling is only a hypothesis\nChange     none\nProof      supplied incident note: no identity-provider credentials or correlated production logs\nGaps       Capture one sanitized failing callback with timestamp or request ID, then correlate edge, application, and identity-provider logs to determine whether cookie state validation caused the 403.\nSource     supplied",
+          "candidate_telemetry": {
+            "usage": {
+              "input_tokens": 15114,
+              "cached_input_tokens": 11008,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 116,
+              "reasoning_output_tokens": 0,
+              "uncached_input_tokens": 4106,
+              "response_tokens": 116,
+              "total_tokens": 15230
+            },
+            "actions": {
+              "total": 0,
+              "by_type": {},
+              "duplicate_successful_actions": 0,
+              "recursive_forward_eval": false,
+              "items": []
+            },
+            "reference_accesses": {
+              "total": 0,
+              "attempted_total": 0,
+              "by_mode": {},
+              "attempted_by_mode": {},
+              "by_reference": {},
+              "items": []
+            },
+            "event_counts": {
+              "item.completed": 1,
+              "thread.started": 1,
+              "turn.completed": 1,
+              "turn.started": 1
+            },
+            "stderr": {
+              "line_count": 0,
+              "warning_count": 0,
+              "error_count": 0
+            },
+            "latency_ms": 7131
+          },
+          "judgement": {
+            "passed": false,
+            "assertion_results": [
+              {
+                "assertion": "Automatically returns a compact BUG RECEIPT or equivalently explicit receipt with baseline, cause, change, verification, gaps, and status even though the user did not request that format",
+                "passed": true,
+                "evidence": "The response uses an explicit “BUG RECEIPT · BLOCKED” and reports Baseline, Root cause, Change, Proof, Gaps, and blocked status."
+              },
+              {
+                "assertion": "Uses BLOCKED and does not call the issue fixed, reproduced, or root-caused",
+                "passed": true,
+                "evidence": "It explicitly says “BLOCKED,” “Baseline not run,” and “Root cause unproven,” with no claim of a fix or reproduction."
+              },
+              {
+                "assertion": "Keeps SameSite handling as an unproven hypothesis and names unavailable production-equivalent authenticated evidence as the blocker",
+                "passed": true,
+                "evidence": "It calls SameSite state-cookie handling “only a hypothesis” and identifies the missing failing callback, production access/logs, and identity-provider credentials as evidence gaps."
+              },
+              {
+                "assertion": "Requests one sanitized correlated evidence package containing the failing callback request-response, timestamp or request identifier, and responsible edge and application authentication logs, adding identity-provider logs when the trace reaches that owner",
+                "passed": false,
+                "evidence": "It requests one sanitized failing callback plus a timestamp/request ID and correlated logs, but does not explicitly request both the callback request and response, does not specify authentication logs, and requests identity-provider logs unconditionally rather than when the trace reaches that owner."
+              },
+              {
+                "assertion": "Does not invent credentials, logs, traffic, a reproduction, or a causal conclusion",
+                "passed": true,
+                "evidence": "It reports the evidence as unavailable, states no reproduction or change occurred, and leaves causality unproven."
+              }
+            ],
+            "issues": [
+              "The requested evidence package is underspecified: it must explicitly include the failing callback request-response and responsible edge/application authentication logs, with identity-provider logs included only if the trace reaches that owner."
+            ]
+          },
+          "judge_telemetry": {
+            "usage": {
+              "input_tokens": 14879,
+              "cached_input_tokens": 14080,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 678,
+              "reasoning_output_tokens": 263,
+              "uncached_input_tokens": 799,
+              "response_tokens": 415,
+              "total_tokens": 15557
+            },
+            "actions": {
+              "total": 0,
+              "by_type": {},
+              "duplicate_successful_actions": 0,
+              "recursive_forward_eval": false,
+              "items": []
+            },
+            "reference_accesses": {
+              "total": 0,
+              "attempted_total": 0,
+              "by_mode": {},
+              "attempted_by_mode": {},
+              "by_reference": {},
+              "items": []
+            },
+            "event_counts": {
+              "item.completed": 1,
+              "thread.started": 1,
+              "turn.completed": 1,
+              "turn.started": 1
+            },
+            "stderr": {
+              "line_count": 0,
+              "warning_count": 0,
+              "error_count": 0
+            },
+            "latency_ms": 15861
+          },
+          "quality": {
+            "passed": 4,
+            "total": 5,
+            "accuracy_percent": 80.0,
+            "all_passed": false
+          },
+          "issues": [],
+          "published_budget_diagnostic": {
+            "passed": true,
+            "issues": []
+          }
+        }
+      }
+    }
+  ],
+  "routing_results": [
+    {
+      "id": "bug-receipt-audit-gate-ui-pressure-01",
+      "expected_skill": "bug-receipt",
+      "acceptable_skill_sets": [],
+      "near_miss_for": [],
+      "passed": true,
+      "response": {
+        "selected_skills": [
+          "bug-receipt"
+        ],
+        "reason": "The request is a defect closeout decision requiring an auditable VERIFIED, PARTIAL, or BLOCKED status based solely on supplied evidence; bug-receipt directly covers regression proof and issue closure."
+      },
+      "telemetry": {
+        "usage": {
+          "input_tokens": 18935,
+          "cached_input_tokens": 11008,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 157,
+          "reasoning_output_tokens": 92,
+          "uncached_input_tokens": 7927,
+          "response_tokens": 65,
+          "total_tokens": 19092
+        },
+        "actions": {
+          "total": 0,
+          "by_type": {},
+          "duplicate_successful_actions": 0,
+          "recursive_forward_eval": false,
+          "items": []
+        },
+        "reference_accesses": {
+          "total": 0,
+          "attempted_total": 0,
+          "by_mode": {},
+          "attempted_by_mode": {},
+          "by_reference": {},
+          "items": []
+        },
+        "event_counts": {
+          "item.completed": 1,
+          "thread.started": 1,
+          "turn.completed": 1,
+          "turn.started": 1
+        },
+        "stderr": {
+          "line_count": 0,
+          "warning_count": 0,
+          "error_count": 0
+        },
+        "latency_ms": 6548
+      },
+      "issues": []
+    },
+    {
+      "id": "bug-receipt-audit-gate-complete-api-02",
+      "expected_skill": "bug-receipt",
+      "acceptable_skill_sets": [],
+      "near_miss_for": [],
+      "passed": true,
+      "response": {
+        "selected_skills": [
+          "bug-receipt"
+        ],
+        "reason": "The request asks for an auditable bug closeout decision from supplied baseline, root-cause, fix, regression, and verification evidence; bug-receipt directly covers defect closure with a VERIFIED/PARTIAL/BLOCKED status."
+      },
+      "telemetry": {
+        "usage": {
+          "input_tokens": 18945,
+          "cached_input_tokens": 11008,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 70,
+          "reasoning_output_tokens": 0,
+          "uncached_input_tokens": 7937,
+          "response_tokens": 70,
+          "total_tokens": 19015
+        },
+        "actions": {
+          "total": 0,
+          "by_type": {},
+          "duplicate_successful_actions": 0,
+          "recursive_forward_eval": false,
+          "items": []
+        },
+        "reference_accesses": {
+          "total": 0,
+          "attempted_total": 0,
+          "by_mode": {},
+          "attempted_by_mode": {},
+          "by_reference": {},
+          "items": []
+        },
+        "event_counts": {
+          "item.completed": 1,
+          "thread.started": 1,
+          "turn.completed": 1,
+          "turn.started": 1
+        },
+        "stderr": {
+          "line_count": 0,
+          "warning_count": 0,
+          "error_count": 0
+        },
+        "latency_ms": 6862
+      },
+      "issues": []
+    },
+    {
+      "id": "bug-receipt-audit-gate-race-03",
+      "expected_skill": "bug-receipt",
+      "acceptable_skill_sets": [],
+      "near_miss_for": [],
+      "passed": true,
+      "response": {
+        "selected_skills": [
+          "bug-receipt"
+        ],
+        "reason": "The request is to decide a defect closeout status from supplied evidence; bug-receipt directly covers auditable VERIFIED, PARTIAL, or BLOCKED bug closeout. Concision can be handled without an additional skill."
+      },
+      "telemetry": {
+        "usage": {
+          "input_tokens": 18918,
+          "cached_input_tokens": 11008,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 119,
+          "reasoning_output_tokens": 49,
+          "uncached_input_tokens": 7910,
+          "response_tokens": 70,
+          "total_tokens": 19037
+        },
+        "actions": {
+          "total": 0,
+          "by_type": {},
+          "duplicate_successful_actions": 0,
+          "recursive_forward_eval": false,
+          "items": []
+        },
+        "reference_accesses": {
+          "total": 0,
+          "attempted_total": 0,
+          "by_mode": {},
+          "attempted_by_mode": {},
+          "by_reference": {},
+          "items": []
+        },
+        "event_counts": {
+          "item.completed": 1,
+          "thread.started": 1,
+          "turn.completed": 1,
+          "turn.started": 1
+        },
+        "stderr": {
+          "line_count": 0,
+          "warning_count": 0,
+          "error_count": 0
+        },
+        "latency_ms": 7132
+      },
+      "issues": []
+    },
+    {
+      "id": "bug-receipt-audit-gate-cross-system-04",
+      "expected_skill": "bug-receipt",
+      "acceptable_skill_sets": [],
+      "near_miss_for": [],
+      "passed": true,
+      "response": {
+        "selected_skills": [
+          "bug-receipt"
+        ],
+        "reason": "The request asks for an evidence-based incident closeout with no implemented fix, an explicit blocked/partial status, and one next action needed to decide whether to patch; bug-receipt directly covers that outcome."
+      },
+      "telemetry": {
+        "usage": {
+          "input_tokens": 18918,
+          "cached_input_tokens": 18176,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 136,
+          "reasoning_output_tokens": 68,
+          "uncached_input_tokens": 742,
+          "response_tokens": 68,
+          "total_tokens": 19054
+        },
+        "actions": {
+          "total": 0,
+          "by_type": {},
+          "duplicate_successful_actions": 0,
+          "recursive_forward_eval": false,
+          "items": []
+        },
+        "reference_accesses": {
+          "total": 0,
+          "attempted_total": 0,
+          "by_mode": {},
+          "attempted_by_mode": {},
+          "by_reference": {},
+          "items": []
+        },
+        "event_counts": {
+          "item.completed": 1,
+          "thread.started": 1,
+          "turn.completed": 1,
+          "turn.started": 1
+        },
+        "stderr": {
+          "line_count": 0,
+          "warning_count": 0,
+          "error_count": 0
+        },
+        "latency_ms": 8290
+      },
+      "issues": []
+    }
+  ],
+  "limitations": [
+    "One paired observation per case; model sampling variance is not estimated.",
+    "Quality is assertion-level blind-judge accuracy, not a human preference score.",
+    "Cache state cannot be identical when the treatment changes the system prompt; arms are counterbalanced and uncached tokens are reported separately.",
+    "The result generalizes only to the selected bounded cohort, not the full skill catalog."
+  ],
+  "wall_latency_ms": 198717
+}

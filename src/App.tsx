@@ -143,7 +143,7 @@ function App() {
         <section className="hero wrap">
           <div className="hero__glow" aria-hidden="true" />
           <div className="hero__copy">
-            <div className="pill"><span /> Discoverable Agent Skill <b>v1.2</b></div>
+            <div className="pill"><span /> Discoverable Agent Skill <b>v1.3</b></div>
             <h1>No <em>“fixed”</em><br />without receipts.</h1>
             <p className="hero__lead">A strict evidence gate for coding agents. Reproduce the failure, trace the cause, run the proof—and only then declare victory.</p>
             <div className="hero__actions">
@@ -186,16 +186,16 @@ function App() {
         <section className="benchmark-section" id="benchmark">
           <div className="wrap">
             <div className="section-heading">
-              <div><p className="kicker">Measured, with limits</p><h2>Evidence for the skill.<br />No invented uplift.</h2></div>
-              <p>A bounded, counterbalanced ON/OFF run proves routing and receipt quality on three tasks. The no-skill arm matched the quality score, so we publish that result too.</p>
+              <div><p className="kicker">Measured, with limits</p><h2>A real lift.<br />Receipts included.</h2></div>
+              <p>Four frozen closeout cases, identical natural prompts, isolated treatment, and blind judges. The pre-registered gate passed; a separate run corroborated the result at 95% versus 35%.</p>
             </div>
             <div className="benchmark-grid">
-              <article><strong>20/20</strong><span>validator invariants</span><p>Valid states accepted; tested invalid states rejected at the expected field.</p></article>
-              <article><strong>3/3</strong><span>fresh routing probes</span><p>Codex selected Bug Receipt for every task in the bounded cohort.</p></article>
-              <article><strong>12/12</strong><span>skills-ON assertions</span><p>Verified, partial, UI-proof, and concurrency boundaries all passed.</p></article>
-              <article><strong>0 pp</strong><span>measured quality lift</span><p>Skills OFF also scored 12/12. This sample does not prove an uplift.</p></article>
+              <article><strong>90%</strong><span>skills-ON accuracy</span><p>18/20 blind-judged requirements passed; the complete receipt appeared in all four cases.</p></article>
+              <article><strong>35%</strong><span>skills-OFF accuracy</span><p>The same model and prompts without Bug Receipt passed 7/20 requirements.</p></article>
+              <article><strong>+55 pp</strong><span>measured quality lift</span><p>Above the pre-registered +15-point gate, with zero evidence-safety regressions.</p></article>
+              <article><strong>p=.0034</strong><span>paired significance</span><p>Exact McNemar test; routing was 4/4 and candidate actions were zero in both arms.</p></article>
             </div>
-            <a className="benchmark-link" href="https://github.com/lMysticl/bug-receipt/blob/main/benchmarks/RESULTS.md">Read the method, raw telemetry, and failed holdout <ArrowIcon /></a>
+            <a className="benchmark-link" href="https://github.com/lMysticl/bug-receipt/blob/main/benchmarks/RESULTS.md">Inspect the protocol, SHA-verified raw reports, and limitations <ArrowIcon /></a>
           </div>
         </section>
 

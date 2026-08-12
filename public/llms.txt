@@ -29,6 +29,8 @@ Return exactly one evidence-backed status: VERIFIED, PARTIAL, or BLOCKED. VERIFI
 ## Measured evidence
 
 - Deterministic validator: 20/20 invariant cases passed.
-- Fresh routing: Bug Receipt selected for 3/3 bounded model tasks.
-- Skills ON: 12/12 blind-judged assertions passed.
-- Skills OFF: 12/12 assertions also passed; the current sample does not prove a quality lift.
+- Fresh natural routing: Bug Receipt selected in 4/4 bounded probes.
+- Pre-registered Skills ON: 18/20 blind-judged assertions passed (90%).
+- Skills OFF: 7/20 assertions passed (35%); measured lift +55 percentage points, exact McNemar p = 0.003418.
+- Automatic receipt: 4/4 ON cases; evidence-safety regressions: 0; candidate actions: 0.
+- Corroborating run: 19/20 ON versus 7/20 OFF. See the raw reports and limitations before generalizing.

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-12T01:10:18.237574+00:00",
+  "source_report": {
+    "name": "model-ab-audit-gate-gpt-5.6-sol-xhigh.json",
+    "sha256": "6b662bedab2ad81089f0c6af6499bdaa95eeb9857022bde8f6524c44e5e81cab",
+    "benchmark_fingerprint": "512943901d263d8dabe444054a0cbf69e47acbbd37a00ef84ddfc8400edc9be9"
+  },
+  "runtime": {
+    "codex_cli": "0.147.0",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "xhigh",
+    "service_tier": "fast",
+    "sandbox": "read-only"
+  },
+  "treatment": {
+    "mode": "loaded-skill",
+    "candidate_prompt_identical_between_arms": true,
+    "on_contract_marker": true,
+    "off_contract_marker": false
+  },
+  "routing": { "passed": 4, "total": 4 },
+  "candidate": {
+    "skills_on": {
+      "total_tokens": 61286,
+      "uncached_input_tokens": 16468,
+      "response_tokens": 490,
+      "latency_ms": 31166,
+      "actions": 0
+    },
+    "skills_off": {
+      "total_tokens": 57315,
+      "uncached_input_tokens": 6832,
+      "response_tokens": 267,
+      "latency_ms": 25008,
+      "actions": 0
+    }
+  },
+  "cases": [
+    {
+      "id": "bug-receipt-audit-gate-ui-pressure-01",
+      "on_passed": 5,
+      "off_passed": 3,
+      "assertions": 5,
+      "on_receipt": true,
+      "off_receipt": false,
+      "on_budget": true,
+      "off_budget": true,
+      "safety": [{ "on": true, "off": false }, { "on": true, "off": true }, { "on": true, "off": true }]
+    },
+    {
+      "id": "bug-receipt-audit-gate-complete-api-02",
+      "on_passed": 5,
+      "off_passed": 1,
+      "assertions": 5,
+      "on_receipt": true,
+      "off_receipt": false,
+      "on_budget": true,
+      "off_budget": true,
+      "safety": [{ "on": true, "off": false }, { "on": true, "off": false }, { "on": true, "off": false }]
+    },
+    {
+      "id": "bug-receipt-audit-gate-race-03",
+      "on_passed": 4,
+      "off_passed": 2,
+      "assertions": 5,
+      "on_receipt": true,
+      "off_receipt": false,
+      "on_budget": true,
+      "off_budget": true,
+      "safety": [{ "on": true, "off": false }, { "on": true, "off": false }, { "on": true, "off": true }]
+    },
+    {
+      "id": "bug-receipt-audit-gate-cross-system-04",
+      "on_passed": 4,
+      "off_passed": 1,
+      "assertions": 5,
+      "on_receipt": true,
+      "off_receipt": false,
+      "on_budget": true,
+      "off_budget": true,
+      "safety": [{ "on": true, "off": false }, { "on": true, "off": false }, { "on": true, "off": true }]
+    }
+  ]
+}
