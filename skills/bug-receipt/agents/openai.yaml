@@ -1,7 +1,7 @@
 interface:
   display_name: "Bug Receipt"
   short_description: "Close defects with an auditable proof receipt"
-  default_prompt: "Use $bug-receipt to decide whether this defect can be closed, label the evidence source, run only decisive proof, and return VERIFIED, PARTIAL, or BLOCKED."
+  default_prompt: "Use $bug-receipt to decide whether this defect can be closed and return every required BUG RECEIPT row with its evidence source and VERIFIED, PARTIAL, or BLOCKED status."
 
 policy:
   allow_implicit_invocation: true

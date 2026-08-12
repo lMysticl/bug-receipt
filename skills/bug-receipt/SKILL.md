@@ -1,11 +1,27 @@
 ---
 name: bug-receipt
-description: 'Close defects with an auditable BUG RECEIPT: classify evidence, trace cause, verify repair, and report VERIFIED, PARTIAL, or BLOCKED. Use for bugs, incidents, and issue closeout.'
+description: 'Close bugs and incidents with an auditable BUG RECEIPT and VERIFIED, PARTIAL, or BLOCKED status. Use for defect repair, regression proof, production incidents, and issue closeout.'
 ---
 
 # Bug Receipt
 
-Use the receipt as the completion gate. For a closeout decision, return it automatically even when the user did not request a special format.
+## Mandatory closeout output
+
+For every bug or incident closeout decision, return the complete receipt below as the entire user-facing result, even when the user requests a concise reply or does not name this format. Concision shortens field values; it never removes or renames a row. Do not replace the receipt with prose.
+
+```text
+BUG RECEIPT · VERIFIED | PARTIAL | BLOCKED
+
+Problem    <observed defect and intended behavior>
+Baseline   <failing interaction or command and decisive result; or not run>
+Root cause <proven mechanism; or unproven hypothesis>
+Change     <responsible change; or none>
+Proof      <supplied or executed check: result; include every decisive layer>
+Gaps       <none; or exact missing proof and single next experiment/package>
+Source     executed now | supplied | mixed
+```
+
+Use `not run`, `unproven`, or `none` explicitly. Never omit a row to make the receipt look complete.
 
 ## Establish the evidence boundary
 
@@ -49,25 +65,6 @@ Use these decisive boundaries:
 - `BLOCKED`: a specific external condition prevents reproduction, repair, or proof.
 
 For `PARTIAL` or `BLOCKED`, name the single minimal experiment or correlated evidence package that closes the decisive gap. Never invent a command, observation, count, location, or result.
-
-## Return the receipt
-
-Finish with this compact structure:
-
-```text
-BUG RECEIPT · VERIFIED | PARTIAL | BLOCKED
-
-Problem    <observed defect and intended behavior>
-Baseline   <exact command or interaction>
-           <decisive observed result>
-Root cause <location and evidence-backed mechanism>
-Change     <file or artifact — responsible repair>
-Proof      <check: result · check: result; label supplied evidence>
-Gaps       <none, or the exact missing proof>
-Source     executed now | supplied | mixed
-```
-
-Use `not run` explicitly where applicable. Do not omit a row to make the receipt look complete.
 
 For a machine-readable receipt or CI integration, read [references/receipt-contract.md](references/receipt-contract.md) and conform to its JSON fields and status invariants.
 
