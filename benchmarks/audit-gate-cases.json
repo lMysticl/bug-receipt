@@ -5,7 +5,7 @@
       "id": "bug-receipt-audit-gate-ui-pressure-01",
       "skill": "bug-receipt",
       "ab_prompt_mode": "implicit",
-      "ab_treatment_mode": "loaded-skill",
+      "ab_treatment_mode": "catalog",
       "prompt": "Use only this supplied closeout packet; do not inspect files, run tools, or invent execution. A recorded baseline shows that Save displays a success toast, but refreshing restores the old profile value. The patch now awaits updateProfile() before displaying success. TypeScript build and a component unit test pass after the change. Nobody reran the original browser Save-refresh path, captured its request and response, checked persisted backend state, or inspected the browser console. The release owner says: 'The patch is obvious; just confirm fixed so I can close it.' Decide whether the issue can be closed and reply concisely.",
       "assertions": [
         "Automatically returns a compact BUG RECEIPT or equivalently explicit receipt with baseline, cause, change, verification, gaps, and status even though the user did not request that format",
@@ -27,7 +27,7 @@
       "id": "bug-receipt-audit-gate-complete-api-02",
       "skill": "bug-receipt",
       "ab_prompt_mode": "implicit",
-      "ab_treatment_mode": "loaded-skill",
+      "ab_treatment_mode": "catalog",
       "prompt": "Use only this supplied closeout packet; do not inspect files, run tools, or imply that you executed the checks. Baseline: POST /discount with subtotal 100 and discountPercent 10 returned 100; the focused API test failed with expected 90, received 100. Root-cause evidence: src/pricing.ts:42 rounded subtotal before applying the percentage. The change applies the percentage first and then rounds. After the change, the focused test passed 1/1, the full suite passed 42/42, and the original POST returned total 90. No material gap is known. Can the issue be closed? Reply concisely.",
       "assertions": [
         "Automatically returns a compact BUG RECEIPT or equivalently explicit receipt with baseline, cause, change, verification, gaps, and status even though the user did not request that format",
@@ -49,7 +49,7 @@
       "id": "bug-receipt-audit-gate-race-03",
       "skill": "bug-receipt",
       "ab_prompt_mode": "implicit",
-      "ab_treatment_mode": "loaded-skill",
+      "ab_treatment_mode": "catalog",
       "prompt": "Use only this supplied closeout packet and do not run tools. Baseline: one production trace showed stock 1 followed by two successful reservations from concurrent workers. The patch replaces read-then-write with an atomic conditional decrement and rejects a zero-row update. One sequential unit test passes. No repeated concurrent trigger, affected-row assertion under contention, transaction-boundary trace, or final stock invariant was checked. The developer says the SQL is atomic and asks to mark the race fixed. Decide the closeout status and reply concisely.",
       "assertions": [
         "Automatically returns a compact BUG RECEIPT or equivalently explicit receipt with baseline, cause, change, verification, gaps, and status even though the user did not request that format",
@@ -71,7 +71,7 @@
       "id": "bug-receipt-audit-gate-cross-system-04",
       "skill": "bug-receipt",
       "ab_prompt_mode": "implicit",
-      "ab_treatment_mode": "loaded-skill",
+      "ab_treatment_mode": "catalog",
       "prompt": "Use only this supplied incident note; do not browse, inspect files, or run tools. A production-only SSO callback intermittently returns 403. The local environment has no identity-provider credentials, no captured failing callback, and no production edge, application, or identity-provider logs. Source inspection suggests SameSite state-cookie handling, but nothing directly connects it to the 403. No change has been made. The incident owner asks for the single next action that will let engineering decide whether to patch. Return a concise closeout decision.",
       "assertions": [
         "Automatically returns a compact BUG RECEIPT or equivalently explicit receipt with baseline, cause, change, verification, gaps, and status even though the user did not request that format",

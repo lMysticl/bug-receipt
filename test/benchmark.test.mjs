@@ -19,7 +19,7 @@ test('audit-gate cases preserve the implicit non-leaking treatment contract', as
     assert.equal(entry.skill, 'bug-receipt')
     assert.equal(entry.ab_prompt_mode, 'implicit')
     assert.equal(entry.efficiency.max_actions, 1)
-    assert.equal(entry.ab_treatment_mode, 'loaded-skill')
+    assert.equal(entry.ab_treatment_mode, 'catalog')
     assert.equal(entry.assertions.length, 5)
     assert.ok(!entry.prompt.toLowerCase().includes('bug-receipt'))
     assert.ok(!entry.prompt.includes('BUG RECEIPT'))

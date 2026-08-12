@@ -16,7 +16,7 @@ This benchmark does **not** test whether the model can write generally good debu
 - **Skills OFF:** identical candidate prompt with skill instructions disabled.
 - Both arms use the same implicit-routing wrapper. It does not name `bug-receipt`, request a BUG RECEIPT, or otherwise disclose the target workflow.
 - ON must perform exactly one successful read-only load of the selected `bug-receipt/SKILL.md`; OFF must perform zero actions. Project files and every other tool action remain forbidden.
-- Same Codex model, `xhigh` reasoning effort, fast service tier, read-only sandbox, and zero candidate actions.
+- Same Codex model, `xhigh` reasoning effort, fast service tier, and read-only sandbox. ON may perform only its single skill-instruction read; OFF must perform zero actions.
 - Counterbalanced treatment order and blind assertion judges.
 
 The four exact prompts and assertions are frozen in [audit-gate-cases.json](./audit-gate-cases.json). Any later wording change creates a new cohort rather than replacing this result.
@@ -25,13 +25,13 @@ The four exact prompts and assertions are frozen in [audit-gate-cases.json](./au
 
 The first execution at 2026-08-12T00:24Z did not implement the declared discovery treatment: the legacy candidate wrapper inserted `Use $bug-receipt` into both ON and OFF prompts. That leaked the product identity and invalidated the run for this decision. Its raw output is retained in quarantine.
 
-The user prompts and assertions remain byte-for-byte unchanged. `ab_prompt_mode: natural` removes the target skill name from both candidate prompts; only the system skill surface differs. The corrected harness, case metadata, and revised discovery description produce new fingerprints, so the next execution is a changed-input run rather than an identical retry.
+The user prompts and assertions remain byte-for-byte unchanged. `ab_prompt_mode: implicit` removes the target skill name from both candidate prompts while permitting one selected-skill instruction read in ON. The corrected harness, case metadata, and revised discovery description produce new fingerprints, so the next execution is a changed-input run rather than an identical retry.
 
 Each case declares `"ab_prompt_mode": "implicit"`; a harness that ignores or rejects this field is not protocol-compatible.
 
 A second diagnostic at 2026-08-12T00:35Z exposed only the catalog metadata, not the selected `SKILL.md` body, because the zero-action contract prevented a model-side file read. It measured 4/4 routing and 45% versus 30% assertion accuracy, but it is not the declared instruction-loaded treatment and does not satisfy the success gate.
 
-The final treatment therefore decomposes the real workflow into two separately measured stages: normal catalog routing, followed by an isolated loaded-skill A/B. For task quality, both arms disable the general catalog; ON receives the exact selected `SKILL.md` as developer instructions and OFF does not. The natural user prompt remains byte-identical. Each case declares `"ab_treatment_mode": "loaded-skill"`, and the harness fingerprints the skill body, treatment surfaces, and harness implementation.
+The final treatment exercises the real runtime path. ON sees the normal skill catalog, selects Bug Receipt, and must perform exactly one read-only load of its `SKILL.md`. OFF receives the byte-identical implicit user-task wrapper with the skill catalog disabled and must perform zero actions. Each case declares `"ab_treatment_mode": "catalog"`; the harness fingerprints the skill body, treatment surfaces, and harness implementation and rejects an ON read of the wrong file or any extra action.
 
 ## Dimensions
 
