@@ -1,6 +1,6 @@
 {
   "name": "bug-receipt",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Portable Agent Skill for evidence-backed bug fixes, root-cause analysis, and verifiable coding-agent results.",
   "type": "module",
   "bin": {
