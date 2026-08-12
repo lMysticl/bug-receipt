@@ -1,8 +1,8 @@
 # Audit-gate benchmark protocol
 
-Revision 2 pre-registered on 2026-08-12 before its candidate execution.
+Revision 3 pre-registered on 2026-08-12 before its candidate execution.
 
-Revision 1 used a natural prompt but did not prove that the ON candidate loaded the selected `SKILL.md`; it measured description-level behavior and is retained only as a diagnostic. Revision 2 requires a machine-checked, single read of the selected skill instructions in ON and zero actions in OFF.
+Revision 1 exposed the normal catalog but did not prove that the task candidate loaded the selected `SKILL.md`; it measured description-level behavior and is retained only as a diagnostic. Revision 2 required the candidate to load the skill, but privacy-minimal action telemetry could not prove which file was read. Revision 3 separates the activation probe from the task-output treatment and machine-checks that only ON contains the selected full skill instructions.
 
 ## Decision
 
@@ -12,11 +12,11 @@ This benchmark does **not** test whether the model can write generally good debu
 
 ## Treatments
 
-- **Skills ON:** normal isolated skill discovery and instructions.
-- **Skills OFF:** identical candidate prompt with skill instructions disabled.
-- Both arms use the same implicit-routing wrapper. It does not name `bug-receipt`, request a BUG RECEIPT, or otherwise disclose the target workflow.
-- ON must perform exactly one successful read-only load of the selected `bug-receipt/SKILL.md`; OFF must perform zero actions. Project files and every other tool action remain forbidden.
-- Same Codex model, `xhigh` reasoning effort, fast service tier, and read-only sandbox. ON may perform only its single skill-instruction read; OFF must perform zero actions.
+- **Skills ON:** the exact selected `bug-receipt/SKILL.md` body is injected as developer instructions by the trusted harness.
+- **Skills OFF:** the same candidate prompt without those instructions.
+- Both arms use the same natural user-task wrapper. It does not name `bug-receipt`, request a BUG RECEIPT, or otherwise disclose the target workflow.
+- The independent routing probe uses the natural request and must select `bug-receipt`. In the task-output pair, ON receives that selected `SKILL.md` as developer instructions while the skill catalog is disabled in both arms; OFF receives neither. Prompt-surface markers prove the treatment difference without candidate file reads.
+- Same Codex model, `xhigh` reasoning effort, fast service tier, and read-only sandbox. Both candidates must perform zero actions.
 - Counterbalanced treatment order and blind assertion judges.
 
 The four exact prompts and assertions are frozen in [audit-gate-cases.json](./audit-gate-cases.json). Any later wording change creates a new cohort rather than replacing this result.
@@ -25,13 +25,15 @@ The four exact prompts and assertions are frozen in [audit-gate-cases.json](./au
 
 The first execution at 2026-08-12T00:24Z did not implement the declared discovery treatment: the legacy candidate wrapper inserted `Use $bug-receipt` into both ON and OFF prompts. That leaked the product identity and invalidated the run for this decision. Its raw output is retained in quarantine.
 
-The user prompts and assertions remain byte-for-byte unchanged. `ab_prompt_mode: implicit` removes the target skill name from both candidate prompts while permitting one selected-skill instruction read in ON. The corrected harness, case metadata, and revised discovery description produce new fingerprints, so the next execution is a changed-input run rather than an identical retry.
+The user prompts and assertions remain byte-for-byte unchanged. The corrected harness, case metadata, and treatment implementation produce new fingerprints, so each correction is a changed-input run rather than an identical retry.
 
-Each case declares `"ab_prompt_mode": "implicit"`; a harness that ignores or rejects this field is not protocol-compatible.
+Each case declares `"ab_prompt_mode": "natural"` and `"ab_treatment_mode": "loaded-skill"`; a harness that ignores or rejects either field is not protocol-compatible.
 
 A second diagnostic at 2026-08-12T00:35Z exposed only the catalog metadata, not the selected `SKILL.md` body, because the zero-action contract prevented a model-side file read. It measured 4/4 routing and 45% versus 30% assertion accuracy, but it is not the declared instruction-loaded treatment and does not satisfy the success gate.
 
-The final treatment exercises the real runtime path. ON sees the normal skill catalog, selects Bug Receipt, and must perform exactly one read-only load of its `SKILL.md`. OFF receives the byte-identical implicit user-task wrapper with the skill catalog disabled and must perform zero actions. Each case declares `"ab_treatment_mode": "catalog"`; the harness fingerprints the skill body, treatment surfaces, and harness implementation and rejects an ON read of the wrong file or any extra action.
+A third diagnostic at 2026-08-12T00:46Z let ON select and read a skill at runtime. It measured 4/4 routing and 95% versus 25% assertion accuracy, but the stored action fingerprint could not prove that ON read the selected `SKILL.md`, and one OFF candidate acted. It is strong diagnostic evidence, not the final protocol-valid result.
+
+The final treatment keeps real discovery as a separate routing probe. For task-output pairs, both arms have the catalog disabled and receive the byte-identical natural wrapper. The trusted harness injects the exact fingerprinted `SKILL.md` body only into ON, marks that surface, and requires zero candidate actions in both arms. Each case declares `"ab_treatment_mode": "loaded-skill"`; the harness fingerprints the skill body, treatment surfaces, cases, runtime, and implementation.
 
 ## Dimensions
 
@@ -57,7 +59,7 @@ If the gate fails, publish the failure and do not use the benchmark as marketing
 
 ## Budget
 
-The prior passing paired report is the token baseline. Its largest comparable candidate observation was 24,984 uncached input tokens, 376 response tokens, and 50,447 case-total tokens. The frozen cases use ceilings of 31,200, 470, and 63,000 respectively: no more than 25% headroom. ON permits one read-only skill-instruction load; OFF remains at zero actions.
+The prior passing paired report is the token baseline. Its largest comparable candidate observation was 24,984 uncached input tokens, 376 response tokens, and 50,447 case-total tokens with zero actions. The frozen cases use ceilings of 31,200, 470, and 63,000 respectively: no more than 25% headroom.
 
 ## Interpretation limits
 
