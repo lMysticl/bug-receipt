@@ -1,6 +1,8 @@
 # Audit-gate benchmark protocol
 
-Pre-registered on 2026-08-12 before candidate execution.
+Revision 2 pre-registered on 2026-08-12 before its candidate execution.
+
+Revision 1 used a natural prompt but did not prove that the ON candidate loaded the selected `SKILL.md`; it measured description-level behavior and is retained only as a diagnostic. Revision 2 requires a machine-checked, single read of the selected skill instructions in ON and zero actions in OFF.
 
 ## Decision
 
@@ -12,7 +14,8 @@ This benchmark does **not** test whether the model can write generally good debu
 
 - **Skills ON:** normal isolated skill discovery and instructions.
 - **Skills OFF:** identical candidate prompt with skill instructions disabled.
-- Both arms use the same natural user-task wrapper. It does not name `bug-receipt`, request a BUG RECEIPT, or otherwise disclose the target workflow.
+- Both arms use the same implicit-routing wrapper. It does not name `bug-receipt`, request a BUG RECEIPT, or otherwise disclose the target workflow.
+- ON must perform exactly one successful read-only load of the selected `bug-receipt/SKILL.md`; OFF must perform zero actions. Project files and every other tool action remain forbidden.
 - Same Codex model, `xhigh` reasoning effort, fast service tier, read-only sandbox, and zero candidate actions.
 - Counterbalanced treatment order and blind assertion judges.
 
@@ -24,7 +27,11 @@ The first execution at 2026-08-12T00:24Z did not implement the declared discover
 
 The user prompts and assertions remain byte-for-byte unchanged. `ab_prompt_mode: natural` removes the target skill name from both candidate prompts; only the system skill surface differs. The corrected harness, case metadata, and revised discovery description produce new fingerprints, so the next execution is a changed-input run rather than an identical retry.
 
-Each case declares `"ab_prompt_mode": "natural"`; a harness that ignores or rejects this field is not protocol-compatible.
+Each case declares `"ab_prompt_mode": "implicit"`; a harness that ignores or rejects this field is not protocol-compatible.
+
+A second diagnostic at 2026-08-12T00:35Z exposed only the catalog metadata, not the selected `SKILL.md` body, because the zero-action contract prevented a model-side file read. It measured 4/4 routing and 45% versus 30% assertion accuracy, but it is not the declared instruction-loaded treatment and does not satisfy the success gate.
+
+The final treatment therefore decomposes the real workflow into two separately measured stages: normal catalog routing, followed by an isolated loaded-skill A/B. For task quality, both arms disable the general catalog; ON receives the exact selected `SKILL.md` as developer instructions and OFF does not. The natural user prompt remains byte-identical. Each case declares `"ab_treatment_mode": "loaded-skill"`, and the harness fingerprints the skill body, treatment surfaces, and harness implementation.
 
 ## Dimensions
 
@@ -50,7 +57,7 @@ If the gate fails, publish the failure and do not use the benchmark as marketing
 
 ## Budget
 
-The prior passing paired report is the measurement baseline. Its largest comparable candidate observation was 24,984 uncached input tokens, 376 response tokens, and 50,447 case-total tokens with zero actions. The frozen cases use ceilings of 31,200, 470, and 63,000 respectively: no more than 25% headroom.
+The prior passing paired report is the token baseline. Its largest comparable candidate observation was 24,984 uncached input tokens, 376 response tokens, and 50,447 case-total tokens. The frozen cases use ceilings of 31,200, 470, and 63,000 respectively: no more than 25% headroom. ON permits one read-only skill-instruction load; OFF remains at zero actions.
 
 ## Interpretation limits
 
