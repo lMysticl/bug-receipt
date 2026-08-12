@@ -1,8 +1,8 @@
 # Audit-gate benchmark protocol
 
-Revision 4 pre-registered on 2026-08-12 before its candidate execution.
+Revision 5 pre-registered on 2026-08-12 before its candidate execution.
 
-Revision 1 exposed the normal catalog but did not prove that the task candidate loaded the selected `SKILL.md`; it measured description-level behavior and is retained only as a diagnostic. Revision 2 required the candidate to load the skill, but privacy-minimal action telemetry could not prove which file was read. Revision 3 separated the activation probe from the task-output treatment and machine-checked the instruction surface. Revision 4 keeps that valid treatment and evaluates a new candidate skill revision after Revision 3 exposed a product-behavior failure.
+Revision 1 exposed the normal catalog but did not prove that the task candidate loaded the selected `SKILL.md`; it measured description-level behavior and is retained only as a diagnostic. Revision 2 required the candidate to load the skill, but privacy-minimal action telemetry could not prove which file was read. Revision 3 separated the activation probe from the task-output treatment. Revision 4 evaluated a strengthened candidate skill. Revision 5 corrects the instruction transport while keeping the Revision 4 skill and frozen task cohort unchanged.
 
 ## Decision
 
@@ -35,7 +35,9 @@ A third diagnostic at 2026-08-12T00:46Z let ON select and read a skill at runtim
 
 Revision 3 at 2026-08-12T00:55Z was treatment-valid but failed the success gate: ON scored 5/20 (25%) and OFF 4/20 (20%). The failure was product-relevant: the selected skill usually returned ordinary closeout prose instead of its promised complete receipt. Revision 4 changes only the generic candidate skill instructions to make the complete receipt mandatory for every closeout decision, including concise requests. The four user prompts and 20 assertions remain unchanged.
 
-The final treatment keeps real discovery as a separate routing probe. For task-output pairs, both arms have the catalog disabled and receive the byte-identical natural wrapper. The trusted harness injects the exact fingerprinted `SKILL.md` body only into ON, marks that surface, and requires zero candidate actions in both arms. Each case declares `"ab_treatment_mode": "loaded-skill"`; the harness fingerprints the skill body, treatment surfaces, cases, runtime, and implementation. Revision 4 is admissible as new input because the skill-body fingerprint changes; an identical retry of either revision remains forbidden.
+Revision 4 at 2026-08-12T01:00Z also failed: ON and OFF each scored 5/20 (25%). Inspection found that the harness flattened the selected skill into a TOML literal and wrapped it as quoted XML-like data inside the developer override. The prompt marker proved presence, but not that the body retained a direct instruction boundary. Revision 5 injects the same skill body directly as a TOML basic string with native newlines and no data wrapper. A separate control confirmed that this Codex runtime obeys `developer_instructions`; the prompts, assertions, skill body, model, effort, budgets, and OFF treatment remain unchanged.
+
+The final treatment keeps real discovery as a separate routing probe. For task-output pairs, both arms have the catalog disabled and receive the byte-identical natural wrapper. The trusted harness injects the exact fingerprinted `SKILL.md` body only into ON, marks that surface, and requires zero candidate actions in both arms. Each case declares `"ab_treatment_mode": "loaded-skill"`; the harness fingerprints the skill body, treatment surfaces, cases, runtime, and implementation. Revision 5 is admissible as new input because the harness fingerprint and instruction transport change; an identical retry of any revision remains forbidden.
 
 ## Dimensions
 
