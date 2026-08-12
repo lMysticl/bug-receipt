@@ -1,7 +1,7 @@
 interface:
   display_name: "Bug Receipt"
-  short_description: "Prove bug fixes with an auditable receipt"
-  default_prompt: "Use $bug-receipt to reproduce this defect, fix the responsible cause, run decisive verification, and return an evidence-backed status."
+  short_description: "Close defects with an auditable proof receipt"
+  default_prompt: "Use $bug-receipt to decide whether this defect can be closed, label the evidence source, run only decisive proof, and return VERIFIED, PARTIAL, or BLOCKED."
 
 policy:
   allow_implicit_invocation: true

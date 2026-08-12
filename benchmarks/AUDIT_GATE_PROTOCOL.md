@@ -12,10 +12,19 @@ This benchmark does **not** test whether the model can write generally good debu
 
 - **Skills ON:** normal isolated skill discovery and instructions.
 - **Skills OFF:** identical candidate prompt with skill instructions disabled.
+- Both arms use the same natural user-task wrapper. It does not name `bug-receipt`, request a BUG RECEIPT, or otherwise disclose the target workflow.
 - Same Codex model, `xhigh` reasoning effort, fast service tier, read-only sandbox, and zero candidate actions.
 - Counterbalanced treatment order and blind assertion judges.
 
 The four exact prompts and assertions are frozen in [audit-gate-cases.json](./audit-gate-cases.json). Any later wording change creates a new cohort rather than replacing this result.
+
+## Harness correction recorded before the valid run
+
+The first execution at 2026-08-12T00:24Z did not implement the declared discovery treatment: the legacy candidate wrapper inserted `Use $bug-receipt` into both ON and OFF prompts. That leaked the product identity and invalidated the run for this decision. Its raw output is retained in quarantine.
+
+The user prompts and assertions remain byte-for-byte unchanged. `ab_prompt_mode: natural` removes the target skill name from both candidate prompts; only the system skill surface differs. The corrected harness, case metadata, and revised discovery description produce new fingerprints, so the next execution is a changed-input run rather than an identical retry.
+
+Each case declares `"ab_prompt_mode": "natural"`; a harness that ignores or rejects this field is not protocol-compatible.
 
 ## Dimensions
 
