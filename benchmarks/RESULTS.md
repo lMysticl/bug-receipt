@@ -13,9 +13,9 @@ Measured on 2026-08-12. The evidence below is intentionally narrower than a mark
 | v1.4 robustness quality lift | +65 percentage points | The separately pre-registered 18/20 gate passed. |
 | v1.4 evidence controls | 4/4 sources; 0 secret leaks; 0 safety regressions | ON attributed supplied evidence and did not echo either supplied secret literal. |
 | v1.4 paired significance | McNemar p = 0.000244 | Thirteen assertions passed only in ON and none only in OFF in this bounded sample. |
-| v1.4 candidate total tokens, ON vs OFF | 61,864 vs 57,512; +7.6% | The structured workflow has a small raw total-token premium. |
-| v1.4 cost per passed assertion | 3,436.9 vs 11,502.4 total tokens; -70.1% | The quality gain more than offsets raw token overhead on this cohort. |
-| v1.4 latency sum, ON vs OFF | 38.78 s vs 26.31 s; +47.4% | The structured receipt was slower in this single observation. |
+| v1.4 candidate total tokens, ON vs OFF | 61,983 vs 57,544; +7.7% | The structured workflow has a small raw total-token premium. |
+| v1.4 cost per passed assertion | 3,443.5 vs 11,508.8 total tokens; -70.1% | The quality gain more than offsets raw token overhead on this cohort. |
+| v1.4 latency sum, ON vs OFF | 36.18 s vs 34.83 s; +3.9% | The structured receipt was slightly slower in this single observation. |
 | Earlier audit-gate Skills ON | 18/20 assertions; 90% | The earlier cohort covered UI pressure, complete API proof, a race, and a cross-system blocker. |
 | Earlier audit-gate Skills OFF | 7/20 assertions; 35% | The earlier measured lift was +55 percentage points. |
 | Earlier audit-gate evidence safety | 0 regressions | ON never lost a status, evidence-classification, or anti-fabrication assertion that OFF passed. |
@@ -25,7 +25,7 @@ Measured on 2026-08-12. The evidence below is intentionally narrower than a mark
 | Earlier audit-gate uncached input per pass | 914.9 vs 976.0; -6.3% | Effective uncached cost per successful requirement improved slightly. |
 | Earlier audit-gate latency, ON vs OFF | 31.17 s vs 25.01 s; +24.6% | The structured receipt remains slower in this single observation. |
 
-The defensible conclusion is: Bug Receipt 1.4 passed its bounded robustness gate and materially improved closeout accuracy and cost per satisfied requirement over the no-skill arm. Its two misses were narrow: one recovery closeout omitted that reproduction must be safe, and one diagnosis-only closeout did not explicitly name the empty-row guard before dereferencing `rows[0]`.
+The defensible conclusion is: Bug Receipt 1.4 passed its bounded robustness gate and materially improved closeout accuracy and cost per satisfied requirement over the no-skill arm. Its two misses were narrow: one security closeout omitted an explicit redaction-boundary sentence, and one recovery closeout omitted that reproduction must be safe.
 
 The earlier audit-gate cohort remains separate and is not pooled into the v1.4 result. It scored 18/20 ON versus 7/20 OFF (+55 points, `p = 0.003418`), with 4/4 receipts, zero safety regressions, and zero candidate actions. Its two misses concerned a non-negative stock invariant and a complete callback evidence package.
 
@@ -57,6 +57,8 @@ The earlier three-case catalog-wide comparison remains in [model-ab-gpt-5.6-sol-
 ## Quarantined diagnostics
 
 Earlier attempts remain under [results/quarantine](./results/quarantine) and are excluded from the headline result. They include an explicit-skill leak into both arms, a metadata-only treatment, an implicit-read treatment whose action telemetry could not prove which file was loaded, and two instruction-transport failures. These failures drove the final isolation controls; none is counted as a passing run.
+
+Two behaviorally passing robustness runs for intermediate discovery descriptions are also preserved there. They are excluded because later static catalog checks changed the skill hash; only the release-matching fingerprint is promoted above.
 
 The older external SSO holdout attempts also remain there. Their failure to request the complete correlated authentication evidence package informed the cross-system contract, but they are not part of the four-case primary cohort.
 

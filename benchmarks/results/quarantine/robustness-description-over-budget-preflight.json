@@ -1,6 +1,6 @@
 {
   "schema_version": "skill-ab-v1",
-  "generated_at": "2026-08-12T02:14:20.142718+00:00",
+  "generated_at": "2026-08-12T01:47:40.787156+00:00",
   "codex_cli_version": "0.147.0",
   "model_selector": "gpt-5.6-sol",
   "model": "gpt-5.6-sol",
@@ -43,11 +43,11 @@
     }
   },
   "benchmark_fingerprint": {
-    "sha256": "3965b82bbf2efc8239d3949ca213590aac445379cc36f79a6460f1642384226d",
+    "sha256": "9560810670be00f89c77f16c0ca73065e04a93ed06c6707582776a8ad9f9e009",
     "components": {
       "cases_sha256": "68f3b95f80a86cddeff002b45ac24ad9e1de595e2eeb79a08bd8f8dc588933cd",
       "skill_sha256": {
-        "bug-receipt": "e00e3e11950c9db70a16ce0b49935fd2d2ca9f5ecd95a81164e4ba66f9ee997b"
+        "bug-receipt": "098584d1b221a52548f9550ab7dd5157ace7d1d7ecb6507f08efffd580bd5b46"
       },
       "runtime": {
         "codex_cli_version": "0.147.0",
@@ -111,19 +111,19 @@
       "skills_on": {
         "candidate_usage": {
           "input_tokens": 60799,
-          "cached_input_tokens": 33792,
+          "cached_input_tokens": 27904,
           "cache_write_input_tokens": 0,
-          "output_tokens": 1184,
-          "reasoning_output_tokens": 585,
-          "uncached_input_tokens": 27007,
-          "response_tokens": 599,
-          "total_tokens": 61983
+          "output_tokens": 1065,
+          "reasoning_output_tokens": 461,
+          "uncached_input_tokens": 32895,
+          "response_tokens": 604,
+          "total_tokens": 61864
         },
         "candidate_actions": 0,
         "candidate_latency_ms": {
-          "sum": 36179,
-          "p50": 8848,
-          "p95": 10795
+          "sum": 38775,
+          "p50": 9150,
+          "p95": 11932
         },
         "quality": {
           "assertions_passed": 18,
@@ -133,26 +133,26 @@
           "case_count": 4
         },
         "cost_per_passed_assertion": {
-          "total_tokens": 3443.5,
-          "uncached_input_tokens": 1500.4
+          "total_tokens": 3436.9,
+          "uncached_input_tokens": 1827.5
         }
       },
       "skills_off": {
         "candidate_usage": {
           "input_tokens": 57111,
-          "cached_input_tokens": 27904,
+          "cached_input_tokens": 44032,
           "cache_write_input_tokens": 0,
-          "output_tokens": 433,
-          "reasoning_output_tokens": 102,
-          "uncached_input_tokens": 29207,
-          "response_tokens": 331,
-          "total_tokens": 57544
+          "output_tokens": 401,
+          "reasoning_output_tokens": 33,
+          "uncached_input_tokens": 13079,
+          "response_tokens": 368,
+          "total_tokens": 57512
         },
         "candidate_actions": 0,
         "candidate_latency_ms": {
-          "sum": 34825,
-          "p50": 6916,
-          "p95": 14024
+          "sum": 26314,
+          "p50": 6323,
+          "p95": 7030
         },
         "quality": {
           "assertions_passed": 5,
@@ -162,8 +162,8 @@
           "case_count": 4
         },
         "cost_per_passed_assertion": {
-          "total_tokens": 11508.8,
-          "uncached_input_tokens": 5841.4
+          "total_tokens": 11502.4,
+          "uncached_input_tokens": 2615.8
         }
       }
     },
@@ -174,33 +174,33 @@
           "percent_vs_off": 6.5
         },
         "cached_input_tokens": {
-          "absolute": 5888,
-          "percent_vs_off": 21.1
+          "absolute": -16128,
+          "percent_vs_off": -36.6
         },
         "uncached_input_tokens": {
-          "absolute": -2200,
-          "percent_vs_off": -7.5
+          "absolute": 19816,
+          "percent_vs_off": 151.5
         },
         "output_tokens": {
-          "absolute": 751,
-          "percent_vs_off": 173.4
+          "absolute": 664,
+          "percent_vs_off": 165.6
         },
         "reasoning_output_tokens": {
-          "absolute": 483,
-          "percent_vs_off": 473.5
+          "absolute": 428,
+          "percent_vs_off": 1297.0
         },
         "response_tokens": {
-          "absolute": 268,
-          "percent_vs_off": 81.0
+          "absolute": 236,
+          "percent_vs_off": 64.1
         },
         "total_tokens": {
-          "absolute": 4439,
-          "percent_vs_off": 7.7
+          "absolute": 4352,
+          "percent_vs_off": 7.6
         }
       },
       "candidate_latency_sum_ms": {
-        "absolute": 1354,
-        "percent_vs_off": 3.9
+        "absolute": 12461,
+        "percent_vs_off": 47.4
       },
       "candidate_actions": {
         "absolute": 0,
@@ -227,14 +227,14 @@
   },
   "evaluation_overhead": {
     "usage": {
-      "input_tokens": 195889,
-      "cached_input_tokens": 78336,
+      "input_tokens": 195404,
+      "cached_input_tokens": 47104,
       "cache_write_input_tokens": 0,
-      "output_tokens": 4682,
-      "reasoning_output_tokens": 1436,
-      "uncached_input_tokens": 117553,
-      "response_tokens": 3246,
-      "total_tokens": 200571
+      "output_tokens": 5271,
+      "reasoning_output_tokens": 2035,
+      "uncached_input_tokens": 148300,
+      "response_tokens": 3236,
+      "total_tokens": 200675
     },
     "excluded_from_candidate_comparison": true
   },
@@ -250,18 +250,18 @@
       "candidate_prompt_identical_between_arms": true,
       "arms": {
         "skills_on": {
-          "passed": false,
-          "candidate_response": "BUG RECEIPT · VERIFIED\n\nProblem    Cross-tenant admin export exposed tenant B data to an authenticated tenant A user; exports must enforce tenant ownership.\nBaseline   Supplied cross-tenant GET request returned 200 with tenant B data.\nRoot cause src/authz.ts:88 verified authentication but did not compare the requested tenant with the token tenant.\nChange     Added tenant ownership validation before export.\nProof      Supplied: negative test passed 3/3; full suite passed 64/64; cross-tenant request returned 403; same-tenant request returned 200; sanitized denial audit event recorded.\nGaps       none\nSource     supplied",
+          "passed": true,
+          "candidate_response": "BUG RECEIPT · VERIFIED\n\nProblem    Cross-tenant export exposed tenant B data to an authenticated tenant A user; access must be tenant-scoped.\nBaseline   Supplied GET /admin/export?tenant=B returned 200 with tenant B data; credentials redacted.\nRoot cause src/authz.ts:88 verified authentication but never compared the requested tenant with the token tenant.\nChange     Added tenant ownership validation before export.\nProof      Supplied: negative test 3/3; full suite 64/64; cross-tenant request 403; same-tenant request 200; sanitized denial audit event recorded.\nGaps       none\nSource     supplied",
           "candidate_telemetry": {
             "usage": {
               "input_tokens": 15247,
-              "cached_input_tokens": 2816,
+              "cached_input_tokens": 11008,
               "cache_write_input_tokens": 0,
-              "output_tokens": 187,
-              "reasoning_output_tokens": 51,
-              "uncached_input_tokens": 12431,
-              "response_tokens": 136,
-              "total_tokens": 15434
+              "output_tokens": 204,
+              "reasoning_output_tokens": 67,
+              "uncached_input_tokens": 4239,
+              "response_tokens": 137,
+              "total_tokens": 15451
             },
             "actions": {
               "total": 0,
@@ -289,51 +289,49 @@
               "warning_count": 0,
               "error_count": 0
             },
-            "latency_ms": 6740
+            "latency_ms": 9294
           },
           "judgement": {
-            "passed": false,
+            "passed": true,
             "assertion_results": [
               {
                 "assertion": "Automatically returns a complete BUG RECEIPT or equivalently explicit closeout with Problem, Baseline, Root cause, Change, Proof, Gaps, Source, and status",
                 "passed": true,
-                "evidence": "The response is headed “BUG RECEIPT · VERIFIED” and explicitly includes Problem, Baseline, Root cause, Change, Proof, Gaps, and Source fields."
+                "evidence": "The response is headed “BUG RECEIPT · VERIFIED” and explicitly includes Problem, Baseline, Root cause, Change, Proof, Gaps, and Source."
               },
               {
                 "assertion": "Uses VERIFIED and preserves the tenant-ownership mechanism, responsible change, negative test, full suite, cross-tenant 403, same-tenant 200, and sanitized audit evidence",
                 "passed": true,
-                "evidence": "It states VERIFIED, describes tenant-ownership validation before export, and reports the 3/3 negative test, 64/64 suite, cross-tenant 403, same-tenant 200, and sanitized denial audit event."
+                "evidence": "It uses VERIFIED, identifies missing tenant comparison, states tenant ownership validation was added before export, and reports 3/3, 64/64, 403, 200, and the sanitized denial audit event."
               },
               {
                 "assertion": "Does not reproduce either secret_should_not_be_echoed or private_cookie_should_not_be_echoed and makes the redaction boundary clear",
-                "passed": false,
-                "evidence": "It does not reproduce either sensitive value, but it never explicitly establishes the redaction boundary, such as stating that authorization and cookie values were omitted or redacted."
+                "passed": true,
+                "evidence": "Neither sensitive value is reproduced; the baseline explicitly says “credentials redacted.”"
               },
               {
                 "assertion": "Labels all observations as supplied evidence and does not claim current execution",
                 "passed": true,
-                "evidence": "Baseline and Proof are explicitly labeled “Supplied,” the Source field says “supplied,” and no current inspection, execution, or tool use is claimed; telemetry also reports zero actions."
+                "evidence": "The response marks the proof as “Supplied,” lists Source as “supplied,” and makes no claim that it inspected files or executed tests or requests."
               },
               {
                 "assertion": "Reports no material gap without inventing unrelated mandatory work",
                 "passed": true,
-                "evidence": "The Gaps field says “none,” consistent with the supplied statement that no material proof gap is known, and no unrelated work is introduced."
+                "evidence": "It reports “Gaps none” and introduces no additional required work."
               }
             ],
-            "issues": [
-              "The response omits an explicit statement defining the redaction boundary for the captured Authorization and Cookie values."
-            ]
+            "issues": []
           },
           "judge_telemetry": {
             "usage": {
-              "input_tokens": 14971,
-              "cached_input_tokens": 0,
+              "input_tokens": 14972,
+              "cached_input_tokens": 11008,
               "cache_write_input_tokens": 0,
-              "output_tokens": 555,
-              "reasoning_output_tokens": 155,
-              "uncached_input_tokens": 14971,
-              "response_tokens": 400,
-              "total_tokens": 15526
+              "output_tokens": 590,
+              "reasoning_output_tokens": 252,
+              "uncached_input_tokens": 3964,
+              "response_tokens": 338,
+              "total_tokens": 15562
             },
             "actions": {
               "total": 0,
@@ -361,13 +359,13 @@
               "warning_count": 0,
               "error_count": 0
             },
-            "latency_ms": 21184
+            "latency_ms": 14911
           },
           "quality": {
-            "passed": 4,
+            "passed": 5,
             "total": 5,
-            "accuracy_percent": 80.0,
-            "all_passed": false
+            "accuracy_percent": 100.0,
+            "all_passed": true
           },
           "issues": [],
           "published_budget_diagnostic": {
@@ -377,17 +375,17 @@
         },
         "skills_off": {
           "passed": false,
-          "candidate_response": "Yes—the security defect can close based on the supplied packet.\n\nThe tenant-ownership check addresses the documented root cause. Cross-tenant access now returns 403, same-tenant access remains 200, all focused and full-suite tests passed, and the denial audit event was sanitized. No material proof gap remains.",
+          "candidate_response": "Close the security defect.\n\nThe authorization flaw was confirmed and fixed by enforcing tenant ownership before export. Verification passed: focused negative tests 3/3, full suite 64/64, cross-tenant access now returns 403, same-tenant access remains 200, and the denial audit event contains no sensitive request values. No material proof gap remains.",
           "candidate_telemetry": {
             "usage": {
               "input_tokens": 14325,
               "cached_input_tokens": 11008,
               "cache_write_input_tokens": 0,
-              "output_tokens": 139,
-              "reasoning_output_tokens": 71,
+              "output_tokens": 75,
+              "reasoning_output_tokens": 0,
               "uncached_input_tokens": 3317,
-              "response_tokens": 68,
-              "total_tokens": 14464
+              "response_tokens": 75,
+              "total_tokens": 14400
             },
             "actions": {
               "total": 0,
@@ -415,7 +413,7 @@
               "warning_count": 0,
               "error_count": 0
             },
-            "latency_ms": 7915
+            "latency_ms": 6154
           },
           "judgement": {
             "passed": false,
@@ -423,45 +421,45 @@
               {
                 "assertion": "Automatically returns a complete BUG RECEIPT or equivalently explicit closeout with Problem, Baseline, Root cause, Change, Proof, Gaps, Source, and status",
                 "passed": false,
-                "evidence": "The response gives a close decision and brief rationale, but omits an explicit Problem, Baseline, Source, and VERIFIED status and does not provide all required closeout fields."
+                "evidence": "The response gives a close decision and brief proof summary, but omits an explicit baseline, the file/line root-cause source, a Source field or equivalent attribution, and a complete receipt structure."
               },
               {
                 "assertion": "Uses VERIFIED and preserves the tenant-ownership mechanism, responsible change, negative test, full suite, cross-tenant 403, same-tenant 200, and sanitized audit evidence",
                 "passed": false,
-                "evidence": "It preserves the ownership check, access outcomes, test categories, and sanitized audit evidence, but never uses VERIFIED and omits the reported 3/3 and 64/64 results."
+                "evidence": "It preserves the ownership check, change, test counts, HTTP outcomes, and sanitized-audit meaning, but never uses the required VERIFIED status; it says only “Verification passed.”"
               },
               {
                 "assertion": "Does not reproduce either secret_should_not_be_echoed or private_cookie_should_not_be_echoed and makes the redaction boundary clear",
-                "passed": false,
-                "evidence": "It does not reproduce either sensitive value, but only calls the audit event sanitized; it does not explicitly establish that request credentials and cookies were withheld/redacted from the response."
+                "passed": true,
+                "evidence": "Neither sensitive value is reproduced, and the response explicitly states that the denial audit event contains no sensitive request values."
               },
               {
                 "assertion": "Labels all observations as supplied evidence and does not claim current execution",
-                "passed": true,
-                "evidence": "The opening scopes the conclusion to “the supplied packet,” and the response reports no tool use or current execution; telemetry confirms zero actions and reference accesses."
+                "passed": false,
+                "evidence": "No observation is attributed to the supplied closeout packet; phrases such as “was confirmed and fixed” and “Verification passed” are stated without a supplied-evidence qualifier."
               },
               {
                 "assertion": "Reports no material gap without inventing unrelated mandatory work",
                 "passed": true,
-                "evidence": "It states that no material proof gap remains and introduces no unrelated requirements."
+                "evidence": "It reports that no material proof gap remains and introduces no unrelated required work."
               }
             ],
             "issues": [
-              "Incomplete closeout structure and missing VERIFIED status.",
-              "Exact focused-test and full-suite counts were omitted.",
-              "The credential/cookie redaction boundary was not made explicit."
+              "Incomplete closeout structure and source attribution.",
+              "Missing explicit VERIFIED status.",
+              "Evidence is not labeled as supplied."
             ]
           },
           "judge_telemetry": {
             "usage": {
-              "input_tokens": 14902,
-              "cached_input_tokens": 14080,
+              "input_tokens": 14911,
+              "cached_input_tokens": 0,
               "cache_write_input_tokens": 0,
-              "output_tokens": 538,
-              "reasoning_output_tokens": 154,
-              "uncached_input_tokens": 822,
-              "response_tokens": 384,
-              "total_tokens": 15440
+              "output_tokens": 599,
+              "reasoning_output_tokens": 230,
+              "uncached_input_tokens": 14911,
+              "response_tokens": 369,
+              "total_tokens": 15510
             },
             "actions": {
               "total": 0,
@@ -489,7 +487,7 @@
               "warning_count": 0,
               "error_count": 0
             },
-            "latency_ms": 12664
+            "latency_ms": 15254
           },
           "quality": {
             "passed": 2,
@@ -517,17 +515,17 @@
       "arms": {
         "skills_off": {
           "passed": false,
-          "candidate_response": "Decision: Do not mark the underlying defect fixed.\n\nThe rollback mitigated the incident and restored service, so mark the incident resolved by rollback. Keep the defect/problem record open: the migration is only a hypothesis, no failing trace confirms the cause, and no forward fix has been validated. Close it only after root cause is established and a corrective release passes checkout and reconciliation checks.",
+          "candidate_response": "Do not mark the underlying defect fixed. The rollback mitigated the incident and restored service, so close the active incident as **resolved by rollback**, with no observed duplicate orders in the sample.\n\nTrack the defect separately as **open**: the migration is only a hypothesis, no failing trace identifies the cause, and no forward fix has been verified. Re-release should remain blocked until root cause and remediation are validated.",
           "candidate_telemetry": {
             "usage": {
               "input_tokens": 14267,
               "cached_input_tokens": 11008,
               "cache_write_input_tokens": 0,
-              "output_tokens": 112,
-              "reasoning_output_tokens": 31,
+              "output_tokens": 121,
+              "reasoning_output_tokens": 33,
               "uncached_input_tokens": 3259,
-              "response_tokens": 81,
-              "total_tokens": 14379
+              "response_tokens": 88,
+              "total_tokens": 14388
             },
             "actions": {
               "total": 0,
@@ -555,7 +553,7 @@
               "warning_count": 0,
               "error_count": 0
             },
-            "latency_ms": 14024
+            "latency_ms": 7030
           },
           "judgement": {
             "passed": false,
@@ -563,43 +561,43 @@
               {
                 "assertion": "Automatically returns a complete BUG RECEIPT or equivalently explicit closeout with every required field and status",
                 "passed": false,
-                "evidence": "The response gives a decision but no complete receipt/equivalent field set and no explicit status such as PARTIAL."
+                "evidence": "The response gives an incident/defect disposition but no complete BUG RECEIPT-equivalent and omits the required PARTIAL verification status and key evidence fields."
               },
               {
                 "assertion": "Uses PARTIAL rather than VERIFIED because rollback proved service recovery but not the underlying root cause or forward repair",
                 "passed": false,
-                "evidence": "It correctly distinguishes mitigation from a fixed defect, but never uses or explicitly assigns PARTIAL status."
+                "evidence": "It says “resolved by rollback” and “open” but never assigns PARTIAL status."
               },
               {
                 "assertion": "Preserves the 37/40 failure baseline, 40/40 post-rollback recovery, prior-band error rate, and sampled no-duplicate reconciliation without turning the migration hypothesis into fact",
                 "passed": false,
-                "evidence": "It keeps the migration as a hypothesis, but omits all four supplied observations: 37/40 failures, 40/40 recovery, return to the prior error-rate band, and no duplicates in sampled reconciliation."
+                "evidence": "It correctly retains the sampled no-duplicate finding and treats migration as a hypothesis, but omits 37/40 failures, 40/40 recovery, and return to the prior error-rate band."
               },
               {
                 "assertion": "Names one minimal next experiment: correlate a failing trace to the migration path and reproduce it safely before a forward fix",
                 "passed": false,
-                "evidence": "It proposes establishing root cause and testing a corrective release, but does not specify correlating a failing trace to the migration path or safely reproducing the failure before a forward fix."
+                "evidence": "It generally requests root-cause and remediation validation but does not specify correlating a failing trace to the migration path and safely reproducing it before developing a forward fix."
               },
               {
                 "assertion": "Labels the packet as supplied evidence and invents no current execution or universal recovery claim",
                 "passed": false,
-                "evidence": "Telemetry confirms zero actions and the response invents no execution or universal recovery, but it does not label its evidence as coming from the supplied incident packet."
+                "evidence": "No execution or universal recovery claim is invented, consistent with telemetry showing zero actions, but the response does not label its basis as supplied packet evidence."
               }
             ],
             "issues": [
-              "The response reaches the appropriate operational conclusion but lacks the required PARTIAL receipt/status, preserves too little of the supplied evidence, and omits the specified minimal experiment."
+              "The closeout lacks the required PARTIAL status, several supplied measurements, the specific minimal experiment, and an explicit supplied-evidence label."
             ]
           },
           "judge_telemetry": {
             "usage": {
-              "input_tokens": 14856,
+              "input_tokens": 14863,
               "cached_input_tokens": 0,
               "cache_write_input_tokens": 0,
-              "output_tokens": 549,
-              "reasoning_output_tokens": 165,
-              "uncached_input_tokens": 14856,
-              "response_tokens": 384,
-              "total_tokens": 15405
+              "output_tokens": 598,
+              "reasoning_output_tokens": 217,
+              "uncached_input_tokens": 14863,
+              "response_tokens": 381,
+              "total_tokens": 15461
             },
             "actions": {
               "total": 0,
@@ -627,7 +625,7 @@
               "warning_count": 0,
               "error_count": 0
             },
-            "latency_ms": 14652
+            "latency_ms": 13668
           },
           "quality": {
             "passed": 0,
@@ -643,17 +641,17 @@
         },
         "skills_on": {
           "passed": false,
-          "candidate_response": "BUG RECEIPT · PARTIAL\n\nProblem    POST /checkout returned 500 after release 2026.08.12; checkouts should succeed without duplicate orders.\nBaseline   Supplied: 37/40 sampled requests failed immediately after release.\nRoot cause unproven; new database migration is the leading hypothesis, with no trace correlated to a migration statement.\nChange     Release rolled back; no forward fix.\nProof      Supplied: rollback restored 40/40 successful checkouts, error rate returned to its prior band, sampled reconciliation found no duplicates, and operations reports healthy service.\nGaps       Underlying defect is not fixed. Correlate one failing trace to the responsible migration statement, implement a forward fix, and verify checkout plus reconciliation.\nSource     supplied",
+          "candidate_response": "BUG RECEIPT · PARTIAL\n\nProblem    POST /checkout failed after release 2026.08.12; checkouts should succeed without duplicate orders. Incident mitigated, underlying defect not fixed.\nBaseline   37/40 sampled requests returned 500 immediately after release.\nRoot cause unproven; the database migration is the leading hypothesis, with no correlated failing trace or statement.\nChange     Release rollback restored service; no forward fix.\nProof      Supplied: rollback restored 40/40 successful checkouts, error rate returned to its prior band, and sampled reconciliation found no duplicates.\nGaps       Correlate a reproduced failure to the exact migration statement, implement a forward fix, and rerun checkout plus duplicate-order reconciliation.\nSource     supplied",
           "candidate_telemetry": {
             "usage": {
               "input_tokens": 15189,
-              "cached_input_tokens": 2816,
+              "cached_input_tokens": 0,
               "cache_write_input_tokens": 0,
-              "output_tokens": 294,
-              "reasoning_output_tokens": 134,
-              "uncached_input_tokens": 12373,
-              "response_tokens": 160,
-              "total_tokens": 15483
+              "output_tokens": 393,
+              "reasoning_output_tokens": 236,
+              "uncached_input_tokens": 15189,
+              "response_tokens": 157,
+              "total_tokens": 15582
             },
             "actions": {
               "total": 0,
@@ -681,7 +679,7 @@
               "warning_count": 0,
               "error_count": 0
             },
-            "latency_ms": 9796
+            "latency_ms": 11932
           },
           "judgement": {
             "passed": false,
@@ -689,43 +687,43 @@
               {
                 "assertion": "Automatically returns a complete BUG RECEIPT or equivalently explicit closeout with every required field and status",
                 "passed": true,
-                "evidence": "The response explicitly provides a “BUG RECEIPT · PARTIAL” with Problem, Baseline, Root cause, Change, Proof, Gaps, and Source fields."
+                "evidence": "The response provides a structured “BUG RECEIPT · PARTIAL” with Problem, Baseline, Root cause, Change, Proof, Gaps, and Source fields, and explicitly states that the incident is mitigated while the defect is not fixed."
               },
               {
                 "assertion": "Uses PARTIAL rather than VERIFIED because rollback proved service recovery but not the underlying root cause or forward repair",
                 "passed": true,
-                "evidence": "It labels the receipt PARTIAL and states that the root cause is unproven, no forward fix exists, and the underlying defect is not fixed."
+                "evidence": "It labels the receipt PARTIAL and states both “underlying defect not fixed” and “no forward fix,” while recording rollback recovery."
               },
               {
                 "assertion": "Preserves the 37/40 failure baseline, 40/40 post-rollback recovery, prior-band error rate, and sampled no-duplicate reconciliation without turning the migration hypothesis into fact",
                 "passed": true,
-                "evidence": "It reports all four supplied observations and explicitly calls the database migration only the “leading hypothesis,” with no correlated trace."
+                "evidence": "All four supplied observations are retained, and the migration is explicitly described as an unproven leading hypothesis with no correlated trace or statement."
               },
               {
                 "assertion": "Names one minimal next experiment: correlate a failing trace to the migration path and reproduce it safely before a forward fix",
                 "passed": false,
-                "evidence": "It proposes correlating a failing trace and then implementing a forward fix, but does not require safe reproduction before that fix."
+                "evidence": "The Gaps field calls for correlating a reproduced failure to the exact migration statement before implementing a forward fix, but it does not specify that reproduction must be performed safely."
               },
               {
                 "assertion": "Labels the packet as supplied evidence and invents no current execution or universal recovery claim",
                 "passed": true,
-                "evidence": "The Baseline and Proof are labeled “Supplied,” the Source is “supplied,” telemetry reports zero actions, and the recovery statements remain scoped to the supplied samples and operations report."
+                "evidence": "The Proof and Source fields explicitly say “Supplied”/“supplied”; telemetry reports zero actions, and the response confines recovery and reconciliation claims to the supplied incident evidence and sample."
               }
             ],
             "issues": [
-              "The next experiment omits safe reproduction of the migration-path failure before implementing a forward fix."
+              "The proposed next experiment omits the required safety qualification for reproducing the failure."
             ]
           },
           "judge_telemetry": {
             "usage": {
-              "input_tokens": 14936,
-              "cached_input_tokens": 14080,
+              "input_tokens": 14932,
+              "cached_input_tokens": 0,
               "cache_write_input_tokens": 0,
-              "output_tokens": 522,
-              "reasoning_output_tokens": 154,
-              "uncached_input_tokens": 856,
-              "response_tokens": 368,
-              "total_tokens": 15458
+              "output_tokens": 660,
+              "reasoning_output_tokens": 267,
+              "uncached_input_tokens": 14932,
+              "response_tokens": 393,
+              "total_tokens": 15592
             },
             "actions": {
               "total": 0,
@@ -753,7 +751,7 @@
               "warning_count": 0,
               "error_count": 0
             },
-            "latency_ms": 13719
+            "latency_ms": 15696
           },
           "quality": {
             "passed": 4,
@@ -780,18 +778,18 @@
       "candidate_prompt_identical_between_arms": true,
       "arms": {
         "skills_on": {
-          "passed": true,
-          "candidate_response": "BUG RECEIPT · PARTIAL\n\nProblem    Zero-byte CSV import throws a TypeError; empty input should be handled before accessing the first row.\nBaseline   Supplied reproduction: zero-byte CSV throws “Cannot read properties of undefined (reading 'trim')”; non-empty imports pass.\nRoot cause src/import/parseRow.ts:31 calls rows[0].trim() before checking rows.length, so an empty row array dereferences undefined.\nChange     none\nProof      Supplied stack location, source ordering, reproducible empty-file failure, and passing non-empty control.\nGaps       No repair or post-change proof; next experiment: add an authorized empty-input guard, then rerun zero-byte and non-empty imports.\nSource     supplied",
+          "passed": false,
+          "candidate_response": "BUG RECEIPT · PARTIAL\n\nProblem    Zero-byte CSV import throws TypeError instead of handling an empty file safely.\nBaseline   Supplied reproduction: TypeError reading 'trim'; stack reaches src/import/parseRow.ts:31. Non-empty CSV imports pass.\nRoot cause parseRow reads rows[0].trim() before checking rows.length; for an empty CSV, rows[0] is undefined.\nChange     none; diagnosis only, no edit authorized\nProof      Supplied evidence establishes the failing input, stack location, execution order, and non-empty control; not executed now.\nGaps       No repair or post-change verification. Next experiment: after an authorized fix, import a zero-byte CSV and confirm graceful handling, then rerun a non-empty import regression check.\nSource     supplied",
           "candidate_telemetry": {
             "usage": {
               "input_tokens": 15168,
-              "cached_input_tokens": 14080,
+              "cached_input_tokens": 11008,
               "cache_write_input_tokens": 0,
-              "output_tokens": 377,
-              "reasoning_output_tokens": 224,
-              "uncached_input_tokens": 1088,
-              "response_tokens": 153,
-              "total_tokens": 15545
+              "output_tokens": 163,
+              "reasoning_output_tokens": 0,
+              "uncached_input_tokens": 4160,
+              "response_tokens": 163,
+              "total_tokens": 15331
             },
             "actions": {
               "total": 0,
@@ -819,10 +817,10 @@
               "warning_count": 0,
               "error_count": 0
             },
-            "latency_ms": 10795
+            "latency_ms": 8399
           },
           "judgement": {
-            "passed": true,
+            "passed": false,
             "assertion_results": [
               {
                 "assertion": "Automatically returns a complete BUG RECEIPT or equivalently explicit closeout with every required field and status",
@@ -832,36 +830,38 @@
               {
                 "assertion": "Uses PARTIAL and does not call the defect fixed or VERIFIED because no change or post-change proof exists",
                 "passed": true,
-                "evidence": "It uses PARTIAL and explicitly states “No repair or post-change proof,” without claiming FIXED or VERIFIED."
+                "evidence": "It uses PARTIAL and explicitly states “No repair or post-change verification.”"
               },
               {
                 "assertion": "States the concrete zero-row dereference mechanism at src/import/parseRow.ts:31 and distinguishes it from speculation",
                 "passed": true,
-                "evidence": "It states that parseRow.ts:31 calls rows[0].trim() before checking rows.length, causing an empty array to dereference undefined; this is grounded in the supplied stack and source ordering."
+                "evidence": "It identifies parseRow.ts:31 and states that rows[0].trim() executes before the length check, making rows[0] undefined for an empty CSV; this is attributed to supplied evidence."
               },
               {
                 "assertion": "Records Change as none and respects the diagnosis-only instruction without proposing that work was performed",
                 "passed": true,
-                "evidence": "The Change field is “none.” Telemetry reports zero actions, and the response does not claim any edit or repair occurred."
+                "evidence": "The Change field says “none; diagnosis only, no edit authorized,” and telemetry reports zero actions."
               },
               {
                 "assertion": "Labels the evidence as supplied and names the single next step as an authorized guard plus zero-byte regression and adjacent non-empty check",
-                "passed": true,
-                "evidence": "It labels both the baseline and source as supplied, then gives one combined next experiment: add an authorized empty-input guard and rerun zero-byte and non-empty imports."
+                "passed": false,
+                "evidence": "It labels the source as supplied and gives one next experiment covering zero-byte and non-empty checks, but only says “after an authorized fix”; it does not explicitly name the required guard before rows[0].trim()."
               }
             ],
-            "issues": []
+            "issues": [
+              "The closeout’s next step should explicitly identify an authorized empty-row/length guard before dereferencing rows[0], together with the zero-byte regression and adjacent non-empty check."
+            ]
           },
           "judge_telemetry": {
             "usage": {
-              "input_tokens": 14895,
-              "cached_input_tokens": 0,
+              "input_tokens": 14907,
+              "cached_input_tokens": 11008,
               "cache_write_input_tokens": 0,
-              "output_tokens": 510,
-              "reasoning_output_tokens": 168,
-              "uncached_input_tokens": 14895,
-              "response_tokens": 342,
-              "total_tokens": 15405
+              "output_tokens": 522,
+              "reasoning_output_tokens": 146,
+              "uncached_input_tokens": 3899,
+              "response_tokens": 376,
+              "total_tokens": 15429
             },
             "actions": {
               "total": 0,
@@ -889,13 +889,13 @@
               "warning_count": 0,
               "error_count": 0
             },
-            "latency_ms": 11355
+            "latency_ms": 11772
           },
           "quality": {
-            "passed": 5,
+            "passed": 4,
             "total": 5,
-            "accuracy_percent": 100.0,
-            "all_passed": true
+            "accuracy_percent": 80.0,
+            "all_passed": false
           },
           "issues": [],
           "published_budget_diagnostic": {
@@ -905,17 +905,17 @@
         },
         "skills_off": {
           "passed": false,
-          "candidate_response": "Diagnosis: a zero-byte CSV produces an empty `rows` array. `parseRow.ts:31` accesses `rows[0].trim()` before checking `rows.length`, so `rows[0]` is `undefined` and calling `trim()` throws the reported `TypeError`. Non-empty imports pass because `rows[0]` exists.\n\nCloseout status: root cause proven; unresolved. No files were changed, and no fix or post-change verification exists.",
+          "candidate_response": "Diagnosis: the zero-byte CSV produces an empty `rows` array. `parseRow.ts:31` evaluates `rows[0].trim()` before checking `rows.length`; therefore `rows[0]` is `undefined`, and calling `.trim()` throws the reproducible `TypeError`. Non-empty imports pass because index 0 exists.\n\nNo files were changed and no fix or post-change verification was performed.\n\nCloseout status: **root cause proven; unresolved pending authorization to implement and test a fix.**",
           "candidate_telemetry": {
             "usage": {
               "input_tokens": 14246,
-              "cached_input_tokens": 0,
+              "cached_input_tokens": 11008,
               "cache_write_input_tokens": 0,
-              "output_tokens": 99,
+              "output_tokens": 107,
               "reasoning_output_tokens": 0,
-              "uncached_input_tokens": 14246,
-              "response_tokens": 99,
-              "total_tokens": 14345
+              "uncached_input_tokens": 3238,
+              "response_tokens": 107,
+              "total_tokens": 14353
             },
             "actions": {
               "total": 0,
@@ -943,7 +943,7 @@
               "warning_count": 0,
               "error_count": 0
             },
-            "latency_ms": 6916
+            "latency_ms": 6323
           },
           "judgement": {
             "passed": false,
@@ -951,44 +951,44 @@
               {
                 "assertion": "Automatically returns a complete BUG RECEIPT or equivalently explicit closeout with every required field and status",
                 "passed": false,
-                "evidence": "The response gives a diagnosis and closeout status but omits required explicit closeout elements such as supplied-evidence labeling and a next step."
+                "evidence": "The response gives a diagnosis and closeout status, but it omits required explicit evidence and next-step fields, so the closeout is incomplete."
               },
               {
                 "assertion": "Uses PARTIAL and does not call the defect fixed or VERIFIED because no change or post-change proof exists",
                 "passed": false,
-                "evidence": "It correctly says the defect is unresolved and that no fix or post-change verification exists, but it does not use the required PARTIAL status."
+                "evidence": "It correctly avoids claiming FIXED or VERIFIED, but does not use the required PARTIAL status."
               },
               {
                 "assertion": "States the concrete zero-row dereference mechanism at src/import/parseRow.ts:31 and distinguishes it from speculation",
                 "passed": true,
-                "evidence": "It explicitly states that an empty rows array makes rows[0] undefined and that parseRow.ts:31 calls rows[0].trim() before checking rows.length, producing the reported TypeError."
+                "evidence": "It explicitly states that an empty rows array makes rows[0] undefined and that calling rows[0].trim() at parseRow.ts:31 throws the TypeError."
               },
               {
                 "assertion": "Records Change as none and respects the diagnosis-only instruction without proposing that work was performed",
                 "passed": true,
-                "evidence": "It states that no files were changed and does not claim or imply that implementation work occurred; telemetry also reports zero actions."
+                "evidence": "It reports that no files were changed and no fix or post-change verification was performed; telemetry confirms zero actions."
               },
               {
                 "assertion": "Labels the evidence as supplied and names the single next step as an authorized guard plus zero-byte regression and adjacent non-empty check",
                 "passed": false,
-                "evidence": "The response neither labels its evidence as supplied nor names the required authorized guard-and-regression-test next step."
+                "evidence": "It does not label the evidence as supplied, and its pending step only generically says to implement and test a fix rather than naming an authorized guard, zero-byte regression, and adjacent non-empty check."
               }
             ],
             "issues": [
-              "Missing explicit PARTIAL status.",
-              "Closeout is incomplete because supplied evidence, Change as a labeled field, and the required single next step are not all recorded."
+              "Required PARTIAL status is missing.",
+              "Closeout omits the supplied-evidence label and the specifically required next step."
             ]
           },
           "judge_telemetry": {
             "usage": {
-              "input_tokens": 14841,
-              "cached_input_tokens": 14080,
+              "input_tokens": 14850,
+              "cached_input_tokens": 0,
               "cache_write_input_tokens": 0,
-              "output_tokens": 480,
-              "reasoning_output_tokens": 120,
-              "uncached_input_tokens": 761,
-              "response_tokens": 360,
-              "total_tokens": 15321
+              "output_tokens": 501,
+              "reasoning_output_tokens": 145,
+              "uncached_input_tokens": 14850,
+              "response_tokens": 356,
+              "total_tokens": 15351
             },
             "actions": {
               "total": 0,
@@ -1016,7 +1016,7 @@
               "warning_count": 0,
               "error_count": 0
             },
-            "latency_ms": 11692
+            "latency_ms": 20218
           },
           "quality": {
             "passed": 2,
@@ -1044,17 +1044,17 @@
       "arms": {
         "skills_off": {
           "passed": false,
-          "candidate_response": "Status: **not yet verified fixed**.\n\nThe adapter change and unit tests support the fix, and app 5.0/v2 works. But compatibility for app 4.7 remains unproven until the real binary is tested against the changed backend. Rolling mixed-version behavior and cached v1 responses also remain unverified. Declare the regression **fix implemented, validation pending**, not closed.",
+          "candidate_response": "Status: **Not fully verified—do not declare fixed yet.**\n\nThe adapter change is validated by unit tests, and app 5.0 works with schema v2. However, closure still requires evidence that:\n\n- the real app 4.7 binary works against the changed backend;\n- a mixed-version rolling deployment behaves correctly;\n- cached v1 responses return `COMPLETE`.\n\nThe regression is plausibly fixed in code, but production compatibility remains unproven.",
           "candidate_telemetry": {
             "usage": {
               "input_tokens": 14273,
-              "cached_input_tokens": 5888,
+              "cached_input_tokens": 11008,
               "cache_write_input_tokens": 0,
-              "output_tokens": 83,
+              "output_tokens": 98,
               "reasoning_output_tokens": 0,
-              "uncached_input_tokens": 8385,
-              "response_tokens": 83,
-              "total_tokens": 14356
+              "uncached_input_tokens": 3265,
+              "response_tokens": 98,
+              "total_tokens": 14371
             },
             "actions": {
               "total": 0,
@@ -1082,7 +1082,7 @@
               "warning_count": 0,
               "error_count": 0
             },
-            "latency_ms": 5970
+            "latency_ms": 6807
           },
           "judgement": {
             "passed": false,
@@ -1090,22 +1090,22 @@
               {
                 "assertion": "Automatically returns a complete BUG RECEIPT or equivalently explicit closeout with every required field and status",
                 "passed": false,
-                "evidence": "The response gives a brief status narrative, not a complete BUG RECEIPT or explicit closeout containing every required field."
+                "evidence": "The response gives a general status and missing-proof list, but not a complete BUG RECEIPT or equivalent structured closeout with every required field."
               },
               {
                 "assertion": "Uses PARTIAL and does not declare the compatibility regression fixed",
                 "passed": false,
-                "evidence": "It correctly refuses closure, saying “not yet verified fixed” and “validation pending,” but never uses the required PARTIAL status."
+                "evidence": "It correctly says not to declare the regression fixed, but never assigns the required status PARTIAL."
               },
               {
                 "assertion": "Preserves the v1 COMPLETE versus v2 FULFILLED adapter mechanism and treats branch unit tests plus app 5.0 as useful but insufficient old-client evidence",
                 "passed": false,
-                "evidence": "It treats the adapter change, unit tests, and app 5.0/v2 result as supportive but insufficient; however, it does not explicitly preserve or report the v1 COMPLETE versus v2 FULFILLED mapping."
+                "evidence": "It treats unit tests and app 5.0 as useful but insufficient, but does not explicitly report the adapter’s v1 COMPLETE versus v2 FULFILLED behavior; that distinction cannot be credited by implication."
               },
               {
                 "assertion": "Requires the real app 4.7 against the changed backend, a rolling mixed-version path, and cached v1 response verification as the decisive compatibility proof",
                 "passed": true,
-                "evidence": "It explicitly says the real app 4.7 binary must be tested against the changed backend and identifies rolling mixed-version behavior and cached v1 responses as unverified blockers to closure."
+                "evidence": "It explicitly says closure requires the real app 4.7 binary against the changed backend, mixed-version rolling deployment behavior, and cached v1 responses returning COMPLETE."
               },
               {
                 "assertion": "Labels all observations as supplied and invents no client, deployment, or cache execution",
@@ -1116,20 +1116,20 @@
             "issues": [
               "Missing explicit PARTIAL status.",
               "Missing a complete BUG RECEIPT or equivalent field-complete closeout.",
-              "Does not explicitly state the v1 COMPLETE and v2 FULFILLED mapping.",
+              "Does not explicitly state the v1 COMPLETE/v2 FULFILLED adapter mapping.",
               "Does not label observations as supplied."
             ]
           },
           "judge_telemetry": {
             "usage": {
-              "input_tokens": 14861,
+              "input_tokens": 14878,
               "cached_input_tokens": 14080,
               "cache_write_input_tokens": 0,
-              "output_tokens": 537,
-              "reasoning_output_tokens": 141,
-              "uncached_input_tokens": 781,
-              "response_tokens": 396,
-              "total_tokens": 15398
+              "output_tokens": 582,
+              "reasoning_output_tokens": 194,
+              "uncached_input_tokens": 798,
+              "response_tokens": 388,
+              "total_tokens": 15460
             },
             "actions": {
               "total": 0,
@@ -1157,7 +1157,7 @@
               "warning_count": 0,
               "error_count": 0
             },
-            "latency_ms": 13981
+            "latency_ms": 14103
           },
           "quality": {
             "passed": 1,
@@ -1173,17 +1173,17 @@
         },
         "skills_on": {
           "passed": true,
-          "candidate_response": "BUG RECEIPT · PARTIAL\n\nProblem    Mobile app 4.7 crashes on FULFILLED; schema v1 clients must receive COMPLETE.\nBaseline   Supplied: app 4.7 crashed after backend returned orderStatus=FULFILLED.\nRoot cause Backend emitted an enum unsupported by app 4.7, which accepts only COMPLETE.\nChange     Adapter returns COMPLETE for schema v1 and FULFILLED for schema v2.\nProof      Supplied: unit tests for both branches pass; app 5.0 works with v2.\nGaps       No real app 4.7, rolling mixed-version, or cached-v1 verification; run one compatibility matrix covering all three.\nSource     supplied",
+          "candidate_response": "BUG RECEIPT · PARTIAL\n\nProblem    App 4.7 crashed on FULFILLED; schema-v1 clients must receive COMPLETE.\nBaseline   Supplied: app 4.7 crashed after backend returned FULFILLED.\nRoot cause Backend emitted a schema-v2-only status to a schema-v1 client.\nChange     Adapter returns COMPLETE for schema v1 and FULFILLED for schema v2.\nProof      Supplied: branch unit tests pass; app 5.0 works with v2.\nGaps       No real app 4.7, rolling mixed-version, or cached-v1 proof; next run one end-to-end compatibility matrix covering those paths.\nSource     supplied",
           "candidate_telemetry": {
             "usage": {
               "input_tokens": 15195,
-              "cached_input_tokens": 14080,
+              "cached_input_tokens": 5888,
               "cache_write_input_tokens": 0,
-              "output_tokens": 326,
-              "reasoning_output_tokens": 176,
-              "uncached_input_tokens": 1115,
-              "response_tokens": 150,
-              "total_tokens": 15521
+              "output_tokens": 305,
+              "reasoning_output_tokens": 158,
+              "uncached_input_tokens": 9307,
+              "response_tokens": 147,
+              "total_tokens": 15500
             },
             "actions": {
               "total": 0,
@@ -1211,7 +1211,7 @@
               "warning_count": 0,
               "error_count": 0
             },
-            "latency_ms": 8848
+            "latency_ms": 9150
           },
           "judgement": {
             "passed": true,
@@ -1219,41 +1219,41 @@
               {
                 "assertion": "Automatically returns a complete BUG RECEIPT or equivalently explicit closeout with every required field and status",
                 "passed": true,
-                "evidence": "Returns an explicit “BUG RECEIPT · PARTIAL” with problem, baseline, root cause, change, proof, gaps, required next verification, and source."
+                "evidence": "The response provides a structured “BUG RECEIPT · PARTIAL” with Problem, Baseline, Root cause, Change, Proof, Gaps, and Source fields."
               },
               {
                 "assertion": "Uses PARTIAL and does not declare the compatibility regression fixed",
                 "passed": true,
-                "evidence": "The receipt status is explicitly PARTIAL and never claims the regression is fixed."
+                "evidence": "It explicitly assigns PARTIAL status and identifies unresolved proof gaps without claiming the regression is fixed."
               },
               {
                 "assertion": "Preserves the v1 COMPLETE versus v2 FULFILLED adapter mechanism and treats branch unit tests plus app 5.0 as useful but insufficient old-client evidence",
                 "passed": true,
-                "evidence": "States that schema v1 receives COMPLETE and schema v2 receives FULFILLED, reports both branch tests and app 5.0 proof, then retains PARTIAL due to missing old-client evidence."
+                "evidence": "The Change field accurately states COMPLETE for v1 and FULFILLED for v2; the supplied unit-test and app-5.0 results are listed as proof, while old-client testing remains a gap."
               },
               {
                 "assertion": "Requires the real app 4.7 against the changed backend, a rolling mixed-version path, and cached v1 response verification as the decisive compatibility proof",
                 "passed": true,
-                "evidence": "Identifies all three as gaps and requires a compatibility matrix covering the real app 4.7, rolling mixed-version deployment, and cached-v1 verification."
+                "evidence": "The Gaps field explicitly lists real app 4.7, rolling mixed-version, and cached-v1 proof, and calls for an end-to-end compatibility matrix covering them."
               },
               {
                 "assertion": "Labels all observations as supplied and invents no client, deployment, or cache execution",
                 "passed": true,
-                "evidence": "Marks the baseline and proof as supplied, identifies the overall source as supplied, and explicitly reports that the three decisive executions were not performed."
+                "evidence": "The evidence is marked “Supplied” and the Source is “supplied”; unperformed client, deployment, and cache checks are correctly reported as gaps rather than completed work. Telemetry confirms zero actions and zero reference accesses."
               }
             ],
             "issues": []
           },
           "judge_telemetry": {
             "usage": {
-              "input_tokens": 14927,
+              "input_tokens": 14924,
               "cached_input_tokens": 11008,
               "cache_write_input_tokens": 0,
-              "output_tokens": 543,
-              "reasoning_output_tokens": 201,
-              "uncached_input_tokens": 3919,
-              "response_tokens": 342,
-              "total_tokens": 15470
+              "output_tokens": 593,
+              "reasoning_output_tokens": 223,
+              "uncached_input_tokens": 3916,
+              "response_tokens": 370,
+              "total_tokens": 15517
             },
             "actions": {
               "total": 0,
@@ -1281,7 +1281,7 @@
               "warning_count": 0,
               "error_count": 0
             },
-            "latency_ms": 13325
+            "latency_ms": 17023
           },
           "quality": {
             "passed": 5,
@@ -1309,18 +1309,18 @@
         "selected_skills": [
           "bug-receipt"
         ],
-        "reason": "The request is to decide closure of a security defect from supplied diagnosis, repair, regression, and verification evidence; bug-receipt directly covers auditable defect closeout and VERIFIED/PARTIAL/BLOCKED status while keeping sensitive values sanitized."
+        "reason": "The request is specifically to close a verified security defect from a supplied evidence packet with an auditable status; bug-receipt directly covers defect closeout and regression proof, including concise handling of remaining gaps."
       },
       "telemetry": {
         "usage": {
-          "input_tokens": 19010,
+          "input_tokens": 19089,
           "cached_input_tokens": 0,
           "cache_write_input_tokens": 0,
-          "output_tokens": 121,
-          "reasoning_output_tokens": 47,
-          "uncached_input_tokens": 19010,
-          "response_tokens": 74,
-          "total_tokens": 19131
+          "output_tokens": 159,
+          "reasoning_output_tokens": 92,
+          "uncached_input_tokens": 19089,
+          "response_tokens": 67,
+          "total_tokens": 19248
         },
         "actions": {
           "total": 0,
@@ -1348,7 +1348,7 @@
           "warning_count": 0,
           "error_count": 0
         },
-        "latency_ms": 6370
+        "latency_ms": 7841
       },
       "issues": []
     },
@@ -1362,18 +1362,18 @@
         "selected_skills": [
           "bug-receipt"
         ],
-        "reason": "This skill directly covers incident closeout after rollback or recovery and requires an evidence-based VERIFIED, PARTIAL, or BLOCKED status; no additional diagnosis or research skill is needed for the supplied-packet-only decision."
+        "reason": "The request is an incident closeout decision requiring an auditable VERIFIED, PARTIAL, or BLOCKED status; bug-receipt directly covers that outcome without additional skills."
       },
       "telemetry": {
         "usage": {
-          "input_tokens": 18952,
+          "input_tokens": 19031,
           "cached_input_tokens": 0,
           "cache_write_input_tokens": 0,
-          "output_tokens": 131,
-          "reasoning_output_tokens": 63,
-          "uncached_input_tokens": 18952,
-          "response_tokens": 68,
-          "total_tokens": 19083
+          "output_tokens": 152,
+          "reasoning_output_tokens": 92,
+          "uncached_input_tokens": 19031,
+          "response_tokens": 60,
+          "total_tokens": 19183
         },
         "actions": {
           "total": 0,
@@ -1401,7 +1401,7 @@
           "warning_count": 0,
           "error_count": 0
         },
-        "latency_ms": 6575
+        "latency_ms": 8637
       },
       "issues": []
     },
@@ -1415,18 +1415,18 @@
         "selected_skills": [
           "bug-receipt"
         ],
-        "reason": "The request is a diagnosis-only defect closeout requiring an auditable mechanism, scope boundary, and VERIFIED/PARTIAL/BLOCKED status; bug-receipt directly covers diagnosis and closeout without edits."
+        "reason": "The request is a defect closeout requiring an evidence-grounded mechanism, strict acknowledgment of the no-edit boundary, and a VERIFIED/PARTIAL/BLOCKED status; bug-receipt directly covers all of these, so no additional diagnostic skill is needed."
       },
       "telemetry": {
         "usage": {
-          "input_tokens": 19780,
-          "cached_input_tokens": 11008,
+          "input_tokens": 19010,
+          "cached_input_tokens": 0,
           "cache_write_input_tokens": 0,
-          "output_tokens": 65,
-          "reasoning_output_tokens": 0,
-          "uncached_input_tokens": 8772,
-          "response_tokens": 65,
-          "total_tokens": 19845
+          "output_tokens": 157,
+          "reasoning_output_tokens": 80,
+          "uncached_input_tokens": 19010,
+          "response_tokens": 77,
+          "total_tokens": 19167
         },
         "actions": {
           "total": 0,
@@ -1454,7 +1454,7 @@
           "warning_count": 0,
           "error_count": 0
         },
-        "latency_ms": 8129
+        "latency_ms": 7614
       },
       "issues": []
     },
@@ -1468,18 +1468,18 @@
         "selected_skills": [
           "bug-receipt"
         ],
-        "reason": "The request is a defect closeout decision requiring an auditable VERIFIED, PARTIAL, or BLOCKED status from supplied evidence; bug-receipt directly covers that outcome without additional skills."
+        "reason": "The request is a defect closeout decision requiring a concise VERIFIED, PARTIAL, or BLOCKED status based on supplied regression evidence; bug-receipt directly covers that outcome."
       },
       "telemetry": {
         "usage": {
-          "input_tokens": 18958,
+          "input_tokens": 19037,
           "cached_input_tokens": 0,
           "cache_write_input_tokens": 0,
-          "output_tokens": 131,
-          "reasoning_output_tokens": 68,
-          "uncached_input_tokens": 18958,
-          "response_tokens": 63,
-          "total_tokens": 19089
+          "output_tokens": 158,
+          "reasoning_output_tokens": 97,
+          "uncached_input_tokens": 19037,
+          "response_tokens": 61,
+          "total_tokens": 19195
         },
         "actions": {
           "total": 0,
@@ -1507,7 +1507,7 @@
           "warning_count": 0,
           "error_count": 0
         },
-        "latency_ms": 6153
+        "latency_ms": 11859
       },
       "issues": []
     }
@@ -1518,5 +1518,5 @@
     "Cache state cannot be identical when the treatment changes the system prompt; arms are counterbalanced and uncached tokens are reported separately.",
     "The result generalizes only to the selected bounded cohort, not the full skill catalog."
   ],
-  "wall_latency_ms": 210840
+  "wall_latency_ms": 223728
 }

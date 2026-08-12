@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-12T01:47:40.787156+00:00",
+  "generated_at": "2026-08-12T02:14:20.142718+00:00",
   "source_report": {
     "name": "model-ab-robustness-gpt-5.6-sol-xhigh.json",
-    "sha256": "15010db0510ed27f8e68d1b0ee5990eb630693097f563e46a0bb5030c038add8",
-    "benchmark_fingerprint": "9560810670be00f89c77f16c0ca73065e04a93ed06c6707582776a8ad9f9e009"
+    "sha256": "396b49dae463ce3842e34e6541e5bcfe6a1b06acd037ab6f7a32066ad3cf68ba",
+    "benchmark_fingerprint": "3965b82bbf2efc8239d3949ca213590aac445379cc36f79a6460f1642384226d"
   }
 }

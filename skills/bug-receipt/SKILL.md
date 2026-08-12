@@ -1,6 +1,6 @@
 ---
 name: bug-receipt
-description: 'Close defects and incidents with an auditable BUG RECEIPT and VERIFIED, PARTIAL, or BLOCKED status. Use for diagnosis, repair, rollback or recovery, regression proof, security defects, production incidents, and issue closeout.'
+description: 'Close defects and incidents with a BUG RECEIPT and VERIFIED, PARTIAL, or BLOCKED status after diagnosis, repair, or recovery.'
 ---
 
 # Bug Receipt
